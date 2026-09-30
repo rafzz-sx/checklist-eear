@@ -164,6 +164,18 @@ const EEAR_DATA = {
               nome: "Vozes Verbais e Transposição",
               detalhes: "Voz ativa, passiva analítica (ser + particípio), passiva sintética (verbo transitivo direto + se) e reflexiva.",
               bizu: "🎯 Diferencie a Função do 'SE' em 5 Segundos: 1) PARTÍCULA APASSIVADORA: Verbo Transitivo Direto (VTD) + SE -> o termo seguinte é o SUJEITO PACIENTE e o verbo DEVE concordar em número ('Alugam-se hangares', 'Consertam-se aeronaves'). 2) ÍNDICE DE INDETERMINAÇÃO DO SUJEITO: Verbo Transitivo Indireto (VTI) ou Intransitivo + SE -> não há sujeito paciente e o verbo fica OBRIGATORIAMENTE no singular ('Precisa-se de mecânicos', 'Trabalha-se com afinco')."
+            },
+            {
+              id: "pt-mor-11",
+              nome: "Advérbios e Locuções Adverbiais",
+              detalhes: "Classificação das circunstâncias adverbiais (tempo, lugar, modo, causa, finalidade, dúvida, intensidade, negação, afirmação); grau dos advérbios; advérbios interrogativos e locuções adverbiais.",
+              bizu: "🎯 Bizu de Prova EEAR: A palavra 'meio': se puder ser substituída por 'um pouco', é ADVÉRBIO e fica estritamente invariável ('Ela estava meio cansada', nunca 'meia cansada'). Se equivaler à metade, é numeral adjetivo e varia ('Comeu meia maçã'). Diferencie advérbio (invariável) de pronome adjetivo indefinido (variável: 'bastantes problemas' vs 'estudou bastante')."
+            },
+            {
+              id: "pt-mor-12",
+              nome: "Pronomes Indefinidos, Interrogativos e Numerais",
+              detalhes: "Pronomes substantivos vs adjetivos; pronomes indefinidos (algum, nenhum, todo, certo, cada); interrogativos; numerais cardinais, ordinais, multiplicativos e fracionários.",
+              bizu: "💡 Mudança de Sentido por Posição: 'Algum motivo' (anteposto = sentido afirmativo/positivo: há um motivo) vs 'Motivo algum' (posposto ao substantivo = sentido negativo: nenhum motivo!). 'Certo homem' (indefinido = um homem qualquer) vs 'Homem certo' (adjetivo = homem correto)."
             }
           ]
         },
@@ -224,6 +236,12 @@ const EEAR_DATA = {
               nome: "Colocação Pronominal (Próclise, Ênclise e Mesóclise)",
               detalhes: "Fatores de atração da próclise: palavras negativas, pronomes relativos/indefinidos, conjunções subordinativas; Ênclise após vírgula e início; Mesóclise com futuros.",
               bizu: "🎯 Fatores Atraentes de Próclise (Pronome Antes do Verbo): 1) Palavras negativas (não, nunca, jamais); 2) Pronomes relativos (que, quem, cujo), indefinidos (alguém, todos) e demonstrativos; 3) Conjunções subordinativas (embora, quando, se); 4) Expressões com 'Em + se + gerúndio' ('Em se tratando de aviação'). Regra de Ouro: NUNCA inicie período com pronome oblíquo átono na norma culta ('Diga-me a verdade', nunca 'Me diga'). Mesóclise só ocorre com verbos no Futuro do Presente ou do Pretérito sem fator atrativo ('Apresentar-lhe-ei o plano')."
+            },
+            {
+              id: "pt-sin-10",
+              nome: "Termos Acessórios da Oração (Adjunto Adnominal, Adverbial, Aposto e Vocativo)",
+              detalhes: "Adjunto Adnominal vs Adjunto Adverbial; Aposto explicativo, enumerativo, resumitivo e especificativo; Vocativo (termo independente sempre pontuado).",
+              bizu: "🎯 Diferença Clássica da Banca: APOSTO ESPECIFICATIVO vem SEM VÍRGULAS ligado a um substantivo genérico ('A cidade de Guaratinguetá', 'O brigadeiro Eduardo Gomes'). APOSTO EXPLICATIVO vem SEMPRE ENTRE VÍRGULAS ('Santos Dumont, o pai da aviação, inventou o relógio de pulso'). O VOCATIVO não pertence nem ao sujeito nem ao predicado: é o chamamento e exige vírgula obrigatória!"
             }
           ]
         },
@@ -342,6 +360,24 @@ const EEAR_DATA = {
               nome: "Question Tags e Tag Answers",
               detalhes: "Regra de polaridade inversa: frase afirmativa pede tag negativa; frase negativa pede tag afirmativa.",
               bizu: "💡 Regra da Polaridade Invertida: Frase afirmativa exige tag negativa (*The pilot is ready, isn't he?*); Frase negativa exige tag afirmativa (*You don't smoke, do you?*). ⚠️ As 3 Exceções Mais Cobradas na EEAR: 1) Com 'I am' a tag correta é 'AREN'T I?' (*I am late, aren't I?*). 2) Em convites com 'Let's', a tag é 'SHALL WE?' (*Let's begin the briefing, shall we?*). 3) Em frases imperativas, a tag padrão é 'WILL YOU?' (*Close the cockpit, will you?*)."
+            },
+            {
+              id: "ing-bas-13",
+              nome: "Prefixes, Suffixes and Word Formation",
+              detalhes: "Prefixos negativos (un-, in-, dis-, mis-, non-); sufixos de substantivos (-tion, -ment, -ness, -ity), adjetivos (-ful, -less, -able) e advérbios (-ly).",
+              bizu: "🎯 Cuidado com o Prefixo 'MIS-': Indica erro ou incorreção ('misunderstand' = entender errado; 'misleading' = enganoso). Sufixo '-LESS' indica ausência/falta ('careless' = descuidado; 'helpless' = sem ajuda); sufixo '-FUL' indica repleto ('careful' = cuidadoso). As provas de inglês da EEAR sempre trazem questão de formação de palavras por sufixação e prefixação!"
+            },
+            {
+              id: "ing-bas-14",
+              nome: "Numbers, Ordinals and Quantifiers (Both, Either, Neither)",
+              detalhes: "Cardinais (one, two, hundred, thousand), ordinais (first, second, third), datas em inglês; frações; quantifiers (all, every, each, both, either, neither).",
+              bizu: "💡 Both vs. Either vs. Neither: BOTH = ambos (dois juntos: 'Both engines are working'); EITHER = um ou outro (positivo); NEITHER = nenhum dos dois (negativo: 'Neither runway is open'). Números como hundred e thousand só levam 's' quando não têm número antes ('thousands of flights', mas 'two thousand flights')."
+            },
+            {
+              id: "ing-bas-15",
+              nome: "Synonyms, Antonyms and False Friends (Falsos Cognatos)",
+              detalhes: "Falsos cognatos frequentes na aviação: actually (na verdade), pretend (fingir), intend (pretender), push (empurrar), pull (puxar), notice (notar), resume (retomar).",
+              bizu: "⚠️ Top 5 Falsos Cognatos da EEAR: 1) 'ACTUALLY' NÃO é atualmente, significa 'na verdade / realmente'. 2) 'PRETEND' NÃO é pretender, significa 'fingir' (pretender é 'intend'). 3) 'PUSH' é EMPURRAR (e 'pull' é puxar!). 4) 'RESUME' significa 'retomar/recomeçar' (resumo é 'summary'). 5) 'NOTICE' é 'notar/perceber' (notícia é 'news'). Decore para não perder ponto fácil!"
             }
           ]
         },
@@ -520,6 +556,12 @@ const EEAR_DATA = {
               nome: "Áreas de Figuras Planas e Círculo",
               detalhes: "Fórmulas de área: Básica b\\· h/2; Heron \\√(p(p-a)(p-b)(p-c)); Trigonométrica \\½absenθ; Círculo π R² e Setor circular.",
               bizu: "💡 Fórmulas Alternativas de Área que Salvam Questões: 1) Fórmula Trigonométrica (quando você tem 2 lados e o ângulo entre eles): S = \\½ a b senθ. 2) Fórmula de Heron (quando você tem os 3 lados e nenhuma altura): S = \\√(p(p-a)(p-b)(p-c)), onde p = a+b+c/2 é o semiperímetro. 3) Com raio inscrito: S = p \\· r."
+            },
+            {
+              id: "mat-pla-09",
+              nome: "Triângulos: Congruência e Condição de Existência",
+              detalhes: "Desigualdade triangular (|b - c| < a < b + c); Casos de congruência de triângulos (LAL, LLL, ALA, LAAo); Classificação quanto a lados e ângulos.",
+              bizu: "🎯 Condição de Existência do Triângulo (Cai Direto): Em qualquer triângulo, a medida de qualquer lado DEVE ser SEMPRE menor que a soma dos outros dois e maior que o módulo da diferença: |b - c| < a < b + c! Exemplo: segmentos 3, 4 e 8 NÃO formam triângulo porque 8 > 3 + 4."
             }
           ]
         },
@@ -556,6 +598,12 @@ const EEAR_DATA = {
               nome: "Funções e Equações Trigonométricas",
               detalhes: "Gráficos de senoide e cossenoide; período de f(x) = a + bsen(cx + d) \\⇒ P = \\2π/|c|; equações no ciclo.",
               bizu: "🎯 O Período Depende de Uma Única Coisa: Em qualquer função da forma y = a + b \\· sen(c x + d) ou com cosseno, o PERÍODO P depende EXCLUSIVAMENTE do número c que está multiplicando a variável x: P = \\2π/|c|. Os coeficientes a e b afetam apenas o deslocamento vertical e a amplitude da imagem ([a - |b|, a + |b|]), nunca o período!"
+            },
+            {
+              id: "mat-tri-06",
+              nome: "Arcos Côngruos, Simétricos e Bissecção de Arcos",
+              detalhes: "Determinação principal de arcos; fórmulas de bissecção de arcos (sen(a/2), cos(a/2)); transformação de soma em produto (fórmulas de Prostaférese).",
+              bizu: "💡 Determinação Principal de Arcos: Divida o ângulo por 360°. O RESTO da divisão inteira é a primeira determinação positiva (o arco côngruo no 1º ciclo)! Exemplo: 1500° ÷ 360° dá quociente 4 e RESTO 60° (logo, 1500° é côngruo a 60°, tendo mesmo seno e cosseno de 60°)."
             }
           ]
         },
@@ -688,6 +736,12 @@ const EEAR_DATA = {
               nome: "Estudo da Circunferência no Plano",
               detalhes: "Equação reduzida: (x-a)² + (y-b)² = R²; determinação de centro C(a,b) e raio R na forma geral; posições relativas.",
               bizu: "💡 Reta Tangente à Circunferência: Uma reta é TANGENTE a uma circunferência se, e somente se, a distância do centro da circunferência até a reta for RIGOROSAMENTE IGUAL ao raio (dC,r = R). Se d < R, a reta é secante (corta em 2 pontos); se d > R, a reta é externa."
+            },
+            {
+              id: "mat-ana-05",
+              nome: "Equação Segmentária, Ângulo entre Retas e Posições de Duas Circunferências",
+              detalhes: "Forma segmentária da reta x/p + y/q = 1; Ângulo entre duas retas tg(θ) = |(m1 - m2)/(1 + m1·m2)|; Posições de duas circunferências (exteriores, tangentes externas/internas, secantes, concêntricas).",
+              bizu: "🎯 Equação Segmentária da Reta (Economiza tempo de ouro): x/p + y/q = 1. O número 'p' é onde a reta corta o eixo X e 'q' é onde corta o eixo Y! Posições de 2 circunferências com raios R1 e R2 e distância d entre centros: Tangentes externas se d = R1 + R2; Tangentes internas se d = |R1 - R2|; Secantes se |R1 - R2| < d < R1 + R2."
             }
           ]
         },
@@ -818,6 +872,12 @@ const EEAR_DATA = {
               nome: "Gravitação Universal e Leis de Kepler",
               detalhes: "1ª Lei (órbitas elípticas); 2ª Lei (áreas iguais em tempos iguais, mais rápido no periélio); 3ª Lei (T²/R³ = K); Lei de Newton F = GMm/d².",
               bizu: "💡 2ª e 3ª Leis de Kepler Desvendadas: Pela 2ª Lei (Lei das Áreas), a velocidade de translação do planeta é MÁXIMA no PERIÉLIO (ponto mais perto do Sol) e MÍNIMA no AFÉLIO (ponto mais afastado). Pela 3ª Lei, quanto mais distante o planeta estiver do Sol, maior será o seu ano (período de revolução): T²/R³ = constante."
+            },
+            {
+              id: "fis-din-08",
+              nome: "Centro de Massa, Centro de Gravidade e Estabilidade de Corpos Extensos",
+              detalhes: "Ponto material vs corpo extenso; coordenadas do centro de massa (Xcm = Σ(mi·xi)/Σmi); tipos de equilíbrio (estável, instável e indiferente).",
+              bizu: "💡 Condição de Tombo e Estabilidade: Um corpo extenso só tomba se a linha de ação da força peso (que passa pelo centro de gravidade) sair de dentro da sua BASE de apoio! Por isso veículos de corrida e aeronaves têm centro de gravidade rebaixado para maior estabilidade."
             }
           ]
         },
@@ -920,6 +980,18 @@ const EEAR_DATA = {
               nome: "Olho Humano e Defeitos da Visão",
               detalhes: "Miopia (globo ocular alongado, foco antes da retina \\→ lentes DIVERGENTES); Hipermetropia (foco atrás da retina \\→ CONVERGENTES); Presbiopia.",
               bizu: "🎯 Mnemônico de Correção Visual: 'M-D e H-C': MIOPIA corrige-se com lente DIVERGENTE (na miopia o olho é longo e a imagem se forma antes da retina). HIPERMETROPIA corrige-se com lente CONVERGENTE (na hipermetropia o olho é curto e a imagem forma-se atrás da retina). Presbiopia (vista cansada) também usa lentes convergentes."
+            },
+            {
+              id: "fis-ond-07",
+              nome: "Acústica: Tubos Sonoros Abertos e Fechados e Ressonância",
+              detalhes: "Ondas estacionárias; Tubos sonoros abertos (todos os harmônicos: fn = n·v/(2L), n = 1, 2, 3...); Tubos fechados (apenas harmônicos ímpares: fn = (2n-1)·v/(4L), n = 1, 3, 5...).",
+              bizu: "🎯 Tubo Fechado SÓ Tem Harmônicos ÍMPARES: Em um tubo sonoro fechado em uma das pontas, NUNCA existe harmônico par (2º e 4º harmônicos não existem!). A frequência do harmônico fundamental é f1 = v / (4L). Em tubos abertos nas duas pontas, existem todos os harmônicos e f1 = v / (2L)."
+            },
+            {
+              id: "fis-ond-08",
+              nome: "Óptica: Lâminas de Faces Paralelas, Prismas e Instrumentos Ópticos",
+              detalhes: "Desvio lateral em lâminas de faces paralelas; Prisma óptico e desvio angular mínimo; Instrumentos ópticos: lupa (lente convergente simples), microscópio composto e luneta astronômica.",
+              bizu: "💡 Desvio em Lâmina de Faces Paralelas: Ao atravessar uma lâmina de vidro com faces paralelas, o raio de luz emergente sai PARALELO ao raio incidente original, sofrendo apenas um DESVIO LATERAL (d), sem alterar sua direção angular! Lupa é sempre uma lente CONVERGENTE com o objeto entre o foco e o centro óptico, formando imagem virtual, direita e maior."
             }
           ]
         },
@@ -974,6 +1046,12 @@ const EEAR_DATA = {
               nome: "Indução Eletromagnética e Transformadores",
               detalhes: "Fluxo magnético \\Φ = B \\· A \\· cosθ; Lei de Faraday-Neumann e Lei de Lenz; Transformadores ideais: U₁/U₂ = N₁/N₂ = i₂/i₁.",
               bizu: "💡 Transformador Só Funciona com Corrente Alternada (CA): O transformador baseia-se na variação contínua do fluxo magnético (Lei de Faraday-Neumann). Se você ligar um transformador a uma bateria de corrente contínua (CC), a tensão induzida na saída é ZERO! Relação do transformador ideal: U₁/U₂ = N₁/N₂ = i₂/i₁ (onde a tensão sobe, a corrente desce proporcionalmente)."
+            },
+            {
+              id: "fis-ele-09",
+              nome: "Substâncias Magnéticas, Bússola e Campo Magnético Terrestre",
+              detalhes: "Classificação: ferromagnéticas (ferro, níquel, cobalto), paramagnéticas (fracamente atraídas) e diamagnéticas (fracamente repelidas); Bússola e pólos magnéticos da Terra.",
+              bizu: "⚠️ Pegadinha Clássica da Aeronáutica: O Pólo Norte magnético da agulha da bússola aponta para o NORTE GEOGRÁFICO da Terra porque lá fica localizado o PÓLO SUL MAGNÉTICO da Terra! Pólos de nomes opostos se atraem."
             }
           ]
         },
