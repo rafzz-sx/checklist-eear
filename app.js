@@ -56,17 +56,29 @@ function loadState() {
     const raw = localStorage.getItem(STORAGE_KEY);
     if (raw) {
       const parsed = JSON.parse(raw);
-      return { ...defaultState, ...parsed };
+      return { 
+        ...defaultState, 
+        ...parsed,
+        currentTab: 'dashboard', // Sempre abre na Visão Geral ao dar F5
+        searchQuery: '',
+        errorSearchQuery: ''
+      };
     }
   } catch (e) {
     console.error('Falha ao carregar estado do localStorage:', e);
   }
-  return { ...defaultState };
+  return { ...defaultState, currentTab: 'dashboard' };
 }
 
 function saveState(showNotification = false) {
   try {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(appState));
+    const stateToSave = {
+      ...appState,
+      currentTab: 'dashboard', // Garante que reloads sempre iniciem na Visão Geral
+      searchQuery: '',
+      errorSearchQuery: ''
+    };
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(stateToSave));
     updateGlobalMetrics();
     if (showNotification) {
       showToast('✓ Salvo com sucesso no seu navegador!');
@@ -257,7 +269,12 @@ function renderActiveView() {
   const container = document.getElementById('mainContentArea');
   if (!container) return;
 
-  const tab = appState.currentTab;
+  const tab = appState.currentTab || 'dashboard';
+
+  // Synchronize tab buttons active class
+  document.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.tab === tab);
+  });
 
   if (tab === 'dashboard') {
     renderDashboard(container);
@@ -271,6 +288,8 @@ function renderActiveView() {
     const disc = EEAR_DATA.disciplinas.find(d => d.id === tab);
     if (disc) {
       renderSubjectView(container, disc);
+    } else {
+      renderDashboard(container);
     }
   }
 
