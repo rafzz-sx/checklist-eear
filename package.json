@@ -1,0 +1,19 @@
+{
+  "name": "eear-checklist",
+  "version": "1.0.0",
+  "description": "Checklist de Estudos EEAR — Preparatório Oficial da Aeronáutica com Edital Verticalizado, Caderno de Erros, Simulador e Bizus Táticos",
+  "scripts": {
+    "bundle": "python bundle.py",
+    "deploy": "vercel --prod"
+  },
+  "keywords": [
+    "eear",
+    "concurso",
+    "militar",
+    "aeronautica",
+    "fab",
+    "checklist",
+    "estudos"
+  ],
+  "license": "MIT"
+}

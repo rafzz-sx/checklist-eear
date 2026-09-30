@@ -1,0 +1,4091 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EEAR CHECKLIST — Preparatório Oficial & Rastreador de Estudos</title>
+  <meta name="description" content="Checklist completo e interativo de estudos para o concurso da EEAR com acompanhamento de progresso, simulados, caderno de erros e bizus da banca.">
+  <meta property="og:title" content="EEAR CHECKLIST — Preparatório Oficial & Rastreador de Estudos">
+  <meta property="og:description" content="Checklist oficial e interativo com edital verticalizado, simulador de questões, caderno de erros e bizus táticos da banca EEAR.">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#0b1120">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✈️</text></svg>">
+  <style>
+/* ==========================================================================
+   EEAR Flight Deck — Modern Aeronautics Design System
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap');
+
+:root {
+  --bg-main: #070c18;
+  --bg-surface: #0e172a;
+  --bg-card: rgba(18, 28, 51, 0.75);
+  --bg-card-hover: rgba(28, 42, 74, 0.85);
+  --bg-elevated: #162238;
+  --border-color: rgba(255, 255, 255, 0.08);
+  --border-focus: #38bdf8;
+  
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+  
+  --accent-cyan: #38bdf8;
+  --accent-blue: #3b82f6;
+  --accent-gold: #fbbf24;
+  --accent-green: #10b981;
+  --accent-rose: #f43f5e;
+  --accent-purple: #8b5cf6;
+  
+  --glow-cyan: 0 0 25px rgba(56, 189, 248, 0.25);
+  --glow-green: 0 0 25px rgba(16, 185, 129, 0.25);
+  --glow-gold: 0 0 25px rgba(251, 191, 36, 0.25);
+  
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-full: 9999px;
+  
+  --transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  background-color: var(--bg-main);
+  color: var(--text-primary);
+  min-height: 100vh;
+  line-height: 1.5;
+  background-image: 
+    radial-gradient(circle at 15% 10%, rgba(56, 189, 248, 0.08) 0%, transparent 40%),
+    radial-gradient(circle at 85% 90%, rgba(59, 130, 246, 0.06) 0%, transparent 45%),
+    linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  background-size: 100% 100%, 100% 100%, 40px 40px, 40px 40px;
+  background-attachment: fixed;
+  overflow-x: hidden;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-main);
+}
+::-webkit-scrollbar-thumb {
+  background: #1e293b;
+  border-radius: var(--radius-full);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #334155;
+}
+
+/* Glassmorphic Container */
+.app-container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 20px 24px 80px 24px;
+}
+
+/* ==========================================================================
+   Header & Flight Deck Bar
+   ========================================================================== */
+
+.top-navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 24px;
+  background: rgba(14, 23, 42, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  margin-bottom: 24px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+  position: sticky;
+  top: 16px;
+  z-index: 100;
+}
+
+.brand-group {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.brand-badge {
+  width: 44px;
+  height: 44px;
+  background: linear-gradient(135deg, #0284c7, #0369a1);
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  box-shadow: var(--glow-cyan);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.brand-title {
+  font-size: 1.25rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  background: linear-gradient(90deg, #ffffff, #93c5fd);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.brand-subtitle {
+  font-size: 0.75rem;
+  color: var(--accent-cyan);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.status-indicator {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  background-color: var(--accent-green);
+  border-radius: 50%;
+  box-shadow: 0 0 10px var(--accent-green);
+  animation: pulse-dot 2s infinite;
+}
+
+@keyframes pulse-dot {
+  0% { transform: scale(0.95); opacity: 0.8; }
+  50% { transform: scale(1.3); opacity: 1; }
+  100% { transform: scale(0.95); opacity: 0.8; }
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.btn-pill {
+  padding: 8px 16px;
+  border-radius: var(--radius-full);
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: var(--transition);
+  border: 1px solid var(--border-color);
+  background: var(--bg-elevated);
+  color: var(--text-primary);
+}
+
+.btn-pill:hover {
+  background: rgba(56, 189, 248, 0.15);
+  border-color: var(--accent-cyan);
+  transform: translateY(-1px);
+  color: #fff;
+}
+
+.btn-pill-primary {
+  background: linear-gradient(135deg, #0284c7, #2563eb);
+  border: none;
+  color: #fff;
+  box-shadow: 0 4px 14px rgba(37, 99, 235, 0.4);
+}
+
+.btn-pill-primary:hover {
+  background: linear-gradient(135deg, #0369a1, #1d4ed8);
+  box-shadow: 0 6px 20px rgba(37, 99, 235, 0.6);
+}
+
+/* ==========================================================================
+   Hero Analytics Dashboard Bar
+   ========================================================================== */
+
+.hero-dashboard {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 28px;
+}
+
+.metric-card {
+  background: var(--bg-card);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+  position: relative;
+  overflow: hidden;
+  transition: var(--transition);
+}
+
+.metric-card:hover {
+  border-color: rgba(255, 255, 255, 0.18);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+.metric-card.highlight {
+  background: linear-gradient(135deg, rgba(14, 165, 233, 0.15), rgba(15, 23, 42, 0.9));
+  border-color: rgba(56, 189, 248, 0.3);
+}
+
+.metric-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.metric-title {
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-secondary);
+}
+
+.metric-icon {
+  font-size: 1.2rem;
+  opacity: 0.8;
+}
+
+.metric-value-group {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.metric-value {
+  font-size: 2.2rem;
+  font-weight: 800;
+  font-family: 'JetBrains Mono', monospace;
+  color: #fff;
+  letter-spacing: -0.03em;
+}
+
+.metric-subtext {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+/* Progress bar container */
+.progress-track {
+  width: 100%;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+  margin-top: 10px;
+  position: relative;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #38bdf8, #10b981);
+  border-radius: var(--radius-full);
+  transition: width 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 0 12px rgba(16, 185, 129, 0.5);
+}
+
+/* ==========================================================================
+   Interactive Navigation Tabs
+   ========================================================================== */
+
+.nav-tabs-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.subject-tabs {
+  display: flex;
+  gap: 8px;
+  background: rgba(14, 23, 42, 0.6);
+  padding: 6px;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--border-color);
+  overflow-x: auto;
+  max-width: 100%;
+}
+
+.tab-btn {
+  padding: 10px 18px;
+  border-radius: var(--radius-full);
+  border: none;
+  background: transparent;
+  color: var(--text-secondary);
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+  transition: var(--transition);
+}
+
+.tab-btn:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.tab-btn.active {
+  background: #0284c7;
+  color: #fff;
+  box-shadow: 0 4px 16px rgba(2, 132, 199, 0.4);
+}
+
+.tab-btn .badge-count {
+  background: rgba(0, 0, 0, 0.25);
+  padding: 2px 8px;
+  border-radius: var(--radius-full);
+  font-size: 0.72rem;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* Search and Filters Bar */
+.search-filter-box {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-grow: 1;
+  max-width: 400px;
+}
+
+.search-input-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.search-input {
+  width: 100%;
+  padding: 10px 16px 10px 40px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-full);
+  color: #fff;
+  font-size: 0.86rem;
+  outline: none;
+  transition: var(--transition);
+}
+
+.search-input:focus {
+  border-color: var(--accent-cyan);
+  box-shadow: 0 0 15px rgba(56, 189, 248, 0.25);
+}
+
+.search-icon {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+/* ==========================================================================
+   Module Accordions & Topic Checklist Cards
+   ========================================================================== */
+
+.content-section {
+  display: none;
+}
+
+.content-section.active {
+  display: block;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.module-container {
+  margin-bottom: 24px;
+}
+
+.module-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: var(--transition);
+  margin-bottom: 12px;
+}
+
+.module-header:hover {
+  background: var(--bg-elevated);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+.module-title-group {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.module-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.module-badge {
+  font-size: 0.75rem;
+  font-family: 'JetBrains Mono', monospace;
+  padding: 3px 10px;
+  border-radius: var(--radius-full);
+  background: rgba(56, 189, 248, 0.12);
+  color: var(--accent-cyan);
+  border: 1px solid rgba(56, 189, 248, 0.25);
+}
+
+/* Topic Card */
+.topic-card {
+  background: var(--bg-card);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 18px 20px;
+  margin-bottom: 12px;
+  transition: var(--transition);
+}
+
+.topic-card:hover {
+  background: var(--bg-card-hover);
+  border-color: rgba(255, 255, 255, 0.14);
+}
+
+.topic-card.completed {
+  border-left: 4px solid var(--accent-green);
+  background: rgba(16, 185, 129, 0.04);
+}
+
+.topic-main-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 14px;
+}
+
+.topic-info {
+  flex: 1;
+}
+
+.topic-name {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 4px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.topic-description {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  line-height: 1.45;
+}
+
+/* Checkbox Matrix Group */
+.checkbox-matrix {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.check-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.03);
+  padding: 6px 12px;
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  cursor: pointer;
+  user-select: none;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  transition: var(--transition);
+}
+
+.check-item:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+}
+
+.check-item input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 16px;
+  height: 16px;
+  border: 1.5px solid #475569;
+  border-radius: 4px;
+  outline: none;
+  cursor: pointer;
+  position: relative;
+  transition: var(--transition);
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.check-item input[type="checkbox"]:checked {
+  background-color: var(--accent-cyan);
+  border-color: var(--accent-cyan);
+}
+
+.check-item input[type="checkbox"]:checked::after {
+  content: '✓';
+  position: absolute;
+  color: #000;
+  font-size: 11px;
+  font-weight: 800;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.check-item.active-check {
+  background: rgba(56, 189, 248, 0.1);
+  border-color: rgba(56, 189, 248, 0.3);
+  color: #fff;
+}
+
+/* Revision Pills */
+.revision-group {
+  display: flex;
+  gap: 4px;
+  margin-left: 6px;
+  padding-left: 8px;
+  border-left: 1px solid var(--border-color);
+}
+
+.revision-pill {
+  font-size: 0.7rem;
+  font-family: 'JetBrains Mono', monospace;
+  padding: 4px 8px;
+  border-radius: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(0, 0, 0, 0.25);
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.revision-pill.done {
+  background: rgba(16, 185, 129, 0.2);
+  border-color: var(--accent-green);
+  color: var(--accent-green);
+  font-weight: 700;
+}
+
+/* Accuracy Input */
+.score-badge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  padding: 4px 10px;
+}
+
+.score-input {
+  width: 44px;
+  background: transparent;
+  border: none;
+  color: var(--accent-gold);
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 700;
+  font-size: 0.85rem;
+  text-align: right;
+  outline: none;
+}
+
+/* Bizu Drawer & Action Row */
+.topic-bottom-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  padding-top: 10px;
+  margin-top: 8px;
+}
+
+.bizu-btn {
+  background: transparent;
+  border: none;
+  color: var(--accent-gold);
+  font-size: 0.78rem;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: var(--radius-sm);
+  transition: var(--transition);
+}
+
+.bizu-btn:hover {
+  background: rgba(251, 191, 36, 0.1);
+}
+
+/* ==========================================================================
+   Tactical Bizu Card (Aeronautics Theme)
+   ========================================================================== */
+.bizu-box {
+  display: none;
+  margin-top: 12px;
+  padding: 16px 18px;
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.96) 0%, rgba(26, 38, 64, 0.92) 100%);
+  border: 1px solid rgba(251, 191, 36, 0.35);
+  border-left: 4px solid #fbbf24;
+  border-radius: var(--radius-sm);
+  font-size: 0.86rem;
+  color: #f8fafc;
+  line-height: 1.65;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  position: relative;
+}
+
+.bizu-box.open {
+  display: block;
+  animation: fadeIn 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.bizu-header-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(251, 191, 36, 0.12);
+  color: #fbbf24;
+  border: 1px solid rgba(251, 191, 36, 0.35);
+  padding: 3px 10px;
+  border-radius: var(--radius-full);
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 10px;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.bizu-content {
+  color: #f1f5f9;
+  font-size: 0.88rem;
+  line-height: 1.68;
+}
+
+/* ==========================================================================
+   Simulados & Provas Anteriores Table
+   ========================================================================== */
+
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-color);
+  background: var(--bg-card);
+}
+
+.exam-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.exam-table th, .exam-table td {
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--border-color);
+  font-size: 0.88rem;
+}
+
+.exam-table th {
+  background: rgba(14, 23, 42, 0.9);
+  color: var(--text-secondary);
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+}
+
+.exam-table tr:hover {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.table-input {
+  width: 54px;
+  padding: 6px 8px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  color: #fff;
+  font-family: 'JetBrains Mono', monospace;
+  text-align: center;
+  outline: none;
+  transition: var(--transition);
+}
+
+.table-input:focus {
+  border-color: var(--accent-cyan);
+}
+
+.status-tag {
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+  font-size: 0.75rem;
+  font-weight: 700;
+  display: inline-block;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.status-approved {
+  background: rgba(16, 185, 129, 0.15);
+  color: #34d399;
+  border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+.status-warning {
+  background: rgba(251, 191, 36, 0.15);
+  color: #fcd34d;
+  border: 1px solid rgba(251, 191, 36, 0.3);
+}
+
+.status-danger {
+  background: rgba(244, 63, 94, 0.15);
+  color: #fb7185;
+  border: 1px solid rgba(244, 63, 94, 0.3);
+}
+
+/* ==========================================================================
+   Caderno de Erros View
+   ========================================================================== */
+
+.error-grid {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 20px;
+}
+
+.error-form-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+}
+
+.form-group {
+  margin-bottom: 16px;
+}
+
+.form-label {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin-bottom: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.form-control {
+  width: 100%;
+  padding: 10px 14px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  color: #fff;
+  font-family: inherit;
+  font-size: 0.88rem;
+  outline: none;
+  transition: var(--transition);
+}
+
+.form-control:focus {
+  border-color: var(--accent-cyan);
+}
+
+textarea.form-control {
+  resize: vertical;
+  min-height: 80px;
+}
+
+.error-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.error-entry-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-left: 4px solid var(--accent-rose);
+  border-radius: var(--radius-md);
+  padding: 18px 20px;
+  transition: var(--transition);
+}
+
+.error-entry-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(244, 63, 94, 0.4);
+}
+
+/* Toast Notification */
+.toast-msg {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  background: #0f172a;
+  border: 1px solid var(--accent-cyan);
+  color: #fff;
+  padding: 12px 20px;
+  border-radius: var(--radius-full);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  z-index: 1000;
+  transform: translateY(100px);
+  opacity: 0;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.toast-msg.show {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* ==========================================================================
+   Tactical Floating Study Cockpit / Timer Widget (Aero HUD)
+   ========================================================================== */
+.study-cockpit {
+  position: fixed;
+  bottom: 24px;
+  left: 24px;
+  z-index: 990;
+  user-select: none;
+  font-family: inherit;
+}
+
+/* Floating Capsule HUD Bar */
+.cockpit-bar {
+  background: rgba(13, 20, 36, 0.92);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(56, 189, 248, 0.3);
+  border-radius: var(--radius-full);
+  padding: 6px 14px 6px 8px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.6), 0 0 20px rgba(56, 189, 248, 0.15);
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cockpit-bar:hover {
+  transform: translateY(-2px);
+  border-color: rgba(56, 189, 248, 0.55);
+  box-shadow: 0 16px 42px rgba(0, 0, 0, 0.7), 0 0 28px rgba(56, 189, 248, 0.25);
+}
+
+.cockpit-bar.running {
+  border-color: rgba(56, 189, 248, 0.6);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.6), 0 0 24px rgba(56, 189, 248, 0.3);
+}
+
+/* Progress Ring & Center Icon */
+.cockpit-ring-box {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.cockpit-svg-ring {
+  transform: rotate(-90deg);
+  width: 40px;
+  height: 40px;
+}
+
+.cockpit-ring-bg {
+  stroke: rgba(255, 255, 255, 0.1);
+}
+
+.cockpit-ring-fill {
+  stroke: var(--accent-cyan);
+  transition: stroke-dashoffset 0.85s linear, stroke 0.3s ease;
+}
+
+.cockpit-center-icon {
+  position: absolute;
+  font-size: 1.15rem;
+  line-height: 1;
+}
+
+/* Time & Mode Label Info */
+.cockpit-info {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.cockpit-mode-line {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.cockpit-mode-label {
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-secondary);
+}
+
+.cockpit-live-pulse {
+  display: none;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent-green);
+  box-shadow: 0 0 8px var(--accent-green);
+  animation: pulseGreen 1.4s infinite;
+}
+
+.cockpit-live-pulse.active {
+  display: inline-block;
+}
+
+@keyframes pulseGreen {
+  0% { transform: scale(0.9); opacity: 0.7; }
+  50% { transform: scale(1.3); opacity: 1; }
+  100% { transform: scale(0.9); opacity: 0.7; }
+}
+
+.cockpit-timer-digits {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1.22rem;
+  font-weight: 800;
+  color: #38bdf8;
+  letter-spacing: 0.04em;
+  line-height: 1.1;
+  text-shadow: 0 0 10px rgba(56, 189, 248, 0.4);
+}
+
+/* Quick Action Buttons */
+.cockpit-controls {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-left: 2px;
+}
+
+.cockpit-btn {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #e2e8f0;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 0.88rem;
+  transition: var(--transition);
+}
+
+.cockpit-btn:hover {
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+  transform: scale(1.08);
+}
+
+.cockpit-btn.primary {
+  background: linear-gradient(135deg, #2563eb 0%, #0284c7 100%);
+  border-color: #38bdf8;
+  color: #fff;
+  box-shadow: 0 0 14px rgba(14, 165, 233, 0.4);
+}
+
+.cockpit-btn.primary:hover {
+  background: linear-gradient(135deg, #1d4ed8 0%, #0369a1 100%);
+  transform: scale(1.1);
+  box-shadow: 0 0 20px rgba(14, 165, 233, 0.6);
+}
+
+.cockpit-btn.options-btn {
+  background: rgba(56, 189, 248, 0.1);
+  border-color: rgba(56, 189, 248, 0.25);
+  color: #38bdf8;
+}
+
+.cockpit-btn.options-btn:hover {
+  background: rgba(56, 189, 248, 0.22);
+  color: #fff;
+}
+
+/* ==========================================================================
+   Tactical Cockpit Drawer (Study Variations Modal/Panel)
+   ========================================================================== */
+.cockpit-drawer {
+  position: absolute;
+  bottom: calc(100% + 14px);
+  left: 0;
+  width: 390px;
+  max-width: 92vw;
+  background: rgba(11, 18, 33, 0.97);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(56, 189, 248, 0.32);
+  border-radius: 20px;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.75), 0 0 32px rgba(56, 189, 248, 0.18);
+  padding: 20px;
+  display: none;
+  flex-direction: column;
+  gap: 16px;
+  animation: slideDrawerUp 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cockpit-drawer.open {
+  display: flex;
+}
+
+@keyframes slideDrawerUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.cockpit-drawer-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding-bottom: 12px;
+}
+
+.drawer-title-group {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.drawer-badge {
+  font-size: 0.65rem;
+  font-weight: 800;
+  color: #38bdf8;
+  letter-spacing: 0.1em;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.drawer-title {
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: #fff;
+}
+
+.drawer-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.cockpit-sound-pill {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--border-color);
+  color: var(--text-secondary);
+  font-size: 0.74rem;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  transition: var(--transition);
+}
+
+.cockpit-sound-pill:hover {
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+}
+
+.cockpit-sound-pill.active {
+  background: rgba(16, 185, 129, 0.12);
+  border-color: rgba(16, 185, 129, 0.35);
+  color: #34d399;
+}
+
+.cockpit-close-pill {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: var(--radius-sm);
+  transition: var(--transition);
+}
+
+.cockpit-close-pill:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Presets 2-Column Grid */
+.cockpit-presets-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.preset-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  cursor: pointer;
+  text-align: left;
+  transition: var(--transition);
+}
+
+.preset-card:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(56, 189, 248, 0.35);
+  transform: translateY(-1px);
+}
+
+.preset-card.active {
+  background: rgba(56, 189, 248, 0.08);
+  border-color: var(--accent-cyan);
+  box-shadow: 0 0 16px rgba(56, 189, 248, 0.18);
+}
+
+.preset-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2px;
+}
+
+.preset-icon {
+  font-size: 1.2rem;
+}
+
+.preset-pill {
+  font-size: 0.68rem;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: var(--radius-full);
+  background: rgba(255, 255, 255, 0.08);
+  color: #94a3b8;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.preset-pill.highlight {
+  background: rgba(251, 191, 36, 0.15);
+  color: #fbbf24;
+  border: 1px solid rgba(251, 191, 36, 0.3);
+}
+
+.preset-pill.aero {
+  background: rgba(56, 189, 248, 0.15);
+  color: #38bdf8;
+  border: 1px solid rgba(56, 189, 248, 0.3);
+}
+
+.preset-title {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.preset-desc {
+  font-size: 0.71rem;
+  color: var(--text-secondary);
+  line-height: 1.35;
+}
+
+/* Drawer Footer */
+.cockpit-drawer-footer {
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding-top: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.cockpit-streak-box {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.03);
+  padding: 8px 12px;
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.streak-icon {
+  font-size: 1rem;
+}
+
+.streak-text {
+  font-size: 0.78rem;
+  color: #cbd5e1;
+}
+
+.streak-text strong {
+  color: #38bdf8;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.cockpit-hint {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  line-height: 1.4;
+}
+
+/* ==========================================================================
+   Responsive Adaptations
+   ========================================================================== */
+
+@media (max-width: 1024px) {
+  .hero-dashboard {
+    grid-template-columns: 1fr 1fr;
+  }
+  .error-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .top-navbar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 14px;
+  }
+  .hero-dashboard {
+    grid-template-columns: 1fr;
+  }
+  .nav-tabs-wrapper {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .search-filter-box {
+    max-width: 100%;
+  }
+  .topic-main-row {
+    flex-direction: column;
+    gap: 12px;
+  }
+  .checkbox-matrix {
+    width: 100%;
+  }
+  .study-cockpit {
+    left: 12px;
+    bottom: 12px;
+    max-width: calc(100vw - 24px);
+  }
+  .cockpit-drawer {
+    width: calc(100vw - 24px);
+    max-width: 360px;
+    padding: 16px;
+  }
+  .cockpit-presets-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+}
+
+/* ==========================================================================
+   Supercharged Usability & Error Notebook Enhancements
+   ========================================================================== */
+
+/* Quick Complete 1-Click Action */
+.btn-quick-toggle {
+  background: rgba(56, 189, 248, 0.08);
+  border: 1px solid rgba(56, 189, 248, 0.25);
+  color: var(--accent-cyan);
+  padding: 5px 12px;
+  border-radius: var(--radius-full);
+  font-size: 0.76rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: var(--transition);
+  margin-left: auto;
+}
+
+.btn-quick-toggle:hover {
+  background: rgba(56, 189, 248, 0.2);
+  border-color: var(--accent-cyan);
+  color: #fff;
+  transform: translateY(-1px);
+}
+
+.btn-quick-toggle.completed-all {
+  background: rgba(16, 185, 129, 0.15);
+  border-color: var(--accent-green);
+  color: #34d399;
+}
+
+/* Topic Status Badges */
+.topic-status-badge {
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: var(--radius-full);
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-family: 'JetBrains Mono', monospace;
+  text-transform: uppercase;
+}
+
+.status-pendente {
+  background: rgba(100, 116, 139, 0.2);
+  color: #94a3b8;
+  border: 1px solid rgba(100, 116, 139, 0.3);
+}
+
+.status-andamento {
+  background: rgba(251, 191, 36, 0.15);
+  color: #fbbf24;
+  border: 1px solid rgba(251, 191, 36, 0.3);
+}
+
+.status-dominado {
+  background: rgba(16, 185, 129, 0.18);
+  color: #34d399;
+  border: 1px solid rgba(16, 185, 129, 0.4);
+  box-shadow: 0 0 10px rgba(16, 185, 129, 0.2);
+}
+
+/* Module Progress Bar */
+.module-progress-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.module-mini-track {
+  width: 90px;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+
+.module-mini-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #38bdf8, #10b981);
+  border-radius: var(--radius-full);
+  transition: width 0.4s ease;
+}
+
+/* Topic Notes Drawer */
+.topic-notes-drawer {
+  display: none;
+  margin-top: 10px;
+  padding: 10px 14px;
+  background: rgba(14, 23, 42, 0.8);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+}
+
+.topic-notes-drawer.open {
+  display: block;
+  animation: fadeIn 0.2s ease-in-out;
+}
+
+.notes-textarea {
+  width: 100%;
+  background: transparent;
+  border: none;
+  color: #e2e8f0;
+  font-family: inherit;
+  font-size: 0.84rem;
+  resize: vertical;
+  min-height: 50px;
+  outline: none;
+}
+
+/* Caderno de Erros Diagnostics & Filters */
+.error-diagnostics-bar {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.diag-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.diag-title {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--text-secondary);
+  letter-spacing: 0.06em;
+}
+
+.diag-count {
+  font-size: 1.5rem;
+  font-weight: 800;
+  font-family: 'JetBrains Mono', monospace;
+  color: #fff;
+}
+
+.error-filter-bar {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+
+.error-filter-btn {
+  padding: 6px 14px;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--border-color);
+  background: var(--bg-surface);
+  color: var(--text-secondary);
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.error-filter-btn:hover {
+  background: var(--bg-elevated);
+  color: #fff;
+}
+
+.error-filter-btn.active {
+  background: #2563eb;
+  border-color: #3b82f6;
+  color: #fff;
+  box-shadow: 0 0 12px rgba(37, 99, 235, 0.4);
+}
+
+/* Error Card Resolved State */
+.error-entry-card.resolved {
+  border-left: 4px solid var(--accent-green);
+  background: rgba(16, 185, 129, 0.04);
+  opacity: 0.88;
+}
+
+.error-entry-card.resolved:hover {
+  opacity: 1;
+  border-color: rgba(16, 185, 129, 0.4);
+}
+
+.btn-mark-resolved {
+  background: rgba(16, 185, 129, 0.12);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  color: #34d399;
+  font-size: 0.76rem;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  transition: var(--transition);
+}
+
+.btn-mark-resolved:hover {
+  background: rgba(16, 185, 129, 0.25);
+  color: #fff;
+}
+
+.btn-mark-resolved.is-resolved {
+  background: #10b981;
+  color: #000;
+  border-color: #10b981;
+}
+
+
+  </style>
+</head>
+<body>
+
+  <div class="app-container">
+    
+    <!-- Top Aeronautics Checklist Navbar -->
+    <header class="top-navbar">
+      <div class="brand-group">
+        <div class="brand-badge">✈️</div>
+        <div>
+          <h1 class="brand-title">EEAR CHECKLIST</h1>
+          <div class="brand-subtitle">
+            <span class="status-indicator"></span>
+            Progresso Salvo Automaticamente no seu Navegador
+          </div>
+        </div>
+      </div>
+
+      <div class="nav-actions">
+        <button class="btn-pill" onclick="exportBackup()" title="Baixar arquivo de backup com todas as suas marcações">
+          📥 Exportar Backup (.JSON)
+        </button>
+        <button class="btn-pill" onclick="document.getElementById('backupFileInput').click()" title="Restaurar backup anterior">
+          📤 Importar Backup
+        </button>
+        <button class="btn-pill" onclick="resetAllData()" style="color: var(--accent-rose); border-color: rgba(244, 63, 94, 0.35);" title="Zerar todos os dados para recomeçar o checklist do zero">
+          🔄 Zerar Dados
+        </button>
+        <input type="file" id="backupFileInput" style="display: none;" accept=".json" onchange="importBackup(event)">
+      </div>
+    </header>
+
+    <!-- Global Analytics Dashboard Bar -->
+    <section class="hero-dashboard">
+      <div class="metric-card highlight">
+        <div class="metric-header">
+          <span class="metric-title">Progresso Geral do Edital</span>
+          <span class="metric-icon">🚀</span>
+        </div>
+        <div class="metric-value-group">
+          <span class="metric-value" id="heroOverallProgress">0%</span>
+          <span class="metric-subtext">do conteúdo programático dominado</span>
+        </div>
+        <div class="progress-track">
+          <div class="progress-fill" id="heroProgressBar" style="width: 0%;"></div>
+        </div>
+      </div>
+
+      <div class="metric-card">
+        <div class="metric-header">
+          <span class="metric-title">Tópicos Concluídos</span>
+          <span class="metric-icon">✅</span>
+        </div>
+        <div class="metric-value-group">
+          <span class="metric-value" id="heroCompletedCount">0 / 0</span>
+        </div>
+        <span class="metric-subtext">Teoria + Fixação realizadas</span>
+      </div>
+
+      <div class="metric-card">
+        <div class="metric-header">
+          <span class="metric-title">Provas Simuladas</span>
+          <span class="metric-icon">🎯</span>
+        </div>
+        <div class="metric-value-group">
+          <span class="metric-value" id="heroExamsDone">0</span>
+          <span class="metric-subtext">de 20 provas oficiais</span>
+        </div>
+        <span class="metric-subtext">Treino com tempo cronometrado</span>
+      </div>
+
+      <div class="metric-card">
+        <div class="metric-header">
+          <span class="metric-title">Caderno de Erros</span>
+          <span class="metric-icon">🧠</span>
+        </div>
+        <div class="metric-value-group">
+          <span class="metric-value" id="heroErrorsCount" style="color: var(--accent-rose);">0</span>
+          <span class="metric-subtext">questões registradas</span>
+        </div>
+        <span class="metric-subtext">Pontos cegos mapeados para revisão</span>
+      </div>
+    </section>
+
+    <!-- Navigation Tabs & Real-time Search -->
+    <div class="nav-tabs-wrapper">
+      <div class="subject-tabs">
+        <button class="tab-btn active" data-tab="dashboard" onclick="switchTab('dashboard')">
+          📊 Visão Geral
+        </button>
+        <button class="tab-btn" data-tab="portugues" onclick="switchTab('portugues')">
+          📖 Português <span class="badge-count" id="badge-portugues">0%</span>
+        </button>
+        <button class="tab-btn" data-tab="ingles" onclick="switchTab('ingles')">
+          🇬🇧 Inglês <span class="badge-count" id="badge-ingles">0%</span>
+        </button>
+        <button class="tab-btn" data-tab="matematica" onclick="switchTab('matematica')">
+          📐 Matemática <span class="badge-count" id="badge-matematica">0%</span>
+        </button>
+        <button class="tab-btn" data-tab="fisica" onclick="switchTab('fisica')">
+          ⚡ Física <span class="badge-count" id="badge-fisica">0%</span>
+        </button>
+        <button class="tab-btn" data-tab="simulados" onclick="switchTab('simulados')">
+          🎯 Simulados & Provas
+        </button>
+        <button class="tab-btn" data-tab="erros" onclick="switchTab('erros')">
+          🧠 Caderno de Erros
+        </button>
+        <button class="tab-btn" data-tab="guia" onclick="switchTab('guia')">
+          📚 Bibliografia & Guia
+        </button>
+      </div>
+
+      <div class="search-filter-box">
+        <div class="search-input-wrapper">
+          <span class="search-icon">🔍</span>
+          <input type="text" class="search-input" id="globalSearchInput" placeholder="Pesquisar por assunto, fórmula ou bizu...">
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Dynamic Content Area -->
+    <main id="mainContentArea">
+      <!-- Injected dynamically via script -->
+    </main>
+
+  </div>
+
+  <!-- Tactical Floating Study Cockpit / Timer Widget -->
+  <div class="study-cockpit" id="studyCockpit" title="Estação Tática de Estudos EEAR">
+    <!-- Main Floating Capsule / HUD Bar -->
+    <div class="cockpit-bar" id="cockpitBar" onclick="toggleCockpitExpand(event)">
+      <!-- Animated Circular Progress Ring with Mode Icon -->
+      <div class="cockpit-ring-box">
+        <svg class="cockpit-svg-ring" width="40" height="40" viewBox="0 0 40 40">
+          <circle class="cockpit-ring-bg" cx="20" cy="20" r="16" fill="none" stroke-width="3"></circle>
+          <circle class="cockpit-ring-fill" id="timerRingProgress" cx="20" cy="20" r="16" fill="none" stroke-width="3" stroke-dasharray="100.53" stroke-dashoffset="0"></circle>
+        </svg>
+        <span class="cockpit-center-icon" id="cockpitModeIcon">🍅</span>
+      </div>
+
+      <!-- Time and Mode Info -->
+      <div class="cockpit-info">
+        <div class="cockpit-mode-line">
+          <span class="cockpit-mode-label" id="cockpitModeLabel">Pomodoro Foco</span>
+          <span class="cockpit-live-pulse" id="cockpitLivePulse"></span>
+        </div>
+        <div class="cockpit-timer-digits" id="timerDisplay">25:00</div>
+      </div>
+
+      <!-- Quick Action Controls -->
+      <div class="cockpit-controls" onclick="event.stopPropagation()">
+        <button class="cockpit-btn primary" id="timerToggleBtn" onclick="toggleTimer()" title="Iniciar / Pausar">
+          <span id="timerPlayIcon">▶</span>
+        </button>
+        <button class="cockpit-btn" onclick="resetTimer()" title="Reiniciar Tempo">↺</button>
+        <button class="cockpit-btn options-btn" id="cockpitExpandToggleBtn" onclick="toggleCockpitExpand(event)" title="Abrir Modos & Variações">⚡</button>
+      </div>
+    </div>
+
+    <!-- Expandable Tactical Drawer with 6 Study Presets & Tools -->
+    <div class="cockpit-drawer" id="cockpitDrawer">
+      <div class="cockpit-drawer-header">
+        <div class="drawer-title-group">
+          <span class="drawer-badge">EEAR TACTICAL</span>
+          <span class="drawer-title">Modos de Estudo & Ritmo de Prova</span>
+        </div>
+        <div class="drawer-actions">
+          <button class="cockpit-sound-pill active" id="soundToggleBtn" onclick="toggleTimerSound()" title="Ativar ou desativar aviso sonoro">
+            <span id="soundIcon">🔊</span> <span id="soundText">Som: ON</span>
+          </button>
+          <button class="cockpit-close-pill" onclick="toggleCockpitExpand(event)" title="Recolher painel">✕</button>
+        </div>
+      </div>
+
+      <div class="cockpit-presets-grid">
+        <div class="preset-card active" id="preset-pomodoro" onclick="setTimerPreset('pomodoro')">
+          <div class="preset-card-top">
+            <span class="preset-icon">🍅</span>
+            <span class="preset-pill">25 min</span>
+          </div>
+          <span class="preset-title">Pomodoro Clássico</span>
+          <span class="preset-desc">Foco absoluto para teoria, resumos e videoaulas.</span>
+        </div>
+
+        <div class="preset-card" id="preset-sprint" onclick="setTimerPreset('sprint')">
+          <div class="preset-card-top">
+            <span class="preset-icon">⚡</span>
+            <span class="preset-pill highlight">2m 40s</span>
+          </div>
+          <span class="preset-title">Sprint Questão EEAR</span>
+          <span class="preset-desc">Tempo oficial por questão (96 questões em 4h20m).</span>
+        </div>
+
+        <div class="preset-card" id="preset-bloco50" onclick="setTimerPreset('bloco50')">
+          <div class="preset-card-top">
+            <span class="preset-icon">🎯</span>
+            <span class="preset-pill">50 min</span>
+          </div>
+          <span class="preset-title">Bloco de Treino</span>
+          <span class="preset-desc">Bateria de 15 a 25 exercícios de fixação sem distrações.</span>
+        </div>
+
+        <div class="preset-card" id="preset-simulado" onclick="setTimerPreset('simulado')">
+          <div class="preset-card-top">
+            <span class="preset-icon">✈️</span>
+            <span class="preset-pill aero">4h 20m</span>
+          </div>
+          <span class="preset-title">Simulado Prova Real</span>
+          <span class="preset-desc">260 minutos de combate para rodar uma prova oficial completa.</span>
+        </div>
+
+        <div class="preset-card" id="preset-pausa5" onclick="setTimerPreset('pausa5')">
+          <div class="preset-card-top">
+            <span class="preset-icon">☕</span>
+            <span class="preset-pill">5 min</span>
+          </div>
+          <span class="preset-title">Pausa Tática</span>
+          <span class="preset-desc">Levante, tome água, respire fundo e alongue.</span>
+        </div>
+
+        <div class="preset-card" id="preset-stopwatch" onclick="setTimerPreset('stopwatch')">
+          <div class="preset-card-top">
+            <span class="preset-icon">⏱️</span>
+            <span class="preset-pill">Livre</span>
+          </div>
+          <span class="preset-title">Cronômetro Aberto</span>
+          <span class="preset-desc">Contagem progressiva para medir tempo líquido do dia.</span>
+        </div>
+      </div>
+
+      <div class="cockpit-drawer-footer">
+        <div class="cockpit-streak-box">
+          <span class="streak-icon">🔥</span>
+          <span class="streak-text">Blocos de estudo dominados hoje: <strong id="todaySessionsDisplay">0</strong></span>
+        </div>
+        <span class="cockpit-hint">💡 Dica: Ao terminar, toca um suave aviso de cabine aeronáutica!</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Notification Toast -->
+  <div class="toast-msg" id="toastMsg">✓ Progresso salvo automaticamente!</div>
+
+  <!-- Embedded Core Data & Application Logic -->
+  <script>
+// Banco de Dados Estruturado do Conteúdo Programático EEAR
+// Base: Anexo IV do Edital Oficial da Aeronáutica (CFS / EAGS) + Fórmulas + Bizus Contextualizados
+
+const EEAR_DATA = {
+  disciplinas: [
+    {
+      id: "portugues",
+      nome: "Língua Portuguesa",
+      icone: "book-open",
+      cor: "#3b82f6",
+      questoesTotal: 24,
+      peso: "Eliminatório & Classificatório",
+      modulos: [
+        {
+          id: "pt-texto",
+          titulo: "1. Texto e Interpretação",
+          topicos: [
+            {
+              id: "pt-txt-01",
+              nome: "Interpretação de Textos Literários",
+              detalhes: "Subjetividade, conotação, plurissignificação, gêneros lírico, narrativo e dramático. Atenção a crônicas e contos.",
+              bizu: "🎯 Como a EEAR cobra: A banca costuma criar alternativas plausíveis no mundo real, mas que NÃO estão fundamentadas no texto (extrapolação clássica). 💡 Regra de ouro: Em poesia e contos, o eu-lírico expressa sentimentos fictícios que não correspondem necessariamente à biografia do autor. Atenção redobrada a metáforas, ironias e tom emocional (crítica social, nostalgia ou patriotismo). Se a alternativa não tiver respaldo em linhas explícitas ou inferências diretas do texto, descarte na hora!"
+            },
+            {
+              id: "pt-txt-02",
+              nome: "Interpretação de Textos Não Literários",
+              detalhes: "Objetividade, denotação, clareza, textos informativos, jornalísticos, instrucionais e dissertativos.",
+              bizu: "🎯 Bizu de Prova: Em artigos de opinião e notícias, sublinhe a tese central (o ponto de vista defendido pelo autor) logo no primeiro parágrafo. Diferencie rigorosamente FATO (dado objetivo comprovável) de OPINIÃO (julgamento de valor expresso por adjetivos como 'lamentável', 'extraordinário'). A questão costuma pedir 'o objetivo comunicativo primordial do texto' — busque o verbo de ação correto (informar, convencer, instruir)."
+            },
+            {
+              id: "pt-txt-03",
+              nome: "Coesão e Coerência Textual",
+              detalhes: "Coesão referencial por anáfora/catáfora, coesão sequencial, operadores argumentativos e conectivos lógicos.",
+              bizu: "💡 Mnemônico Infalível: ANÁFORA retoma termo ou fato já expresso antes ('O sargento chegou; ESTE era muito pontual'); CATÁFORA anuncia um termo que ainda virá adiante ('Desejo apenas ISTO: a farda azul'). Regra prática: Pronomes com 'SS' (esse, isso) olham para o passado do texto; pronomes com 'ST' (este, isto) apresentam novidade ou retomam o elemento mais próximo."
+            },
+            {
+              id: "pt-txt-04",
+              nome: "Denotação vs. Conotação",
+              detalhes: "Sentido literal/dicionarizado (Denotação) vs Sentido figurado/poético (Conotação).",
+              bizu: "💡 Macete: 'D' de Denotação = Dicionário (sentido real, literal, objetivo e sem rodeios); 'C' de Conotação = Criação / Coração (sentido figurado, metafórico e expressivo). ⚠️ Pegadinha da Aeronáutica: Se o enunciado da questão citar 'sentido próprio', 'literal' ou 'estrito', trata-se de Denotação. Se falar em 'sentido translato', 'figurado' ou 'expressivo', marque Conotação!"
+            },
+            {
+              id: "pt-txt-05",
+              nome: "Intertextualidade e Polifonia",
+              detalhes: "Paráfrase, paródia, citação, alusão histórica e diálogo entre múltiplos textos.",
+              bizu: "🎯 Diferença Crucial: A PARÁFRASE reafirma e mantém a ideia central do texto original, apenas reescrevendo com outras palavras (respeito e conservação do sentido). A PARÓDIA subverte a mensagem original com ironia, humor ou crítica contundente. A ALUSÃO é uma referência direta ou indireta a fatos históricos ou obras clássicas para enriquecer o argumento."
+            }
+          ]
+        },
+        {
+          id: "pt-fonetica",
+          titulo: "2. Fonética e Fonologia",
+          topicos: [
+            {
+              id: "pt-fon-01",
+              nome: "Fonema, Letra e Divisão Silábica",
+              detalhes: "Contagem de letras e fonemas, dígrafos vocálicos/consonantais e dífono (ex: táxi = 4 letras, 5 fonemas).",
+              bizu: "💡 Distinção Vital: LETRA é o símbolo gráfico desenhado; FONEMA é a menor unidade sonora que nosso ouvido percebe. Dígrafo = 2 letras que produzem 1 único fonema (ex: 'carro' = 5 letras, 4 fonemas; 'campo' com dígrafo vocálico 'am' = 5 letras, 4 fonemas). Dífono = 1 única letra que produz 2 fonemas (a letra X com som /ks/, ex: 'táxi' = 4 letras, 5 fonemas). A EEAR costuma colocar palavras com dífono e dígrafo na mesma alternativa para confundir a contagem!"
+            },
+            {
+              id: "pt-fon-02",
+              nome: "Encontros Vocálicos (Ditongo, Tritongo, Hiato)",
+              detalhes: "Ditongo crescente (SV+V) e decrescente (V+SV); Tritongo (SV+V+SV); Hiato (V+V em sílabas separadas).",
+              bizu: "🎯 Como nunca errar: A letra 'A' é SEMPRE vogal autêntica, nunca semivogal. HIATO = duas vogais vizinhas que pertencem a sílabas diferentes (sa-ú-de, ba-ú, sa-í-da, ci-ú-me). DITONGO = semivogal + vogal na mesma sílaba (crescente: his-tó-ria, sé-rie) ou vogal + semivogal (decrescente: noi-te, pai, réu). TRITONGO = SV + V + SV na mesma sílaba (U-ru-guai, sa-guão)."
+            },
+            {
+              id: "pt-fon-03",
+              nome: "Encontros Consonantais e Dígrafos",
+              detalhes: "Encontro consonantal puro (pr, bl, tr) e disjunto (ad-vo-ga-do); dígrafos inseparáveis (ch, lh, nh) e separáveis (rr, ss, sc, sç, xc).",
+              bizu: "⚠️ Pegadinha Favorita da EEAR: DÍGRAFO NÃO É ENCONTRO CONSONANTAL! Na palavra 'chuva', temos 1 dígrafo (ch), e ZERO encontros consonantais, pois só há um som de consoante emitido. Na palavra 'prato', temos um encontro consonantal verdadeiro (ouve-se claramente o som do 'p' e do 'r'). Dígrafos separáveis na divisão silábica: RR (car-ro), SS (pas-so), SC (nas-cer), SÇ (des-ço), XC (ex-ce-to)."
+            },
+            {
+              id: "pt-fon-04",
+              nome: "Tonicidade e Prosódia",
+              detalhes: "Oxítonas, paroxítonas e proparoxítonas; prosódia de palavras traiçoeiras (ruim, pudico, filantropo, ibero, rubrica).",
+              bizu: "💡 Lista Sagrada da Aeronáutica (Pronúncia Correta): É 'ru-IM' (oxítona, sem acento!), 'ru-BRI-ca' (paroxítona, tônica em BRI, jamais proparoxítona!), 'pu-DI-co' (paroxítona), 'i-BE-ro' (paroxítona), 'gra-TUI-to' (paroxítona com ditongo 'ui', nunca proparoxítona!), 'cir-CUI-to', 're-COR-de' (paroxítona), 'fi-lan-TRO-po' (paroxítona). Cuidado com os vícios de linguagem da fala diária!"
+            },
+            {
+              id: "pt-fon-05",
+              nome: "Acentuação Gráfica — Regras Gerais",
+              detalhes: "Monossílabos tônicos terminados em a, e, o (s); Oxítonas terminadas em a, e, o, em, ens; Proparoxítonas (todas acentuadas).",
+              bizu: "💡 Mnemônico do ROUXINOL + DITONGO: Acentuam-se as paroxítonas terminadas em R, X, N, L, I(S), U(S), UM/UNS, PS, Ã(S), ÃO(S) e Ditongos orais (ex: tórax, pólen, fácil, júri, vírus, álbum, bíceps, órgão, colégio). ⚠️ Pegadinha Clássica: 'Hífen' tem acento por terminar em N, mas o plural 'Hifens' NÃO leva acento porque termina em -ENS (regra das oxítonas que exclui paroxítonas)!"
+            },
+            {
+              id: "pt-fon-06",
+              nome: "Acentuação — Hiatos e Novo Acordo",
+              detalhes: "Hiatos 'I' e 'U' tônicos sozinhos na sílaba (sa-ú-de, pa-ís); Ditongos abertos éi, ói em paroxítonas NÃO se acentuam (ideia, jiboia).",
+              bizu: "🎯 Regra dos Hiatos I e U: Acentuam-se se forem a 2ª vogal do hiato, tônicos, sozinhos na sílaba ou com 's' (sa-ú-de, pa-ís, ba-ú). NÃO se acentuam se seguidos de 'nh' (ra-i-nha) ou se vierem após ditongo em palavra paroxítona (fei-u-ra, bai-u-ca). 💡 Novo Acordo: Ditongos abertos ÉI e ÓI perderam acento APENAS em paroxítonas (i-dei-a, ji-boi-a), MAS CONTINUAM acentuados em oxítonas e monossílabos (he-rói, tro-féu, dói, céu)!"
+            },
+            {
+              id: "pt-fon-07",
+              nome: "Ortografia e Emprego de Letras",
+              detalhes: "Grafia com S, Z, SS, Ç, X, CH, G, J; Uso dos Porquês; onde vs aonde; há vs a; mau vs mal; senão vs se não.",
+              bizu: "💡 Guia dos 4 Porquês: 1) 'Por que' (separado/sem acento) = início ou meio de perguntas diretas/indiretas, ou equivale a 'pelo qual/por qual razão'; 2) 'Por quê' (separado/com acento) = fim de frase ou imediatamente antes de pontuação; 3) 'Porque' (junto/sem acento) = respostas e causas (equivale a 'pois', 'já que'); 4) 'O porquê' (junto/com acento) = substantivo, vem acompanhado de artigo ou pronome ('Não entendi o porquê')."
+            },
+            {
+              id: "pt-fon-08",
+              nome: "Regras do Emprego do Hífen",
+              detalhes: "Novo Acordo: letras iguais separam (micro-ondas, anti-inflamatório); letras diferentes juntam (autoescola, aeroespacial).",
+              bizu: "🎯 Regra dos Opostos: Letras IGUAIS separam com hífen (micro-ondas, anti-inflamatório, sobre-humano); letras DIFERENTES juntam sem hífen (autoescola, aeroespacial, infraestrutura). ⚠️ As 2 Exceções de Ouro: 1) Diante da letra 'H' sempre haverá hífen (super-homem, anti-higiênico). 2) Se o prefixo terminar em vogal e a segunda palavra começar com R ou S, junta-se a palavra e DOBRA-SE a consoante (antirrábico, minissaia, ultrassom)."
+            }
+          ]
+        },
+        {
+          id: "pt-morfologia",
+          titulo: "3. Morfologia e Classes Gramaticais",
+          topicos: [
+            {
+              id: "pt-mor-01",
+              nome: "Estrutura e Formação de Palavras",
+              detalhes: "Radical, desinências, vogal temática; derivação (prefixal, sufixal, parassintética, regressiva, imprópria) e composição.",
+              bizu: "🎯 Teste da Parassíntese: Na derivação parassintética, o prefixo e o sufixo entram simultaneamente na palavra; se você retirar um deles, a palavra resultante NÃO existe na língua portuguesa (ex: 'entardecer' -> não existe 'entarde' nem 'tardecer'; 'esfriar'). Se a palavra existir após retirar um dos afixos, é derivação prefixal e sufixal (ex: 'deslealdade' -> existe 'desleal' e existe 'lealdade'). Derivação regressiva forma substantivos abstratos a partir de verbos de ação (caçar -> a caça, combater -> o combate)."
+            },
+            {
+              id: "pt-mor-02",
+              nome: "Substantivo: Gênero, Grau e Plural de Compostos",
+              detalhes: "Classificação; sobrecomuns, comuns de 2 gêneros, epicenos; Plural dos substantivos compostos (top da EEAR!).",
+              bizu: "💡 O Assunto Campeão da EEAR: 1) Palavras variáveis (substantivo + adjetivo, numeral + substantivo) flexionam ambos (couves-flores, sextas-feiras, tenentes-coronéis). 2) Se o segundo elemento delimita o tipo ou finalidade do primeiro, apenas o PRIMEIRO flexiona (navios-escola, bananas-maçã, mangas-espada). 3) Se for formado por 'verbo + substantivo', o verbo NUNCA varia, apenas o substantivo (guarda-roupas, porta-bandeiras, lança-chamas)."
+            },
+            {
+              id: "pt-mor-03",
+              nome: "Adjetivo, Locuções e Flexão",
+              detalhes: "Adjetivos pátrios/gentílicos; flexão de gênero e número em adjetivos compostos (apenas o último varia, exceto surdo-mudo e cores com substantivo).",
+              bizu: "🎯 Regra de Ouro das Cores: Se na expressão da cor houver um substantivo determinador, ela fica TOTALMENTE INVARIÁVEL no plural (olhos verde-esmeralda, camisas amarelo-ouro, tecidos azul-pavão). Também não variam expressões com 'cor-de...' (camisas cor-de-rosa). Em adjetivos compostos comuns, apenas o último elemento varia (relações socioeconômicas, camisas azul-escuras). Exceção: 'surdo-mudo' varia os dois elementos (meninos surdos-mudos)."
+            },
+            {
+              id: "pt-mor-04",
+              nome: "Pronomes Pessoais e Tratamento",
+              detalhes: "Retos (sujeito) e Oblíquos (átonos e tônicos); regras de 'mim' vs 'eu' ('para eu fazer'); pronomes de tratamento exigem concordância em 3ª pessoa.",
+              bizu: "⚠️ 'Mim' não conjuga verbo: Antes de infinitivo que expressa a ação do sujeito, usa-se obrigatoriamente pronome do caso reto ('Entregou a apostila para EU estudar', jamais 'para mim estudar'). 'Mim' só se usa quando for complemento preposicionado sem verbo ativo posterior ('Isto é difícil para mim'). Pronomes de tratamento (Vossa Excelência, Vossa Senhoria) referem-se à 2ª pessoa (com quem se fala), mas exigem verbo e pronomes possessivos estritamente em 3ª pessoa ('Vossa Excelência esqueceu SEU crachá')."
+            },
+            {
+              id: "pt-mor-05",
+              nome: "Pronomes Demonstrativos e Possessivos",
+              detalhes: "Este (aqui/presente/o que será dito), Esse (aí/passado recente/o que já foi dito), Aquele (distante no espaço e tempo).",
+              bizu: "🎯 Uso no Texto (Endofórico): 'ESTE / ESTA / ISTO' = Catáfora (apresenta um fato que ainda vai ser mencionado: 'Preste atenção nisto: haverá instrução') ou retoma o termo mais próximo citado. 'ESSE / ESSA / ISSO' = Anáfora (retoma uma ideia ou termo já citado anteriormente: 'Aprovação: esse é o meu objetivo'). No espaço físico: Este (perto de quem fala: 'esta caneta aqui'); Esse (perto do ouvinte: 'essa caneta aí'); Aquele (distante de ambos: 'aquele hangar lá longe')."
+            },
+            {
+              id: "pt-mor-06",
+              nome: "Pronomes Relativos e o Emprego do 'Cujo'",
+              detalhes: "Que, quem, onde, cujo(s), cuja(s), quanto; regras rígidas de 'cujo': estabelece posse, concorda com a coisa possuída e NUNCA aceita artigo depois!",
+              bizu: "🚫 Proibição Absoluta da EEAR: NUNCA se coloca artigo após 'cujo'! As formas 'cujo o', 'cuja a', 'cujos os' são erros gramaticais crassos que eliminam candidatos. O pronome 'cujo' estabelece relação de POSSE entre dois substantivos e concorda em gênero e número com o substantivo que vem DEPOIS dele (a coisa possuída): 'O aviador CUJAS medalhas foram exibidas' (medalhas é feminino plural, logo 'cujas')."
+            },
+            {
+              id: "pt-mor-07",
+              nome: "Conjunções Coordenativas",
+              detalhes: "Aditivas (e, nem, mas também), Adversativas (mas, porém, contudo, todavia), Alternativas, Conclusivas (logo, portanto, por isso) e Explicativas (pois, que).",
+              bizu: "💡 A Armadilha Clássica do 'POIS': Se o conectivo 'pois' vier ANTES do verbo da oração, tem valor EXPLICATIVO ('Não chegue atrasado, pois a formatura é rigorosa'). Se o 'pois' vier DESLOCADO entre vírgulas DEPOIS do verbo, tem valor estritamente CONCLUSIVO, equivalendo a portanto ('O recruta treinou com garra; será, pois, condecorado'). A EEAR cobra essa distinção em quase todas as edições!"
+            },
+            {
+              id: "pt-mor-08",
+              nome: "Conjunções Subordinativas",
+              detalhes: "Integrantes (que, se) e Adverbiais: Causais (porque, visto que, já que), Comparativas, Concessivas (embora, ainda que, conquanto), Condicionais, Conformativas, Consecutivas, Finais, Proporcionais e Temporais.",
+              bizu: "🎯 Conectivos Favoritos da Banca: 1) CONCESSIVAS (ideia de quebra de expectativa ou contraste sem anular o fato principal): 'embora', 'conquanto' (a banca adora!), 'ainda que', 'posto que', 'se bem que'. 2) CONFORMATIVAS (ideia de conformidade/acordo): 'conforme', 'segundo', 'consoante', 'como'. 3) CAUSAIS ('já que', 'visto que') iniciam a causa do evento da oração principal; CONSECUTIVAS ('tanto... que', 'de sorte que') iniciam a consequência."
+            },
+            {
+              id: "pt-mor-09",
+              nome: "Verbos: Modos, Tempos e Conjugações Irregulares",
+              detalhes: "Indicativo, Subjuntivo e Imperativo afirmativo/negativo; verbos ver, vir, ter, haver, pôr e derivados (prever, intervir, manter, propor).",
+              bizu: "⚠️ Conjugações Perigosas no Subjuntivo: 1) Verbo VER no futuro do subjuntivo: 'Quando eu VIR' (e nunca 'quando eu ver'). 2) Verbo VIR no futuro do subjuntivo: 'Quando eu VIER'. 3) Verbos derivados conjugam exatamente como o primitivo: o verbo INTERVIR deriva de vir, logo no pretérito perfeito diz-se 'o sargento INTERVEIO' (jamais 'interviu'!). O verbo MANTER deriva de ter: 'ele mantém' (singular com acento agudo) / 'eles mantêm' (plural com acento circunflexo)."
+            },
+            {
+              id: "pt-mor-10",
+              nome: "Vozes Verbais e Transposição",
+              detalhes: "Voz ativa, passiva analítica (ser + particípio), passiva sintética (verbo transitivo direto + se) e reflexiva.",
+              bizu: "🎯 Diferencie a Função do 'SE' em 5 Segundos: 1) PARTÍCULA APASSIVADORA: Verbo Transitivo Direto (VTD) + SE -> o termo seguinte é o SUJEITO PACIENTE e o verbo DEVE concordar em número ('Alugam-se hangares', 'Consertam-se aeronaves'). 2) ÍNDICE DE INDETERMINAÇÃO DO SUJEITO: Verbo Transitivo Indireto (VTI) ou Intransitivo + SE -> não há sujeito paciente e o verbo fica OBRIGATORIAMENTE no singular ('Precisa-se de mecânicos', 'Trabalha-se com afinco')."
+            }
+          ]
+        },
+        {
+          id: "pt-sintaxe",
+          titulo: "4. Sintaxe, Pontuação, Regência e Crase",
+          topicos: [
+            {
+              id: "pt-sin-01",
+              nome: "Termos Essenciais: Sujeito e Predicado",
+              detalhes: "Sujeito simples, composto, oculto/desinencial, indeterminado e oração sem sujeito (verbos impessoais: haver no sentido de existir, fazer indicando tempo).",
+              bizu: "⚠️ O Verbo HAVER no Sentido de Existir é IMPESSOAL: Ele não admite sujeito e fica OBRIGATORIAMENTE na 3ª pessoa do singular, em qualquer tempo verbal! Exemplo correto: 'Havia muitos cadetes no pátio' (nunca 'haviam'). Exemplo no futuro: 'Haverá novas vagas' (nunca 'haverão'). Se você trocar pelo verbo EXISTIR, este é pessoal e flexiona normalmente: 'Existiam muitos cadetes no pátio'."
+            },
+            {
+              id: "pt-sin-02",
+              nome: "Termos Integrantes: OD, OI e Complemento Nominal",
+              detalhes: "Objeto Direto (sem preposição), Objeto Indireto (com preposição), Predicativo, Complemento Nominal vs Adjunto Adnominal.",
+              bizu: "💡 Decisão Infalível em 2 Passos: A dúvida entre Adjunto Adnominal e Complemento Nominal só existe quando o termo preposicionado estiver ligado a um SUBSTANTIVO ABSTRATO. Se tiver sentido ATIVO (pratica a ação), é ADJUNTO ADNOMINAL ('O elogio do comandante' = o comandante elogiou -> ativo -> adjunto). Se tiver sentido PASSIVO (recebe/sofre a ação), é COMPLEMENTO NOMINAL ('O respeito às ordens' = as ordens são respeitadas -> passivo -> complemento). Ligado a adjetivo ou advérbio é SEMPRE complemento nominal!"
+            },
+            {
+              id: "pt-sin-03",
+              nome: "Período Composto por Coordenação e Subordinação",
+              detalhes: "Orações coordenadas assindéticas e sindéticas; Orações subordinadas substantivas (subjetiva, objetiva direta/indireta, completiva nominal, apositiva).",
+              bizu: "💡 O Macete Supremo do 'ISSO': Substitua toda a oração subordinada iniciada pela conjunção integrante (que/se) pela palavra 'ISSO'. Se a frase continuar com sentido completo, trata-se de uma Oração Subordinada Substantiva! Veja o exemplo: 'Desejo [que todos passem]' -> 'Desejo [ISSO]'. Como 'isso' funciona como objeto direto do verbo desejar, a oração é Subordinada Substantiva Objetiva Direta. Se for 'É necessário [que estude]' -> 'É necessário [ISSO]' -> 'ISSO é necessário' (Subjetiva)!"
+            },
+            {
+              id: "pt-sin-04",
+              nome: "Orações Subordinadas Adjetivas e Reduzidas",
+              detalhes: "Explicativas (com vírgula) vs Restritivas (sem vírgula); Orações reduzidas de infinitivo, gerúndio e particípio.",
+              bizu: "🎯 Questão de Sentido da Banca: Oração Adjetiva EXPLICATIVA vem isolada por VÍRGULAS e atribui uma característica geral a toda a totalidade do grupo ('Os alunos da EEAR, que são disciplinados, marcharam' = TODOS os alunos são disciplinados). Oração Adjetiva RESTRITIVA vem SEM VÍRGULAS e restringe a informação apenas a uma parcela ('Os alunos da EEAR que são disciplinados marcharam' = APENAS os disciplinados marcharam, os outros não). A pontuação muda radicalmente o sentido da frase!"
+            },
+            {
+              id: "pt-sin-05",
+              nome: "Pontuação e Emprego da Vírgula",
+              detalhes: "Vírgula proibida entre sujeito e verbo, e entre verbo e complementos; vírgula com adjuntos adverbiais deslocados, apostos e vocativos.",
+              bizu: "🚫 Regra de Ouro da Pontuação: É ESTRITAMENTE PROIBIDO separar por vírgula o Sujeito do seu respectivo Verbo, e o Verbo dos seus Complementos (objeto direto e indireto), por mais longa e extensa que seja a oração! O vocativo SEMPRE deve vir isolado por vírgula ('Venha aqui, recruta'). Adjunto adverbial deslocado no início da oração: se for de curta extensão (até 2 palavras) a vírgula é facultativa; se for de longa extensão (3 palavras ou mais), a vírgula é OBRIGATÓRIA."
+            },
+            {
+              id: "pt-sin-06",
+              nome: "Concordância Verbal e Nominal",
+              detalhes: "Regra geral; sujeito composto anteposto e posposto; expressões partitivas; adjetivos antepostos/pospostos; expressões 'é proibido', 'é necessário'.",
+              bizu: "💡 Expressões Invariáveis de Valor Fixo: 'É proibido entrada' (sem artigo diante do substantivo = forma masculina invariável) vs 'É proibida A entrada' (com artigo definido = concorda obrigatoriamente no feminino). A palavra 'BASTANTE': se puder ser substituída por 'muitos/muitas', funciona como pronome adjetivo e deve ir para o plural ('Havia BASTANTES questões na prova'); se equivaler a 'muito', é advérbio e fica estritamente invariável ('Eles treinaram BASTANTE')."
+            },
+            {
+              id: "pt-sin-07",
+              nome: "Regência Verbal e Nominal",
+              detalhes: "Verbos clássicos da EEAR: assistir (ver = VTI com 'a'; ajudar = VTD), aspirar (respirar = VTD; almejar = VTI com 'a'), visar, preferir (prefiro A a B; nunca 'do que!'), esquecer/lembrar.",
+              bizu: "🎯 Os 4 Verbos Mais Cobrados em Concurso Militar: 1) ASSISTIR: no sentido de ver/presenciar exige preposição 'a' ('Assistir AO desfile militar'); no sentido de prestar socorro é direto ('Assistir O enfermo'). 2) ASPIRAR: no sentido de almejar/desejar exige preposição 'a' ('Aspirar AO posto de sargento'); no sentido de inalar ar é direto ('Aspirar O perfume'). 3) PREFERIR: rege preposição 'a' ('Prefiro estudar A dormir' — NUNCA use 'do que' nem 'mais que'). 4) ESQUECER/LEMBRAR: se tiver pronome oblíquo exige preposição ('Esqueci-ME DO bizu'); sem pronome é transitivo direto ('Esqueci O bizu')."
+            },
+            {
+              id: "pt-sin-08",
+              nome: "Crase: Casos Proibidos, Obrigatórios e Facultativos",
+              detalhes: "Proibida antes de palavras masculinas, verbos e pronomes que não admitem artigo; Obrigatória em locuções femininas e à moda de; Facultativa (Até Minha Maria).",
+              bizu: "💡 Teste da Troca Masculina: Substitua a palavra feminina por um substantivo masculino correspondente. Se na frase surgir a combinação 'AO', TEM CRASE COM CERTEZA! Ex: 'Fui à base aérea' -> 'Fui AO aeroporto' (tem crase: à base). Se virar apenas 'O' ou 'A', não tem crase. Casos Proibidos: antes de verbo, antes de masculino e antes de pronomes de tratamento. Casos Facultativos memorizados pelo macete 'ATÉ MINHA MARIA': após a preposição ATÉ, antes de possessivo feminino singular (MINHA/TUA/SUA) e antes de nome próprio feminino (MARIA)."
+            },
+            {
+              id: "pt-sin-09",
+              nome: "Colocação Pronominal (Próclise, Ênclise e Mesóclise)",
+              detalhes: "Fatores de atração da próclise: palavras negativas, pronomes relativos/indefinidos, conjunções subordinativas; Ênclise após vírgula e início; Mesóclise com futuros.",
+              bizu: "🎯 Fatores Atraentes de Próclise (Pronome Antes do Verbo): 1) Palavras negativas (não, nunca, jamais); 2) Pronomes relativos (que, quem, cujo), indefinidos (alguém, todos) e demonstrativos; 3) Conjunções subordinativas (embora, quando, se); 4) Expressões com 'Em + se + gerúndio' ('Em se tratando de aviação'). Regra de Ouro: NUNCA inicie período com pronome oblíquo átono na norma culta ('Diga-me a verdade', nunca 'Me diga'). Mesóclise só ocorre com verbos no Futuro do Presente ou do Pretérito sem fator atrativo ('Apresentar-lhe-ei o plano')."
+            }
+          ]
+        },
+        {
+          id: "pt-estilistica",
+          titulo: "5. Estilística, Discurso e Figuras de Linguagem",
+          topicos: [
+            {
+              id: "pt-est-01",
+              nome: "Tipos de Discurso (Direto, Indireto e Indireto Livre)",
+              detalhes: "Transposição de discurso: tempos verbais, pronomes e advérbios de tempo e espaço.",
+              bizu: "🎯 Transposição Direto -> Indireto: Os tempos verbais recuam um degrau: Presente vira Pretérito Imperfeito ('Estou pronto' -> 'Disse que ESTAVA pronto'); Pretérito Perfeito vira Mais-que-Perfeito ('Treinei muito' -> 'Disse que TREINARA muito'); Futuro do Presente vira Futuro do Pretérito ('Vencerei' -> 'Disse que VENCERIA'). No Discurso Indireto Livre, a narrativa e a voz interior do personagem se mesclam sem aspas, dois-pontos ou travessão."
+            },
+            {
+              id: "pt-est-02",
+              nome: "Figuras de Palavras (Metáfora, Metonímia, Catacrese, Sinestesia)",
+              detalhes: "Metáfora (comparação implícita), Metonímia (autor pela obra, continente pelo conteúdo), Catacrese (pé da mesa), Sinestesia (cruzamento de sentidos).",
+              bizu: "💡 Distinção Prática: METÁFORA é uma comparação direta sem o conectivo explicativo ('Aquele piloto é uma águia'). METONÍMIA é a substituição lógica por proximidade real: autor pela obra ('Li Machado de Assis' = li os livros dele), continente pelo conteúdo ('Bebeu dois copos' = bebeu o líquido do copo). CATACRESE é o uso de termo emprestado por falta de palavra específica (pé da mesa, asa do avião, dente de alho). SINESTESIA é o cruzamento de sentidos biológicos diferentes ('voz doce' = audição + paladar)."
+            },
+            {
+              id: "pt-est-03",
+              nome: "Figuras de Pensamento (Antítese, Paradoxo, Hipérbole, Ironia, Eufemismo)",
+              detalhes: "Antítese (ideias opostas coexistentes), Paradoxo (oposição absurda/ilógica simultânea), Hipérbole (exagero), Eufemismo (suavização).",
+              bizu: "🎯 Antítese vs. Paradoxo (Pegadinha Certa): Na ANTÍTESE, palavras de sentidos opostos coexistem harmoniosamente sem contradição na lógica da realidade ('A escuridão da noite cedeu lugar à luz da manhã'). No PARADOXO, a oposição é absurda e ilógica na razão prática, chocando conceitos simultâneos ('Amor é fogo que arde sem se ver, é ferida que dói e não se sente'). HIPÉRBOLE é o exagero deliberado ('Chorei rios de lágrimas'); EUFEMISMO é a suavização de fato doloroso ('Ele descansou no sono eterno')."
+            },
+            {
+              id: "pt-est-04",
+              nome: "Figuras de Sintaxe e Som (Pleonasmo, Elipse, Zeugma, Aliteração)",
+              detalhes: "Elipse (omissão), Zeugma (omissão de termo já citado), Pleonasmo, Polissíndeto, Aliteração (repetição de consoantes) e Assonância (vogais).",
+              bizu: "💡 Elipse vs. Zeugma: ELIPSE é a omissão de um termo facilmente subtendido pelo contexto da frase ('Na sala, apenas quatro cadetes' -> omissão do verbo havia). ZEUGMA é uma espécie particular de elipse na qual o termo omitido já foi citado explicitamente na oração anterior ('Eu pilotava caças; ele, helicópteros' -> omissão da palavra pilotava). ALITERAÇÃO é a repetição intencional do som de consoantes ('O rato roeu a roupa...'); ASSONÂNCIA é a repetição de sons vocálicos."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      id: "ingles",
+      nome: "Língua Inglesa",
+      icone: "globe",
+      cor: "#0ea5e9",
+      questoesTotal: 24,
+      peso: "Nível Básico (Geral) & Intermediário (BCT)",
+      modulos: [
+        {
+          id: "ing-basico",
+          titulo: "1. Nível Básico (Demais Especialidades)",
+          topicos: [
+            {
+              id: "ing-bas-01",
+              nome: "Articles: Definite, Indefinite and Zero Article",
+              detalhes: "Regras de 'a' e 'an' baseadas no som inicial (consonantal vs vocálico); 'the' e casos de omissão de artigo.",
+              bizu: "🎯 Regra do Som (Não da Letra!): O artigo indefinido 'A' é usado antes de som de CONSOANTE; 'AN' antes de som de VOGAL. Exemplos clássicos que a EEAR adora cobrar: 1) 'A university' e 'A European pilot' (a pronúncia começa com o som semivocálico /ju:/, considerado consonantal). 2) 'An hour' e 'An honest soldier' (a letra H é muda, logo o som inicial é de vogal). Com nomes de países no plural usa-se 'the' (the United States), mas no singular não há artigo (Brazil, England)."
+            },
+            {
+              id: "ing-bas-02",
+              nome: "Nouns: Gender, Plural and Countable/Uncountable",
+              detalhes: "Plurais irregulares (children, teeth, feet, mice); substantivos incontáveis (advice, information, furniture, luggage).",
+              bizu: "⚠️ Pegadinha nº 1 de Inglês na EEAR: Substantivos INCONTÁVEIS (Uncountable Nouns) NUNCA admitem o artigo 'a/an' e NUNCA vão para o plural com 's'! Memorize os favoritos da banca: 'information', 'advice', 'furniture', 'luggage', 'baggage', 'equipment', 'traffic'. Dizer *an information* ou *advices* é ERRO GRAVE. Para quantificar, a resposta certa na prova é 'a piece of advice' ou 'some equipment'."
+            },
+            {
+              id: "ing-bas-03",
+              nome: "Adjectives: Degrees of Comparison and Order",
+              detalhes: "Comparativo de superioridade (-er than / more... than) e superlativo (the -est / the most); comparativos anômalos (better, worse, farther).",
+              bizu: "💡 Estrutura Rápida de Resolução: 1) Adjetivos Curtos (1 sílaba): comparativo recebe '-er than' (faster than, colder than); superlativo recebe 'the -est' (the fastest). 2) Adjetivos Longos (2+ sílabas): comparativo usa 'more ... than'; superlativo usa 'the most ...'. Irregulares que você tem que saber de cor: Good -> Better than -> The best; Bad -> Worse than -> The worst; Far -> Farther/Further than -> The farthest."
+            },
+            {
+              id: "ing-bas-04",
+              nome: "Pronouns: Personal, Possessive and Reflexive",
+              detalhes: "Subject vs Object pronouns; Possessive adjectives (my, your) vs Possessive pronouns (mine, yours); Reflexive pronouns.",
+              bizu: "🎯 Diferencie Possessive Adjective de Possessive Pronoun: Os 'Possessive Adjectives' (my, your, his, her, its, our, their) VÊM SEMPRE ACOMPANHADOS de um substantivo (*This is my flight manual*). Os 'Possessive Pronouns' (mine, yours, his, hers, ours, theirs) SUBSTITUEM o substantivo e ficam sozinhos (*This manual is mine*). Pronomes reflexivos com 'by' indicam ação feita sozinho/sem ajuda (*The pilot landed the jet by himself*)."
+            },
+            {
+              id: "ing-bas-05",
+              nome: "Quantifiers: Much, Many, Few, Little",
+              detalhes: "Many/Few para substantivos contáveis no plural; Much/Little para incontáveis; 'Few/Little' (sentido negativo) vs 'A few/A little' (algum).",
+              bizu: "💡 Quadrante de Ouro: Contáveis no Plural usam MANY (muitos) e FEW (poucos). Incontáveis usam MUCH (muito) e LITTLE (pouco). ⚠️ Distinção Semântica: 'Few' e 'Little' sozinhos transmitem tom negativo/quase nada (*We have few spare parts* = quase nenhuma peça, situação crítica). 'A few' e 'A little' transmitem tom positivo/suficiente (*We have a few spare parts* = temos algumas peças disponíveis)."
+            },
+            {
+              id: "ing-bas-06",
+              nome: "Prepositions of Time and Place (In, On, At)",
+              detalhes: "At (horas exatas, endereços com número); On (dias da semana, datas completas, superfícies); In (meses, anos, estações, cidades/países).",
+              bizu: "💡 O Triângulo Invertido de Preposições: 1) AT (Ponto mais Específico): horas exatas (*at 08:00 AM*), momentos específicos (*at night, at midnight*) e endereços completos com número (*at 100 Santos Dumont Street*). 2) ON (Nível Médio): dias da semana (*on Monday*), datas completas com dia (*on October 23rd*) e superfícies (*on the runway*). 3) IN (Nível Amplo/Geral): meses isolados (*in July*), anos (*in 2026*), estações (*in winter*) e cidades/países (*in Brazil, in Brasilia*)."
+            },
+            {
+              id: "ing-bas-07",
+              nome: "Verb Tenses: Simple Present, Past and Continuous",
+              detalhes: "Present Simple (hábitos, rotinas, -s na 3ª pessoa); Present Continuous (ação no momento); Past Simple (tempo definido) e Past Continuous.",
+              bizu: "🎯 Marcadores Temporais Chave: O Simple Present expressa fatos gerais ou rotinas militares (*always, usually, every day*) e leva '-s/-es' na 3ª pessoa do singular (*He flies*). O Present Continuous expressa o que acontece no momento da fala (*now, right now, at present*) com 'to be + verb-ing'. O Simple Past exige marcador de tempo encerrado e definido no passado (*yesterday, last week, in 2024, two hours ago*)."
+            },
+            {
+              id: "ing-bas-08",
+              nome: "Present Perfect Simple vs Simple Past",
+              detalhes: "Present Perfect (ação no passado com resultado no presente ou tempo não especificado); palavras-chave: already, yet, just, since, for, ever.",
+              bizu: "⚠️ O Divisor de Águas da EEAR: Se a oração indicar a data ou o momento exato em que a ação ocorreu (*in 1941, yesterday, five days ago*), é OBRIGATÓRIO usar Simple Past (*The airbase was opened in 1941*). Se a ação ocorreu em tempo indefinido, acabou de acontecer ou se prolonga até o presente com as palavras *already, yet, just, since, for, ever*, use PRESENT PERFECT (*The technicians have already inspected the engine*)."
+            },
+            {
+              id: "ing-bas-09",
+              nome: "Modal Verbs: Can, Could, May, Might, Must, Should",
+              detalhes: "Can/Could (habilidade, permissão); May/Might (probabilidade); Must (obrigação/dedução lógica forte); Should (conselho).",
+              bizu: "🚫 Regras Inegociáveis dos Modais: 1) Nunca levam a preposição 'to' após eles (exceto *ought to*). 2) O verbo seguinte fica sempre no infinitivo puro sem 'to' (*He can fly*, nunca *He can to fly*). 3) Nunca recebem '-s' na 3ª pessoa (*She must study*, nunca *She musts*). Sentidos cobrados: CAN/COULD = habilidade ou permissão; MAY/MIGHT = probabilidade; MUST = obrigação militar ou forte dedução lógica; SHOULD = conselho/recomendação."
+            },
+            {
+              id: "ing-bas-10",
+              nome: "Conditionals: Zero, First and Second",
+              detalhes: "Zero (If + Present, Present); 1st (If + Present, Will + Verb); 2nd (If + Simple Past, Would + Verb).",
+              bizu: "💡 Fórmulas Diretas de Prova: 1) First Conditional (Possibilidade Real): *If + Simple Present, WILL + Verbo* (*If the weather improves, the squad will take off*). 2) Second Conditional (Hipótese/Imaginário): *If + Simple Past, WOULD + Verbo* (*If I had more flight hours, I would fly this fighter*). ⚠️ Exceção Clássica: Na 2ª condicional, o verbo 'to be' no passado formal usa SEMPRE 'were' para todas as pessoas: *If I WERE you, I would study hard*!"
+            },
+            {
+              id: "ing-bas-11",
+              nome: "Passive Voice: Formação e Emprego",
+              detalhes: "Objeto da voz ativa vira sujeito da passiva; Verbo 'to be' no mesmo tempo da ativa + Particípio Passado.",
+              bizu: "🎯 Passo a Passo da Voz Passiva: 1) O objeto da oração ativa vira o sujeito da oração passiva. 2) Insira o verbo 'TO BE' rigorosamente no mesmo tempo verbal em que estava o verbo principal da oração ativa. 3) Coloque o verbo principal no PARTICÍPIO PASSADO (3ª coluna/terminação -ed). Exemplo: *The mechanic inspected the plane* (Passado) → *The plane WAS INSPECTED by the mechanic*."
+            },
+            {
+              id: "ing-bas-12",
+              nome: "Question Tags e Tag Answers",
+              detalhes: "Regra de polaridade inversa: frase afirmativa pede tag negativa; frase negativa pede tag afirmativa.",
+              bizu: "💡 Regra da Polaridade Invertida: Frase afirmativa exige tag negativa (*The pilot is ready, isn't he?*); Frase negativa exige tag afirmativa (*You don't smoke, do you?*). ⚠️ As 3 Exceções Mais Cobradas na EEAR: 1) Com 'I am' a tag correta é 'AREN'T I?' (*I am late, aren't I?*). 2) Em convites com 'Let's', a tag é 'SHALL WE?' (*Let's begin the briefing, shall we?*). 3) Em frases imperativas, a tag padrão é 'WILL YOU?' (*Close the cockpit, will you?*)."
+            }
+          ]
+        },
+        {
+          id: "ing-bct",
+          titulo: "2. Nível Intermediário (Exclusivo Especialidade BCT)",
+          topicos: [
+            {
+              id: "ing-bct-01",
+              nome: "Participle Adjectives (-ed vs -ing)",
+              detalhes: "-ed expressa o sentimento/estado da pessoa; -ing expressa a característica da coisa ou causador do sentimento.",
+              bizu: "🎯 Não confunda Sentimento com Causa: A terminação '-ED' expressa o sentimento ou reação psicológica que a pessoa está sentindo (*The air traffic controller felt exhausted*). A terminação '-ING' expressa a característica do agente causador daquele sentimento (*Controlling dense air traffic is exhausting*). Bizu de associação: Uma missão militar *boring* deixa os militares *bored*."
+            },
+            {
+              id: "ing-bct-02",
+              nome: "Advanced Perfect & Continuous Tenses",
+              detalhes: "Past Perfect (ação anterior a outra no passado com had + particípio); Future Perfect (will have + particípio); Present Perfect Continuous.",
+              bizu: "💡 Past Perfect = O 'Mais-que-Perfeito' do Inglês: Formado por *HAD + Particípio*. É usado para indicar uma ação que aconteceu ANTES de outra ação que também já ocorreu no passado (*When the control tower restored power, the transport aircraft HAD ALREADY DIVERTED to another airport*). O Future Perfect (*will have + particípio*) indica ação finalizada antes de um ponto fixo no futuro."
+            },
+            {
+              id: "ing-bct-03",
+              nome: "Third & Mixed Conditionals",
+              detalhes: "3rd Conditional: If + Had + Particípio, Would have + Particípio (arrependimento no passado); Orações com Unless e As long as.",
+              bizu: "🎯 Third Conditional (Arrependimento / Passado Irreal): Estrutura fixa: *If + HAD + Particípio, WOULD HAVE + Particípio*. Exemplo de aviação: *If the pilot had checked the weather forecast, he would not have taken off into the thunderstorm* (Ele não checou e decolou na tempestade). Atenção: a conjunção 'UNLESS' significa 'a não ser que / a menos que' e equivale gramaticalmente a 'IF ... NOT'."
+            },
+            {
+              id: "ing-bct-04",
+              nome: "Reported Speech (Discurso Indireto)",
+              detalhes: "Regras de recuo dos tempos verbais: Present -> Past; Past -> Past Perfect; Will -> Would; Can -> Could; Now -> Then; Yesterday -> The day before.",
+              bizu: "💡 Tabela de Recuo no Discurso Indireto: Quando o verbo introdutório estiver no passado (*The controller said...*): Simple Present vira Simple Past (*am/is -> was*); Simple Past vira Past Perfect (*repaired -> had repaired*); WILL vira WOULD; CAN vira COULD; MUST vira HAD TO. Advérbios também mudam: *now* vira *then*; *today* vira *that day*; *tomorrow* vira *the following day*."
+            },
+            {
+              id: "ing-bct-05",
+              nome: "Emphatic Verbs & Causative Forms",
+              detalhes: "Uso de do/does/did em frases afirmativas para ênfase (*I did advise the captain!*); Causativo (*have/get something done*).",
+              bizu: "🎯 Verbo Causativo na Aviação: A estrutura *HAVE / GET + Objeto + Particípio Passado* significa delegar ou mandar que um terceiro execute o serviço em vez de fazer você mesmo. Exemplo: *The airline HAD the radar systems CALIBRATED* (a companhia mandou calibrar os radares por técnicos, e não ela própria). Verbos enfáticos: o uso de 'did' em frase afirmativa serve para dar convicção absoluta: *I did transmit the clearance!*"
+            },
+            {
+              id: "ing-bct-06",
+              nome: "Discourse Markers & Complex Clauses",
+              detalhes: "Conectores de transição: In spite of / Despite (sem of!), Furthermore, Whereas, Therefore, Nonetheless, Although.",
+              bizu: "⚠️ Pegadinha Crítica de Conectores: 'DESPITE' e 'IN SPITE OF' têm o mesmo significado (apesar de), mas DESPITE NUNCA leva 'of' (dizer *despite of* é erro clássico!). Além disso, ambos exigem substantivo ou verbo com '-ING' depois (*Despite the severe turbulence, the landing was smooth*). Por outro lado, 'ALTHOUGH' e 'EVEN THOUGH' exigem uma oração completa com sujeito e verbo conjugado."
+            },
+            {
+              id: "ing-bct-07",
+              nome: "Vocabulário Aeronáutico e Tráfego Aéreo",
+              detalhes: "Termos ICAO: runway, taxiway, clearance, ceiling, approach, departure, touch down, go-around, wind shear, altimeter.",
+              bizu: "✈️ Dicionário Essencial do Controlador BCT: Runway = pista de pouso/decolagem; Taxiway = pista de manobra/rolamento no solo; Clearance = autorização emitida pelo controle; Ceiling = teto (altura da base das nuvens); Approach = aproximação para pouso; Go-around = arremetida; Wind shear = tesoura de vento (mudança abrupta de direção/intensidade do vento)."
+            },
+            {
+              id: "ing-bct-08",
+              nome: "Top Phrasal Verbs de Aviação e Gerais",
+              detalhes: "Take off (decolar), Touch down (pousar), Hold on (aguardar), Stand by (aguardar na frequência), Call off (cancelar), Run out of (ficar sem).",
+              bizu: "💡 Top Phrasal Verbs mais frequentes nas provas de BCT: TAKE OFF = decolar (ou tirar peça de roupa); TOUCH DOWN = tocar a pista de pouso; STAND BY = manter-se em prontidão na frequência de rádio; RUN OUT OF = ficar sem suprimento ou esgotar (*The aircraft ran out of fuel*); CALL OFF = cancelar a operação; PUT OFF = adiar a missão."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      id: "matematica",
+      nome: "Matemática",
+      icone: "compass",
+      cor: "#10b981",
+      questoesTotal: 24,
+      peso: "Eliminatório & Classificatório",
+      modulos: [
+        {
+          id: "mat-alg1",
+          titulo: "1. Álgebra I (Funções e Sequências)",
+          topicos: [
+            {
+              id: "mat-alg1-01",
+              nome: "Conceito de Funções, Domínio, Contradomínio e Imagem",
+              detalhes: "Condições de existência de variáveis reais; estudo do sinal; raízes e interpretação geométrica de gráficos.",
+              bizu: "🎯 Condições de Existência no Domínio Real: 1) Se houver denominador, ele NUNCA pode ser zero (D(x) ≠ 0). 2) Se houver raiz de índice par no numerador, o radicando deve ser maior ou igual a zero (f(x) ≥ 0). 3) Se a raiz de índice par estiver no DENOMINADOR, o radicando deve ser estritamente maior que zero (f(x) > 0). Para ser função, cada elemento do domínio deve ter uma e apenas uma flecha saindo dele!"
+            },
+            {
+              id: "mat-alg1-02",
+              nome: "Funções Injetora, Sobrejetora, Bijetora e Inversa",
+              detalhes: "Teste das retas horizontais; função par f(-x)=f(x) e ímpar f(-x)=-f(x); função inversa f⁻¹(x) e composição f(g(x)).",
+              bizu: "💡 Método Relâmpago para Achar a Função Inversa f⁻¹(x): 1) Substitua f(x) por y. 2) Onde estiver x escreva y, e onde estiver y escreva x (troque as variáveis). 3) Isole o novo y algebricamente! O gráfico de uma função e de sua inversa são perfeitamente simétricos em relação à bissetriz dos quadrantes ímpares (y = x). Lembre-se: apenas funções BIJETORAS admitem inversa!"
+            },
+            {
+              id: "mat-alg1-03",
+              nome: "Função Polinomial do 1º Grau (Afim)",
+              detalhes: "Equação y = ax + b; coeficiente angular a (taxa de variação) e linear b; inequações-produto e inequações-quociente.",
+              bizu: "🎯 Geometria da Reta: Na função y = ax + b, o coeficiente linear b é o ponto exato onde a reta corta o eixo vertical Y (ponto (0,b)). A raiz da função é x = -b/a, ponto onde ela corta o eixo X. Em inequações-quociente f(x)/g(x) ≥ 0, monte o VARAL DE SINAIS e lembre-se: o denominador g(x) NUNCA recebe bolinha fechada, pois não pode ser zero!"
+            },
+            {
+              id: "mat-alg1-04",
+              nome: "Função Quadrática (2º Grau)",
+              detalhes: "Vértice da parábola: Xᵥ = \\-b/2a e Yᵥ = \\-Δ/4a; valor máximo e mínimo; forma fatorada a(x-x₁)(x-x₂).",
+              bizu: "💡 Contexto de Prova para Vértice: Se o enunciado perguntar 'em que instante / qual valor de x / qual tempo em segundos' é atingido o ponto máximo ou mínimo, calcule o Xᵥ = \\-b/2a. Se perguntar 'qual é o valor máximo / qual a altura máxima em metros / qual o lucro máximo', calcule o Yᵥ = \\-Δ/4a. Macete de raízes por Soma (S = -b/a) e Produto (P = c/a)."
+            },
+            {
+              id: "mat-alg1-05",
+              nome: "Função Modular",
+              detalhes: "Definição |x| = x (se x ≥ 0) e -x (se x < 0); equações modulares; inequações |x| < a \\⇒ -a < x < a.",
+              bizu: "🎯 Propriedades Diretas de Inequações Modulares: 1) Se |f(x)| ≤ a, abra em sanduíche: -a ≤ f(x) ≤ a. 2) Se |f(x)| ≥ a, quebre em duas partes: f(x) ≤ -a OU f(x) ≥ a. O gráfico de qualquer função modular y = |f(x)| é obtido rebatendo espelhadamente para cima todas as partes do gráfico original que estavam abaixo do eixo X."
+            },
+            {
+              id: "mat-alg1-06",
+              nome: "Função Exponencial e Inequações",
+              detalhes: "Propriedades de potenciação; equações de bases iguais e por substituição de variável; inequações exponenciais.",
+              bizu: "⚠️ A Pegadinha que Mais Elimina em Inequações Exponenciais: Se a base for um número entre 0 e 1 (0 < a < 1, como 1/2 ou 0,3), ao cancelar as bases na inequação, VOCÊ DEVE OBRIGATORIAMENTE INVERTER O SENTIDO DA DESIGUALDADE! Exemplo: (1/2)ˣ > (1/2)³ \\⇒ x < 3. Se a base for maior que 1 (a > 1), o sentido da desigualdade se mantém."
+            },
+            {
+              id: "mat-alg1-07",
+              nome: "Função Logarítmica e Propriedades",
+              detalhes: "Definição logb a = c \\⇔ bc = a; condições: a > 0 e b > 0, b ≠ 1; propriedades operatórias e mudança de base.",
+              bizu: "💡 As 4 Leis Sagradas dos Logaritmos: 1) Logaritmo do produto vira soma: log(ab) = log a + log b. 2) Logaritmo da divisão vira subtração: log(a/b) = log a - log b. 3) Regra do Tombo: log aᵏ = k \\· log a. 4) Mudança de base: logb a = \\log꜀ a/log꜀ b. ⚠️ Lembre-se sempre da condição de existência: o logaritmando deve ser estritamente positivo (a > 0) e a base positiva e diferente de 1 (b > 0 e b ≠ 1)!"
+            },
+            {
+              id: "mat-alg1-08",
+              nome: "Progressão Aritmética (PA)",
+              detalhes: "Termo geral aₙ = a₁ + (n-1)r; termo médio b = a+c/2; soma dos n termos Sₙ = \\(a₁ + aₙ)n/2.",
+              bizu: "🎯 Macete para Questões com 3 Termos em PA: Sempre represente os três termos desconhecidos como (x - r, x, x + r). Ao somar os três termos, os 'r' se cancelam automaticamente: (x - r) + x + (x + r) = 3x! O termo central é sempre a média aritmética dos termos equidistantes. Fórmula da soma da PA: Sₙ = \\(a₁ + aₙ)n/2."
+            },
+            {
+              id: "mat-alg1-09",
+              nome: "Progressão Geométrica (PG)",
+              detalhes: "Termo geral aₙ = a₁ \\· qⁿ⁻¹; soma dos termos Sₙ = a₁(qⁿ - 1)/q-1; soma da PG infinita S_\\∞ = a₁/1-q para |q| < 1.",
+              bizu: "💡 Condição da Soma Infinita da PG: A fórmula da soma dos infinitos termos S_\\∞ = a₁/1 - q SÓ PODE SER UTILIZADA se a razão q estiver estritamente no intervalo entre -1 e 1 (-1 < q < 1). Se a razão for maior ou igual a 1, a soma diverge para o infinito! Para 3 termos em PG, represente como (x/q, x, xq)."
+            }
+          ]
+        },
+        {
+          id: "mat-plana",
+          titulo: "2. Geometria Plana (Maior Incidência da EEAR)",
+          topicos: [
+            {
+              id: "mat-pla-01",
+              nome: "Ângulos e Triângulos — Propriedades e Pontos Notáveis",
+              detalhes: "Soma dos ângulos internos = 180^\\°; ângulo externo; Baricentro (2:1), Incentro (raio inscrito), Circuncentro, Ortocentro.",
+              bizu: "🎯 Propriedade Áurea do Baricentro: O Baricentro (ponto de encontro das 3 medianas de um triângulo) divide cada mediana na proporção de 2 para 1. O pedaço que vai do baricentro até o vértice vale o DOBRO do pedaço que vai do baricentro até o ponto médio do lado oposto! Incentro = encontro das bissetrizes (centro da circunferência inscrita); Circuncentro = encontro das mediatrizes (centro da circunscrita); Ortocentro = encontro das alturas."
+            },
+            {
+              id: "mat-pla-02",
+              nome: "Semelhança e Teorema de Tales e da Bissetriz",
+              detalhes: "Critérios de semelhança; Teorema de Tales; Teorema da Bissetriz Interna: c/m = b/n.",
+              bizu: "💡 Teorema da Bissetriz Interna: A bissetriz de um ângulo interno de um triângulo divide o lado oposto em dois segmentos que são diretamente proporcionais aos outros dois lados adjacentes: \\lado 1/segmento 1 = \\lado 2/segmento 2. Em triângulos semelhantes, a razão entre perímetros é k, a razão entre áreas é k²!"
+            },
+            {
+              id: "mat-pla-03",
+              nome: "Relações Métricas no Triângulo Retângulo",
+              detalhes: "Pitágoras a² = b² + c²; b² = a \\· m; c² = a \\· n; h² = m \\· n; a \\· h = b \\· c; \\1/h² = \\1/b² + \\1/c².",
+              bizu: "🎯 Ternos Pitagóricos que Você TEM que Saber de Cor: (3, 4, 5) e seus múltiplos (6, 8, 10), (9, 12, 15); (5, 12, 13); (8, 15, 17); (7, 24, 25). Identificar esses números de cabeça economiza até 3 minutos de contas por questão! Relação fundamental: 'O produto da hipotenusa pela altura é igual ao produto dos catetos': a \\· h = b \\· c."
+            },
+            {
+              id: "mat-pla-04",
+              nome: "Triângulo Equilátero e Triângulos Notáveis",
+              detalhes: "Altura h = l\\√(3)/2; Área S = l²\\√(3)/4; R = \\⅔h e r = \\⅓h; Triângulo 30^\\°-60^\\°-90^\\°.",
+              bizu: "💡 O Famoso Triângulo Egípcio (30^\\°-60^\\°-90^\\°): Em qualquer triângulo retângulo com ângulos de 30^\\° e 60^\\°, o cateto oposto ao ângulo de 30^\\° mede rigorosamente a METADE da hipotenusa (h/2); o cateto oposto a 60^\\° mede a metade da hipotenusa multiplicada por \\√(3)! Para o triângulo equilátero de lado l: altura h = l\\√(3)/2 e área S = l²\\√(3)/4."
+            },
+            {
+              id: "mat-pla-05",
+              nome: "Quadriláteros Notáveis e Trapézios",
+              detalhes: "Propriedades de paralelogramos, retângulos, losangos (diagonais perpendiculares), quadrados; Base média do trapézio: Bₘ = B+b/2.",
+              bizu: "🎯 As Duas Bases Médias do Trapézio: 1) Base Média do Trapézio (segmento que liga os pontos médios dos lados oblíquos): Bₘ = B + b/2. 2) Base Média de EULER (segmento que liga os pontos médios das duas diagonais do trapézio): Bₑ = B - b/2. No losango, as diagonais cortam-se no ponto médio perpendicularmente formando 4 triângulos retângulos idênticos!"
+            },
+            {
+              id: "mat-pla-06",
+              nome: "Polígonos Convexos e Regulares",
+              detalhes: "Diagonais D = n(n-3)/2; Soma dos ângulos internos Sᵢ = (n-2) \\· 180^\\°; Externos Sₑ = 360^\\°; Apótema.",
+              bizu: "💡 Duas Fórmulas Sagradas de Polígonos: Diagonais: D = n(n-3)/2. Soma dos ângulos externos de QUALQUER polígono convexo é SEMPRE igual a 360^\\°, independente do número de lados! Um hexágono regular de lado L nada mais é do que a junção de 6 triângulos equiláteros perfeitos, logo sua área vale S = 6 \\· L²\\√(3)/4 = \\3L²\\√(3)/2."
+            },
+            {
+              id: "mat-pla-07",
+              nome: "Circunferência, Arcos e Potência de Ponto",
+              detalhes: "Ângulo inscrito \\α = \\arco/2; Potência de ponto com cordas PA \\· PB = PC \\· PD e tangente PT² = PA \\· PB.",
+              bizu: "🎯 Teorema de Tales na Circunferência: Todo triângulo inscrito em uma semicircunferência que possui o diâmetro como um de seus lados é OBRIGATORIAMENTE um TRIÂNGULO RETÂNGULO! O ângulo inscrito na circunferência vale sempre a metade do arco correspondente. Potência com reta tangente: PT² = PA \\· PB."
+            },
+            {
+              id: "mat-pla-08",
+              nome: "Áreas de Figuras Planas e Círculo",
+              detalhes: "Fórmulas de área: Básica b\\· h/2; Heron \\√(p(p-a)(p-b)(p-c)); Trigonométrica \\½absenθ; Círculo π R² e Setor circular.",
+              bizu: "💡 Fórmulas Alternativas de Área que Salvam Questões: 1) Fórmula Trigonométrica (quando você tem 2 lados e o ângulo entre eles): S = \\½ a b senθ. 2) Fórmula de Heron (quando você tem os 3 lados e nenhuma altura): S = \\√(p(p-a)(p-b)(p-c)), onde p = a+b+c/2 é o semiperímetro. 3) Com raio inscrito: S = p \\· r."
+            }
+          ]
+        },
+        {
+          id: "mat-trig",
+          titulo: "3. Trigonometria",
+          topicos: [
+            {
+              id: "mat-tri-01",
+              nome: "Razões Trigonométricas e Ângulos Notáveis",
+              detalhes: "Seno, cosseno, tangente, cotangente, secante e cossecante nos ângulos de 30^\\°, 45^\\° e 60^\\°.",
+              bizu: "🎯 Tabela dos Notáveis Memorizada: sen(30^\\°) = 1/2; cos(30^\\°) = \\√(3)/2; tg(30^\\°) = \\√(3)/3. sen(45^\\°) = cos(45^\\°) = \\√(2)/2; tg(45^\\°) = 1. sen(60^\\°) = \\√(3)/2; cos(60^\\°) = 1/2; tg(60^\\°) = \\√(3). Relações inversas: sec x = \\1/cos x; cossec x = \\1/sen x; cotg x = \\1/tg x."
+            },
+            {
+              id: "mat-tri-02",
+              nome: "Ciclo Trigonométrico e Redução ao 1º Quadrante",
+              detalhes: "Arcos côngruos, quadrantes, sinais no ciclo; regras de simetria e redução (180^\\° - x, 180^\\° + x, 360^\\° - x).",
+              bizu: "💡 Eixos no Ciclo Trigonométrico: 'Quem não tem sono fica em PÉ' -> Eixo do SENO é o eixo VERTICAL (Y). 'Quem está com sono fica DEITADO' -> Eixo do COSSENO é o eixo HORIZONTAL (X). Sinais nos quadrantes: Seno é positivo no 1º e 2º quadrantes; Cosseno é positivo no 1º e 4º quadrantes; Tangente é positiva no 1º e 3º quadrantes."
+            },
+            {
+              id: "mat-tri-03",
+              nome: "Identidades Fundamentais e Fórmulas de Transformação",
+              detalhes: "sen² x + cos² x = 1; 1 + tg² x = sec² x; Adição de arcos sen(a\\± b), cos(a\\± b), tg(a\\± b).",
+              bizu: "🎯 Identidades que a EEAR Sempre Cobra: 1) Relação Fundamental: sen² x + cos² x = 1. 2) Arco Duplo: sen(2a) = 2sen acos a; cos(2a) = cos² a - sen² a = 1 - 2sen² a. 3) Mnemônico da Adição de Senos: 'Minha terra tem palmeiras onde canta o sabiá: sen A cos B + sen B cos A'!"
+            },
+            {
+              id: "mat-tri-04",
+              nome: "Lei dos Senos e Lei dos Cossenos",
+              detalhes: "Lei dos Senos: a/sen A = b/sen B = c/sen C = 2R; Lei dos Cossenos: a² = b² + c² - 2bccos A.",
+              bizu: "💡 Quando Usar Cada Lei: 1) LEI DOS SENOS: Use quando a questão fornecer DOIS ÂNGULOS e um lado, ou quando citar o raio R da circunferência circunscrita ao triângulo (lembre-se: a/sen A = 2R). 2) LEI DOS COSSENOS: Use quando a questão fornecer DOIS LADOS e o ÂNGULO ENTRE ELES para descobrir o terceiro lado (a² = b² + c² - 2bccos A)."
+            },
+            {
+              id: "mat-tri-05",
+              nome: "Funções e Equações Trigonométricas",
+              detalhes: "Gráficos de senoide e cossenoide; período de f(x) = a + bsen(cx + d) \\⇒ P = \\2π/|c|; equações no ciclo.",
+              bizu: "🎯 O Período Depende de Uma Única Coisa: Em qualquer função da forma y = a + b \\· sen(c x + d) ou com cosseno, o PERÍODO P depende EXCLUSIVAMENTE do número c que está multiplicando a variável x: P = \\2π/|c|. Os coeficientes a e b afetam apenas o deslocamento vertical e a amplitude da imagem ([a - |b|, a + |b|]), nunca o período!"
+            }
+          ]
+        },
+        {
+          id: "mat-alg2",
+          titulo: "4. Álgebra II (Matrizes, Sistemas, Combinatória e Probabilidade)",
+          topicos: [
+            {
+              id: "mat-alg2-01",
+              nome: "Matrizes: Operações e Propriedades",
+              detalhes: "Adição, produto por escalar, produto matricial (linha por coluna); matriz transposta Aᵗ, simétrica e inversa.",
+              bizu: "⚠️ Condição para Existência de Multiplicação de Matrizes: Para multiplicar Aₘ \\× ₚ \\· Bq \\× ₙ, o número de colunas da 1ª matriz DEVE ser rigorosamente igual ao número de linhas da 2ª matriz (p = q)! A matriz resultante terá dimensão m \\× n. A multiplicação matricial NÃO é comutativa (A \\· B ≠ B \\· A). Propriedade da transposta: (A \\· B)ᵗ = Bᵗ \\· Aᵗ."
+            },
+            {
+              id: "mat-alg2-02",
+              nome: "Determinantes e Teorema de Binet",
+              detalhes: "Cálculo por Sarrus (3 \\× 3); Laplace; Teorema de Binet det(AB) = det(A)det(B); det(kA) = kⁿ det(A).",
+              bizu: "🎯 O Teorema de Binet e a Pegadinha da Constante: 1) Teorema de Binet: det(A \\· B) = det(A) \\· det(B). 2) Determinante da Inversa: det(A⁻¹) = \\1/det(A). 3) ⚠️ Pegadinha Fatal: det(k \\· A) = kⁿ \\· det(A), onde n é a ORDEM da matriz quadrada! Se a matriz for de ordem 3 (3 \\× 3), det(2A) = 2³ \\· det(A) = 8 det(A)!"
+            },
+            {
+              id: "mat-alg2-03",
+              nome: "Sistemas Lineares e Classificação",
+              detalhes: "Classificação: SPD (det ≠ 0), SPI e SI; Regra de Cramer e método do escalonamento de Gauss.",
+              bizu: "💡 Classificação Instantânea de Sistemas 3 \\× 3: Calcule o determinante principal D. Se D ≠ 0, o sistema é SPD (Possível e Determinado, admite solução única). Se D = 0 e todos os Dₓ, Dy, Dz forem zero, o sistema pode ser SPI (Infinitas soluções). Em SISTEMAS HOMOGÊNEOS (termos independentes nulos), a solução (0,0,0) SEMPRE existe (solução trivial); se D ≠ 0, só admite a trivial!"
+            },
+            {
+              id: "mat-alg2-04",
+              nome: "Análise Combinatória: PFC, Arranjos e Combinações",
+              detalhes: "Princípio Fundamental da Contagem; Permutações Pₙ = n!; Arranjos Aₙ,ₚ = n!/(n-p)!; Combinações Cₙ,ₚ = n!/p!(n-p)!.",
+              bizu: "🎯 O Teste Decisivo: 'A ordem dos elementos importa?' Se mudar a ordem dos elementos formar um agrupamento novo (ex: senhas, números de telefone, pódios de corrida), A ORDEM IMPORTA \\→ use ARRANJO ou PERMUTAÇÃO. Se mudar a ordem dos elementos mantiver exatamente o mesmo grupo (ex: comissões, equipes de trabalho, triângulos formados por pontos), A ORDEM NÃO IMPORTA \\→ use COMBINAÇÃO: Cₙ,ₚ = n!/p!(n-p)!."
+            },
+            {
+              id: "mat-alg2-05",
+              nome: "Probabilidade Clássica e Condicional",
+              detalhes: "Espaço amostral; P(E) = n(E)/n(\\Ω); União P(A \\cup B) = P(A) + P(B) - P(A \\cap B); Condicional P(A|B) = P(A \\cap B)/P(B).",
+              bizu: "💡 O Truque Mágico do Evento Complementar: Em questões de probabilidade que pedirem expressões como 'pelo menos um', 'no mínimo um' ou 'ao menos uma vez', NÃO calcule caso a caso! Calcule a probabilidade do evento NUNCA acontecer (P(nenhum)) e faça a subtração: P(pelo menos um) = 1 - P(nenhum). Isso resolve problemas complexos em 2 linhas!"
+            }
+          ]
+        },
+        {
+          id: "mat-estat",
+          titulo: "5. Estatística",
+          topicos: [
+            {
+              id: "mat-est-01",
+              nome: "Conceitos Fundamentais, População e Amostra",
+              detalhes: "Variáveis qualitativas (nominal e ordinal) e quantitativas (discreta [contagem] e contínua [medição]).",
+              bizu: "🎯 Classificação das Variáveis: 1) QUALITATIVA: expressa atributos (Nominal: cor dos olhos, especialidade militar; Ordinal: hierarquia, patente militar soldado/cabo/sargento). 2) QUANTITATIVA: expressa números (Discreta: decorre de contagem inteira sem frações, ex: número de aeronaves, quantidade de filhos; Contínua: decorre de medição com casas decimais, ex: altitude, velocidade do vento, peso)."
+            },
+            {
+              id: "mat-est-02",
+              nome: "Tabelas de Frequência e Histogramas",
+              detalhes: "Frequência absoluta (fᵢ), relativa (fr = fᵢ / N) e acumulada (Fᵢ); leitura de gráficos e histogramas.",
+              bizu: "💡 Propriedades que Fecham Contas: A soma de todas as frequências absolutas (fᵢ) é rigorosamente igual ao tamanho total da amostra (N). A soma de todas as frequências relativas percentuais (fr) é SEMPRE igual a 100\\\\%. Em histogramas com intervalos de classes, a altura das colunas é proporcional à frequência das observações naquela faixa."
+            },
+            {
+              id: "mat-est-03",
+              nome: "Medidas de Tendência Central (Média, Moda e Mediana)",
+              detalhes: "Média simples e ponderada; Moda (valor que mais se repete); Mediana (valor do meio no rol ordenado de dados).",
+              bizu: "⚠️ Passo Obrigatório da Mediana: Para calcular a MEDIANA, o primeiro passo indispensável é COLOCAR OS DADOS EM ORDEM CRESCENTE (o famoso ROL)! Se o número de elementos for ímpar, a mediana é exatamente o termo central. Se for par, a mediana é a MÉDIA ARITMÉTICA dos DOIS termos centrais. MODA é simplesmente o valor que mais se repete na amostra."
+            }
+          ]
+        },
+        {
+          id: "mat-espacial",
+          titulo: "6. Geometria Espacial",
+          topicos: [
+            {
+              id: "mat-esp-01",
+              nome: "Poliedros Convexos e Relação de Euler",
+              detalhes: "Fórmula de Euler: V - A + F = 2; Soma dos ângulos das faces: S = (V - 2) \\· 360^\\°; Contagem de arestas 2A = \\Σ n \\· Fₙ.",
+              bizu: "🎯 Mnemônico de Euler: 'Vamos Fazer Amor a Dois': V + F = A + 2 (Vértices + Faces = Arestas + 2). Para calcular o número de arestas quando o poliedro tiver faces mistas, lembre-se que cada aresta pertence a duas faces simultâneas: 2A = 3F₃ + 4F₄ + 5F₅ + \\dots Soma dos ângulos de todas as faces: S = (V - 2) \\· 360^\\°."
+            },
+            {
+              id: "mat-esp-02",
+              nome: "Prismas, Paralelepípedo e Cubo",
+              detalhes: "Paralelepípedo: Diagonal D = \\√(a²+b²+c²), Aₜ = 2(ab+bc+ac), Volume V = abc; Cubo: D = a\\√(3), V = a³.",
+              bizu: "💡 As Duas Diagonais do Cubo: A diagonal da FACE do cubo mede d = a\\√(2) (diagonal de um quadrado). A diagonal ESPACIAL interna do cubo que atravessa o centro de um vértice ao vértice oposto mede D = a\\√(3)! Para paralelepípedo de dimensões a, b, c: diagonal D = \\√(a² + b² + c²) e volume V = a \\· b \\· c."
+            },
+            {
+              id: "mat-esp-03",
+              nome: "Pirâmides e Tetraedro Regular",
+              detalhes: "Relações métricas no triângulo retângulo da pirâmide (g² = h² + m²); Volume V = \\⅓Ab \\· h; Tetraedro regular: h = a\\√(6)/3, V = a³\\√(2)/12.",
+              bizu: "🎯 O Fator 1/3 dos Sólidos com Bico: Toda figura espacial que termina em ponta/bico (pirâmide e cone) possui o fator \\⅓ na fórmula do volume: V = \\⅓ Ab \\· h! Fórmulas prontas do Tetraedro Regular de aresta a: Altura h = a\\√(6)/3 e Volume V = a³\\√(2)/12."
+            },
+            {
+              id: "mat-esp-04",
+              nome: "Cilindro e Secção Meridiana",
+              detalhes: "Cilindro reto; Cilindro equilátero (h = 2R); Área lateral Al = 2π Rh; Área total Aₜ = 2π R(R+h); Volume V = π R² h.",
+              bizu: "💡 Cilindro Equilátero na EEAR: Por definição, um CILINDRO EQUILÁTERO possui altura igual ao DIÂMETRO da base (h = 2R). Sua secção meridiana (corte vertical que passa pelo eixo) é rigorosamente um QUADRADO de lado 2R e área 4R²! Volume do cilindro reto qualquer: V = π R² h."
+            },
+            {
+              id: "mat-esp-05",
+              nome: "Cone e Tronco de Cone",
+              detalhes: "Geratriz g² = h² + R²; Cone equilátero (g = 2R); Área lateral Al = π Rg; Volume V = \\⅓π R² h; Ângulo do setor θ = 360^\\° R/g.",
+              bizu: "🎯 Geometria do Cone: Triângulo retângulo gerador com Pitágoras: g² = h² + R² (geratriz, altura e raio). No CONE EQUILÁTERO, a geratriz vale o diâmetro da base (g = 2R) e sua planificação lateral forma um SEMICÍRCULO perfeito com ângulo de 180^\\°! Área lateral: Al = π R g."
+            },
+            {
+              id: "mat-esp-06",
+              nome: "Esfera e Sólidos Semelhantes",
+              detalhes: "Área da superfície A = 4π R²; Volume V = \\4/3π R³; Secção plana R² = d² + r²; Razões de semelhança: A₁/A₂ = k², V₁/V₂ = k³.",
+              bizu: "💡 Razão de Semelhança em Escala: Se a razão entre dimensões lineares (raio, aresta, altura) for k, a razão entre ÁREAS será k² e a razão entre VOLUMES será k³! Exemplo clássico da EEAR: se você duplicar o raio de uma esfera (k=2), a sua área superficial fica 4 vezes maior (2² = 4) e o seu volume fica 8 VEZES MAIOR (2³ = 8)!"
+            }
+          ]
+        },
+        {
+          id: "mat-analitica",
+          titulo: "7. Geometria Analítica",
+          topicos: [
+            {
+              id: "mat-ana-01",
+              nome: "Estudo do Ponto: Distância, Ponto Médio e Baricentro",
+              detalhes: "Distância d = \\√((x₂-x₁)² + (y₂-y₁)²); Ponto médio M = (x₁+x₂/2, y₁+y₂/2); Baricentro G = (\\\\Σ x/3, \\\\Σ y/3); Alinhamento (det=0).",
+              bizu: "🎯 Área do Triângulo por Determinantes: Se você conhece as coordenadas dos 3 vértices A(x₁, y₁), B(x₂, y₂) e C(x₃, y₃), monte a matriz 3 \\× 3 com a terceira coluna preenchida por 1. A área do triângulo será simplesmente S = \\½ |det|! Se o determinante der ZERO, significa que os 3 pontos estão perfeitamente ALINHADOS sobre a mesma reta."
+            },
+            {
+              id: "mat-ana-02",
+              nome: "Estudo da Reta: Equações e Coeficiente Angular",
+              detalhes: "Equação geral Ax+By+C=0; reduzida y=mx+q; coeficiente angular m = y₂-y₁/x₂-x₁; fórmula fundamental: y-y₀ = m(x-x₀).",
+              bizu: "💡 Mnemônico 'Yoyô Mixoxô': Para encontrar a equação de qualquer reta conhecendo 1 ponto (x₀, y₀) e sua inclinação m, aplique: y - y₀ = m(x - x₀). Na equação geral Ax + By + C = 0, o coeficiente angular sai direto por m = -A/B e o linear por q = -C/B, sem precisar isolar o y!"
+            },
+            {
+              id: "mat-ana-03",
+              nome: "Posições Relativas e Distância de Ponto à Reta",
+              detalhes: "Retas paralelas: m₁ = m₂; Retas perpendiculares: m₁ \\· m₂ = -1; Distância de ponto à reta: d = \\|Ax₀ + By₀ + C|/\\√(A²+B²).",
+              bizu: "🎯 Retas Perpendiculares (Inverte e Troca o Sinal): Se uma reta tem coeficiente angular m₁ = 3, a reta perpendicular a ela terá obrigatoriamente m₂ = -1/3 (m₁ \\· m₂ = -1). Fórmula da distância de um ponto P(x₀, y₀) à reta Ax + By + C = 0: d = \\|Ax₀ + By₀ + C|/\\√(A² + B²)."
+            },
+            {
+              id: "mat-ana-04",
+              nome: "Estudo da Circunferência no Plano",
+              detalhes: "Equação reduzida: (x-a)² + (y-b)² = R²; determinação de centro C(a,b) e raio R na forma geral; posições relativas.",
+              bizu: "💡 Reta Tangente à Circunferência: Uma reta é TANGENTE a uma circunferência se, e somente se, a distância do centro da circunferência até a reta for RIGOROSAMENTE IGUAL ao raio (dC,r = R). Se d < R, a reta é secante (corta em 2 pontos); se d > R, a reta é externa."
+            }
+          ]
+        },
+        {
+          id: "mat-alg3",
+          titulo: "8. Álgebra III (Complexos e Polinômios)",
+          topicos: [
+            {
+              id: "mat-alg3-01",
+              nome: "Números Complexos: Forma Algébrica",
+              detalhes: "Unidade i = \\√(-1); potências cíclicas de i (resto da divisão por 4); forma z = a + bi; conjugado \\bar{z} = a - bi; módulo |z| = \\√(a²+b²).",
+              bizu: "🎯 Ciclo de Potências de i: As potências da unidade imaginária repetem-se a cada 4 termos: i⁰ = 1, i¹ = i, i² = -1, i³ = -i. Para calcular i²⁰²⁶, basta pegar os dois últimos dígitos (26) e dividir por 4: o resto é 2, logo i²⁰²⁶ = i² = -1! Para dividir números complexos, multiplique numerador e denominador pelo CONJUGADO do denominador."
+            },
+            {
+              id: "mat-alg3-02",
+              nome: "Forma Trigonométrica e Fórmula de De Moivre",
+              detalhes: "Forma polar z = d(cosθ + isenθ); 1ª Fórmula de De Moivre: zⁿ = dⁿ(cos nθ + isen nθ).",
+              bizu: "💡 Operações na Forma Trigonométrica: Para MULTIPLICAR dois complexos na forma polar, multiplique os módulos e SOME os argumentos! Para POTÊNCIAS (Fórmula de De Moivre), eleve o módulo à potência e MULTIPLIQUE o argumento pelo expoente: zⁿ = dⁿ [cos(nθ) + isen(nθ)]. Isso evita fazer produtos gigantescos na forma algébrica!"
+            },
+            {
+              id: "mat-alg3-03",
+              nome: "Polinômios: Grau, Operações e Briot-Ruffini",
+              detalhes: "Identidade de polinômios; Teorema do Resto (R = P(a)); Teorema de D'Alembert (P(a) = 0 \\⇒ divisível por x-a); Dispositivo de Briot-Ruffini.",
+              bizu: "🎯 As Duas Propriedades de Ouro dos Polinômios: 1) A soma de TODOS os coeficientes de um polinômio P(x) é simplesmente igual a P(1)! 2) O termo independente de x (termo livre) é simplesmente igual a P(0). Pelo Teorema do Resto, o resto da divisão de P(x) por (x - a) é diretamente R = P(a)."
+            },
+            {
+              id: "mat-alg3-04",
+              nome: "Equações Polinomiais e Relações de Girard",
+              detalhes: "Teorema Fundamental da Álgebra; Raízes imaginárias aos pares conjugados; Relações de Girard para 2º grau e 3º grau (S₁ = -b/a, S₂ = c/a, S₃ = -d/a).",
+              bizu: "💡 Raízes Complexas Vêm em Pares Conjugados: Se um polinômio possui coeficientes reais e o número complexo 2 + 3i for raiz, OBRIGATORIAMENTE o seu conjugado 2 - 3i TAMBÉM é raiz da equação! Relações de Girard para 3º grau ax³ + bx² + cx + d = 0: Soma das raízes x₁+x₂+x₃ = -b/a; Produto das raízes x₁ x₂ x₃ = -d/a."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      id: "fisica",
+      nome: "Física",
+      icone: "zap",
+      cor: "#f59e0b",
+      questoesTotal: 24,
+      peso: "Eliminatório & Classificatório",
+      modulos: [
+        {
+          id: "fis-cinematica",
+          titulo: "1. Cinemática e Vetores",
+          topicos: [
+            {
+              id: "fis-cin-01",
+              nome: "Grandezas Físicas, SI e Vetores",
+              detalhes: "Prefixos métricos; Grandezas escalares vs vetoriais; Operações e decomposição ortogonal de vetores (Vₓ = Vcosθ, Vy = Vsenθ).",
+              bizu: "🎯 Escalar vs. Vetorial (Cai Sempre!): Grandezas ESCALARES ficam perfeitamente definidas apenas com valor numérico e unidade: tempo, massa, energia, temperatura, trabalho e pressão! Grandezas VETORIAIS exigem obrigatoriamente módulo, direção e sentido: força, velocidade, aceleração, peso e quantidade de movimento. Decomposição de vetor: o eixo que encosta no ângulo θ usa COSSENO (Vₓ = Vcosθ); o eixo que não encosta usa SENO."
+            },
+            {
+              id: "fis-cin-02",
+              nome: "Movimento Retilíneo Uniforme (MRU)",
+              detalhes: "Velocidade constante (a=0); Função horária S = S₀ + vt; Gráficos S \\× t e v \\× t (área sob o gráfico = deslocamento Δ S).",
+              bizu: "💡 A Propriedade da Área no Gráfico v \\× t: Em QUALQUER movimento, a área da figura formada sob o gráfico da velocidade contra o tempo (v \\× t) é numericamente igual à VARIAÇÃO DE ESPAÇO (deslocamento Δ S)! Em problemas de ultrapassagem (trem cruzando ponte ou dois veículos cruzando-se): Δ S→ₜₐl = comprimento do trem + comprimento da ponte."
+            },
+            {
+              id: "fis-cin-03",
+              nome: "Movimento Retilíneo Uniformemente Variado (MRUV)",
+              detalhes: "Aceleração constante; v = v₀ + at; S = S₀ + v₀t + \\½at²; Equação de Torricelli: v² = v₀² + 2aΔ S.",
+              bizu: "🎯 O Bizu Clássico de Torricelli: Leia atentamente o enunciado do problema. O problema NÃO forneceu o tempo e NÃO pediu o tempo? NÃO perca tempo montando equações horárias — aplique de imediato a EQUAÇÃO DE TORRICELLI: v² = v₀² + 2aΔ S. Movimento acelerado tem velocidade e aceleração no mesmo sentido; retardado tem sinais opostos."
+            },
+            {
+              id: "fis-cin-04",
+              nome: "Queda Livre e Lançamento Vertical",
+              detalhes: "Movimento sob gravidade g; Queda do repouso: v = \\√(2gh) e h = \\½gt²; Lançamento para cima: Hₘₐₓ = v₀²/2g e ts = v₀/g.",
+              bizu: "⚠️ Pegadinha Clássica da Aeronáutica: No ponto mais alto da trajetória de um lançamento vertical, a velocidade instantânea do corpo é ZERO, mas a sua aceleração NUNCA é nula: ela continua valendo rigorosamente a gravidade local g voltada para baixo! Na queda livre a partir do repouso: velocidade de impacto v = \\√(2gh) e tempo de queda t = \\√(\\2h/g)."
+            },
+            {
+              id: "fis-cin-05",
+              nome: "Lançamento Oblíquo e Horizontal",
+              detalhes: "Princípio de Galileu: Eixo X é MRU (vₓ = v₀cosθ); Eixo Y é MRUV (vy = v₀senθ - gt); Alcance máximo para θ = 45^\\°.",
+              bizu: "🎯 Dois Ângulos, Mesmo Alcance: Dois projéteis disparados com a mesma velocidade inicial atingem rigorosamente o MESMO alcance horizontal se seus ângulos de tiro forem COMPLEMENTARES (sua soma for 90^\\°), como 30^\\° e 60^\\°, ou 20^\\° e 70^\\°! O alcance horizontal é máximo quando o ângulo de lançamento for exatamente de 45^\\°."
+            },
+            {
+              id: "fis-cin-06",
+              nome: "Movimento Circular Uniforme (MCU) e Polias",
+              detalhes: "Período T e frequência f = 1/T; \\ω = 2π f; v = \\ω R; Aceleração centrípeta a꜀ₚ = v²/R = \\ω² R; Acoplamento por correia (f₁ R₁ = f₂ R₂).",
+              bizu: "💡 Os Dois Tipos de Acoplamento: 1) ACOPLAMENTO POR CORREIA OU ENGRENAGEM: as velocidades lineares são iguais (v₁ = v₂ \\⇒ f₁ R₁ = f₂ R₂). A engrenagem menor gira mais rápido (tem maior frequência). 2) ACOPLAMENTO PELO MESMO EIXO: as frequências e velocidades angulares são iguais (\\ω₁ = \\ω₂ \\⇒ f₁ = f₂), mas o ponto de maior raio tem maior velocidade linear!"
+            }
+          ]
+        },
+        {
+          id: "fis-dinamica",
+          titulo: "2. Dinâmica, Estática e Gravitação",
+          topicos: [
+            {
+              id: "fis-din-01",
+              nome: "Leis de Newton e Forças da Mecânica",
+              detalhes: "1ª Lei (Inércia); 2ª Lei (F_R = ma); 3ª Lei (Ação e Reação); Peso (P=mg), Normal, Tração e Força Elástica (F=kx).",
+              bizu: "🚫 Ação e Reação NUNCA se Anulam: As forças de um par ação e reação possuem mesmo módulo, mesma direção, sentidos opostos, mas atuam em CORPOS DIFERENTES! Por isso, elas nunca podem se anular mutuamente. ⚠️ Erro comum em prova: Força Peso e Força Normal NÃO formam par de ação e reação (o par do peso fica no centro da Terra, e o par da normal fica na superfície de contato)!"
+            },
+            {
+              id: "fis-din-02",
+              nome: "Força de Atrito e Plano Inclinado",
+              detalhes: "Atrito estático (Fₐₜ,ₑ ≤ \\μₑ N) e cinético (Fₐₜ,꜀ = \\μ꜀ N); Decomposição no plano inclinado: Pₓ = Psenθ, Py = Pcosθ.",
+              bizu: "🎯 Decomposição Instantânea no Plano Inclinado: A componente da gravidade que faz o bloco escorregar ladeira abaixo é Pₓ = Psenθ. A componente que comprime o bloco contra o chão é Py = Pcosθ (logo, N = Pcosθ). No plano inclinado sem atrito, a aceleração de descida independe da massa do corpo: vale simplesmente a = gsenθ!"
+            },
+            {
+              id: "fis-din-03",
+              nome: "Dinâmica no Movimento Curvilíneo",
+              detalhes: "Resultante centrípeta F꜀ₚ = mv²/R; Pista horizontal com atrito vₘₐₓ = \\√(\\μ g R); Looping vertical (vₜₒₚₒ = \\√(gR)).",
+              bizu: "💡 A Força Centrípeta não é uma 'Nova Força': Ela é o nome da RESULTANTE das forças reais existentes que apontam na direção do centro da curva (F꜀ₚ = mv²/R). Na velocidade mínima para um piloto de caça ou carrinho fazer o looping vertical no topo sem cair, a força normal anula-se (N=0), ficando apenas o peso como centrípeta: vₘᵢₙ = \\√(gR)."
+            },
+            {
+              id: "fis-din-04",
+              nome: "Trabalho, Potência e Energia Mecânica",
+              detalhes: "Trabalho W = F \\· d \\· cosθ; Potência Pot = W/Δ t = F \\· v; Cinética E꜀ = \\½mv²; Gravitacional mgh; Elástica \\½kx².",
+              bizu: "🎯 Teorema da Energia Cinética: O trabalho da força resultante que atua sobre um corpo é numericamente igual à VARIAÇÃO da sua energia cinética: W_R = Δ E꜀ = \\½m v² - \\½m v₀². Se sobre o corpo atuarem apenas forças conservativas (peso e força elástica), a Energia Mecânica total se conserva constante (Eₘ,ᵢₙᵢ꜀ᵢₐl = Eₘ,fᵢₙₐl)."
+            },
+            {
+              id: "fis-din-05",
+              nome: "Impulso e Quantidade de Movimento (Colisões)",
+              detalhes: "Momento linear p = mv; Impulso I = FΔ t = Δ p; Colisões elásticas (e=1), inelásticas (e=0, saem juntos).",
+              bizu: "💡 Conservação da Quantidade de Movimento: Em QUALQUER sistema isolado de forças externas (como colisões e explosões), a Quantidade de Movimento vetorial total SEMPRE SE CONSERVA (Qₐₙₜₑs = Qdₑₚₒᵢs). Em uma colisão perfeitamente inelástica (e = 0), os corpos saem GRUDADOS com a mesma velocidade final comum: m₁ v₁ + m₂ v₂ = (m₁ + m₂) Vfᵢₙₐl."
+            },
+            {
+              id: "fis-din-06",
+              nome: "Estática do Ponto e do Corpo Rígido",
+              detalhes: "Equilíbrio translacional \\Σ F = \\0; Torque/Momento \\tau = F \\· d \\· senθ; Equilíbrio rotacional \\Σ \\\\tau = \\0.",
+              bizu: "🎯 Os Três Tipos de Alavanca (Cai Direto): 1) INTERFIXA: o ponto de apoio fica no meio (gangorra, tesoura). 2) INTER-RESISTENTE: a força resistente fica no meio (quebra-nozes, carrinho de mão). 3) INTERPOTENTE: a força potente aplicada fica no meio (pinça, cortador de unha, braço humano ao segurar peso)."
+            },
+            {
+              id: "fis-din-07",
+              nome: "Gravitação Universal e Leis de Kepler",
+              detalhes: "1ª Lei (órbitas elípticas); 2ª Lei (áreas iguais em tempos iguais, mais rápido no periélio); 3ª Lei (T²/R³ = K); Lei de Newton F = GMm/d².",
+              bizu: "💡 2ª e 3ª Leis de Kepler Desvendadas: Pela 2ª Lei (Lei das Áreas), a velocidade de translação do planeta é MÁXIMA no PERIÉLIO (ponto mais perto do Sol) e MÍNIMA no AFÉLIO (ponto mais afastado). Pela 3ª Lei, quanto mais distante o planeta estiver do Sol, maior será o seu ano (período de revolução): T²/R³ = constante."
+            }
+          ]
+        },
+        {
+          id: "fis-fluidos",
+          titulo: "3. Hidrostática",
+          topicos: [
+            {
+              id: "fis-flu-01",
+              nome: "Pressão e Teorema de Stevin",
+              detalhes: "Densidade d = m/V; Pressão P = F/A; Pressão hidrostática: P = Pₐₜₘ + d g h; Vasos comunicantes: d₁ h₁ = d₂ h₂.",
+              bizu: "🎯 Teorema de Stevin na Prática: Pontos situados na mesma linha horizontal em um mesmo líquido homogêneo em repouso suportam RIGOROSAMENTE A MESMA PRESSÃO! A cada 10 metros de profundidade na água, a pressão hidrostática aumenta em aproximadamente 1 atm. Em vasos comunicantes com líquidos imiscíveis: o líquido de maior densidade fica em baixo e tem menor altura (\\\\d₁ h₁ = d₂ h₂)."
+            },
+            {
+              id: "fis-flu-02",
+              nome: "Princípio de Pascal e Prensa Hidráulica",
+              detalhes: "Acréscimo de pressão transmite-se integralmente; Prensa hidráulica: F₁/A₁ = F₂/A₂.",
+              bizu: "💡 Princípio de Pascal (Multiplicação de Força): O acréscimo de pressão aplicado em um ponto de um líquido incompressível transmite-se integralmente a todos os pontos: F₁/A₁ = F₂/A₂. Se a área do êmbolo maior for 10 vezes maior, a força gerada será 10 vezes maior! Contudo, o volume deslocado e o trabalho mecânico realizado são perfeitamente iguais (F₁ d₁ = F₂ d₂)."
+            },
+            {
+              id: "fis-flu-03",
+              nome: "Princípio de Arquimedes (Empuxo)",
+              detalhes: "Empuxo E = dlíquido \\· Vsubₘₑrsₒ \\· g; Flutuação (P = E); Peso aparente Pₐₚₐrₑₙₜₑ = Prₑₐl - E.",
+              bizu: "⚠️ O Erro nº 1 em Concurso Militar: Na fórmula do Empuxo (E = dlíquᵢdₒ \\· Vsubₘₑrsₒ \\· g), a densidade utilizada é SEMPRE a do LÍQUIDO onde o corpo está mergulhado, NUNCA a densidade do próprio corpo! Quando um corpo flutua em equilíbrio estático na superfície, o Empuxo é exatamente igual ao Peso do corpo (P = E)."
+            }
+          ]
+        },
+        {
+          id: "fis-termo",
+          titulo: "4. Termologia, Gases e Termodinâmica",
+          topicos: [
+            {
+              id: "fis-ter-01",
+              nome: "Escalas Termométricas e Dilatação Térmica",
+              detalhes: "Conversão: C/5 = F-32/9 = K-273/5; Variação: Δ C = Δ K = \\Δ F/1,8; Dilatação: Δ L = L₀ \\α Δ T.",
+              bizu: "🎯 Variação vs. Temperatura Pontual: Para converter temperaturas use C/5 = F-32/9. Mas para converter VARIAÇÃO de temperatura (Δ T): uma variação de 1^\\°C equivale a uma variação de 1 K e a uma variação de 1,8^\\°F! Comportamento anômalo da água: entre 0^\\°C e 4^\\°C, ao ser aquecida ela CONTRAI (seu volume diminui e atinge densidade máxima a 4^\\°C)."
+            },
+            {
+              id: "fis-ter-02",
+              nome: "Calorimetria e Mudanças de Fase",
+              detalhes: "Calor sensível Q = mcΔ T; Calor latente Q = mL; Equilíbrio térmico em sistemas isolados \\Σ Q = 0.",
+              bizu: "💡 Calor Sensível vs. Calor Latente: Use calor sensível (Q = m c Δ T) quando houver VARIAÇÃO de temperatura sem mudança de estado físico. Use calor latente (Q = m L) durante a MUDANÇA DE FASE. Lembre-se: durante a mudança de estado de uma substância pura a pressão constante, a temperatura permanece RIGOROSAMENTE CONSTANTE!"
+            },
+            {
+              id: "fis-ter-03",
+              nome: "Processos de Propagação do Calor",
+              detalhes: "Condução (de molécula a molécula, em sólidos); Convecção (correntes em fluidos); Irradiação (ondas eletromagnéticas no vácuo).",
+              bizu: "🎯 Onde Ocorre Cada Processo: 1) CONDUÇÃO: de átomo a átomo por vibração, típica de corpos SÓLIDOS (metais). 2) CONVECÇÃO: transporte de matéria por correntes de fluidos quentes que sobem e frios que descem; só ocorre em LÍQUIDOS e GASES (nunca no vácuo nem em sólidos). 3) IRRADIAÇÃO: propaga-se por ondas eletromagnéticas (radiação infravermelha); é a ÚNICA que se propaga através do VÁCUO!"
+            },
+            {
+              id: "fis-ter-04",
+              nome: "Gases Ideais e 1ª Lei da Termodinâmica",
+              detalhes: "Equação de Clapeyron: PV = nRT; P₁ V₁/T₁ = P₂ V₂/T₂; 1ª Lei: Δ U = Q - W; Trabalho isobárico W = PΔ V.",
+              bizu: "⚠️ A Temperatura em Gases DEVE Ser em KELVIN: T(K) = T(^\\°C) + 273. 1ª Lei da Termodinâmica: Δ U = Q - W. Em transformação ISOTÉRMICA (temperatura constante, Δ T = 0), a variação de energia interna é nula (Δ U = 0 \\⇒ Q = W). Em transformação ADIABÁTICA (sem troca de calor, Q = 0), Δ U = -W."
+            },
+            {
+              id: "fis-ter-05",
+              nome: "2ª Lei da Termodinâmica e Ciclo de Carnot",
+              detalhes: "Rendimento de máquina térmica \\eta = 1 - Qf/Qq; Rendimento máximo de Carnot \\etaCₐrₙₒₜ = 1 - Tf/Tq.",
+              bizu: "🚫 Rendimento de 100% é Impossível: Nenhuma máquina térmica real ou teórica operando em ciclos pode transformar integralmente todo o calor recebido em trabalho mecânico (Enunciado de Kelvin-Planck). O Ciclo de Carnot estabelece o rendimento MÁXIMO teórico possível: \\eta = 1 - Tf/Tq (com as temperaturas da fonte fria e quente expressas estritamente em Kelvin)!"
+            }
+          ]
+        },
+        {
+          id: "fis-ondas-optica",
+          titulo: "5. Oscilações, Ondas e Óptica",
+          topicos: [
+            {
+              id: "fis-ond-01",
+              nome: "Movimento Harmônico Simples (MHS)",
+              detalhes: "Pêndulo simples: T = 2π\\√(L/g); Massa-mola: T = 2π\\√(m/k); Velocidade e aceleração no MHS.",
+              bizu: "🎯 O Pêndulo Simples Não Liga para a Massa: A fórmula do período do pêndulo simples é T = 2π\\√(L/g). O período NÃO depende em hipótese alguma da massa do corpo suspenso nem da amplitude (para pequenas oscilações)! Depende apenas do comprimento da corda L e da gravidade g. Para o sistema massa-mola: T = 2π\\√(m/k)."
+            },
+            {
+              id: "fis-ond-02",
+              nome: "Ondulatória e Equação Fundamental",
+              detalhes: "Ondas mecânicas vs eletromagnéticas; transversais vs longitudinais; Equação: v = \\λ \\· f.",
+              bizu: "💡 A Frequência Nunca Muda na Refração: A equação fundamental é v = \\λ \\· f. A frequência f de uma onda depende EXCLUSIVAMENTE da fonte que a gerou; quando a onda muda de meio de propagação (refração), a frequência PERMANECE RIGOROSAMENTE A MESMA! O que varia é a velocidade de propagação v e o comprimento de onda \\λ."
+            },
+            {
+              id: "fis-ond-03",
+              nome: "Fenômenos Ondulatórios e Acústica",
+              detalhes: "Reflexão, refração, difração, polarização (apenas transversais!); Qualidades do som: altura (frequência), intensidade, timbre; Doppler.",
+              bizu: "⚠️ Pegadinha Sagrada de Ondas: O som é onda mecânica longitudinal: O SOM NUNCA PODE SER POLARIZADO (a polarização só é possível em ondas transversais, como a luz!). Qualidades fisiológicas do som: ALTURA = frequência (som alto é agudo; baixo é grave); INTENSIDADE = volume/amplitude; TIMBRE = formato da onda/identidade do instrumento. Efeito Doppler: na aproximação a frequência aparente é mais alta (som mais agudo)."
+            },
+            {
+              id: "fis-ond-04",
+              nome: "Óptica: Espelhos Planos e Esféricos",
+              detalhes: "Espelho plano (imagem virtual, direita e enantiomorfa); Gauss: \\1/f = \\1/p + \\1/p'; Aumento A = -p'/p = f/f-p.",
+              bizu: "🎯 A Imagem Universal do Espelho Convexo: Um espelho esférico CONVEXO (como os de retrovisor e segurança) forma SEMPRE, para qualquer objeto real, uma imagem com as 3 características invariáveis: VIRTUAL, DIREITA e MENOR! Espelho côncavo com objeto além do centro de curvatura: imagem real, invertida e menor."
+            },
+            {
+              id: "fis-ond-05",
+              nome: "Refração, Reflexão Total e Lentes",
+              detalhes: "Snell-Descartes: n₁senθ₁ = n₂senθ₂; Ângulo limite: sen L = \\frac{nₘₑₙₒr}{nₘₐᵢₒr}; Vergência V = 1/f (Graus).",
+              bizu: "💡 As Duas Condições da Reflexão Total da Luz: 1) O raio luminoso deve se propagar OBRIGATORIAMENTE do meio MAIS refringente para o meio MENOS refringente (ex: da água para o ar). 2) O ângulo de incidência deve ser estritamente maior do que o ângulo limite: sen L = \\frac{n\\ₘₑₙₒr}{n\\ₘₐᵢₒr}. É o princípio do funcionamento da fibra óptica!"
+            },
+            {
+              id: "fis-ond-06",
+              nome: "Olho Humano e Defeitos da Visão",
+              detalhes: "Miopia (globo ocular alongado, foco antes da retina \\→ lentes DIVERGENTES); Hipermetropia (foco atrás da retina \\→ CONVERGENTES); Presbiopia.",
+              bizu: "🎯 Mnemônico de Correção Visual: 'M-D e H-C': MIOPIA corrige-se com lente DIVERGENTE (na miopia o olho é longo e a imagem se forma antes da retina). HIPERMETROPIA corrige-se com lente CONVERGENTE (na hipermetropia o olho é curto e a imagem forma-se atrás da retina). Presbiopia (vista cansada) também usa lentes convergentes."
+            }
+          ]
+        },
+        {
+          id: "fis-eletro",
+          titulo: "6. Eletricidade e Magnetismo",
+          topicos: [
+            {
+              id: "fis-ele-01",
+              nome: "Eletrostática: Carga, Eletrização e Lei de Coulomb",
+              detalhes: "Quantização da carga: Q = n \\· e (e = 1,6 \\× 10⁻¹⁹ C); Eletrização por atrito, contato e indução; Força: F = k₀ \\|q₁ q₂|/d².",
+              bizu: "💡 Lei do Inverso do Quadrado da Distância: Na Lei de Coulomb (F = k₀ \\|q₁ q₂|/d²), a força varia com o quadrado da distância! Se você DOBRAR a distância (2d), a força fica 4 vezes menor (1/4). Se você TRIPLICAR a distância (3d), a força fica 9 vezes menor (1/9). Na eletrização por contato entre corpos condutores idênticos, a carga final de cada um é a média aritmética simples!"
+            },
+            {
+              id: "fis-ele-02",
+              nome: "Campo Elétrico e Potencial Elétrico",
+              detalhes: "Vetor campo E = k₀ \\|Q|/d²; Campo uniforme U = E \\· d; Trabalho elétrico W = q(V_A - V_B); Condutor em equilíbrio (Eᵢₙₜ = 0).",
+              bizu: "🎯 Blindagem Eletrostática (Gaiola de Faraday): No interior de qualquer condutor metálico em equilíbrio eletrostático (mesmo que seja oco), o campo elétrico interno é RIGOROSAMENTE NULO (E\\ᵢₙₜₑrₙₒ = 0) e o potencial elétrico é constante! É por isso que o interior de um avião ou carro é seguro durante tempestades de raios."
+            },
+            {
+              id: "fis-ele-03",
+              nome: "Capacitores e Associação",
+              detalhes: "Capacitância C = Q/U; Placas planas C = \\ε₀ A/d; Energia E = \\½CU²; Série: \\frac{1}{Cₑq} = \\Σ \\1/Cᵢ; Paralelo: Cₑq = \\Σ Cᵢ.",
+              bizu: "⚠️ Capacitores Funcionam ao Contrário dos Resistores: Em associação de capacitores em PARALELO, basta SOMAR as capacitâncias diretamente: Cₑq = C₁ + C₂. Em associação em SÉRIE, somam-se os inversos: \\frac{1}{Cₑq} = \\1/C₁ + \\1/C₂ (dois capacitores iguais em série equivalem a C/2)!"
+            },
+            {
+              id: "fis-ele-04",
+              nome: "Eletrodinâmica: Leis de Ohm e Potência",
+              detalhes: "1ª Lei: U = R \\· i; 2ª Lei: R = d L/A; Potência elétrica: P = U \\· i = R \\· i² = U²/R; Energia em kWh: E = P \\· Δ t.",
+              bizu: "🎯 2ª Lei de Ohm e a Espessura do Fio: R = d L/A. A resistência é inversamente proporcional à área transversal A do fio. Se você dobrar o DIÂMETRO de um fio cilíndrico, o seu raio dobra, sua área quadruplica (A = π r²) e a resistência elétrica cai para a QUARTA PARTE (R/4)! Fórmulas de potência: P = U \\· i = R \\· i² = U²/R."
+            },
+            {
+              id: "fis-ele-05",
+              nome: "Circuitos Elétricos e Associação de Resistores",
+              detalhes: "Série (mesma corrente i); Paralelo (mesma voltagem U); Curto-circuito; Ponte de Wheatstone em equilíbrio (R₁ R₃ = R₂ R₄).",
+              bizu: "💡 Propriedades Automáticas de Resistores: 1) Em SÉRIE: a corrente elétrica i é idêntica em todos e a resistência equivalente é a soma direta. 2) Em PARALELO: a ddp U é rigorosamente igual em todos os ramos. Dois resistores em paralelo: Rₑq = R₁ \\· R₂/R₁ + R₂. Dois resistores idênticos R em paralelo equivalem a R/2. Na Ponte de Wheatstone em equilíbrio, o produto cruzado é igual (R₁ R₃ = R₂ R₄)."
+            },
+            {
+              id: "fis-ele-06",
+              nome: "Geradores, Receptores e Medidores Ideais",
+              detalhes: "Gerador real: U = fem (ε) - r \\· i; Corrente de curto i꜀꜀ = fem (ε)/r; Amperímetro ideal (R=0 em série); Voltímetro ideal (R=\\∞ em paralelo).",
+              bizu: "⚠️ Como Ligar os Medidores sem Queimar a Questão: 1) O AMPERÍMETRO ideal possui resistência nula (R = 0) e DEVE ser ligado SEMPRE em SÉRIE com o circuito (se ligar em paralelo causa curto-circuito!). 2) O VOLTÍMETRO ideal possui resistência infinita (R = \\∞) e DEVE ser ligado SEMPRE em PARALELO (se ligar em série interrompe a passagem da corrente)."
+            },
+            {
+              id: "fis-ele-07",
+              nome: "Campo Magnético e Força Magnética",
+              detalhes: "Fio retilíneo B = \\\\μ₀ i/2π d; Espira B = \\\\μ₀ i/2R; Força sobre carga em movimento: Fₘ = |q| v B senθ (Regra da Mão Direita).",
+              bizu: "🎯 Regra da Mão Direita ('Faça Meu Bem' ou 'Força, Campo e Velocidade'): Dedão aponta a velocidade v; dedos esticados apontam o campo magnético B; palma empurra a força magnética Fₘ (para carga positiva; para negativa use as costas da mão). ⚠️ Se a carga for lançada paralelamente às linhas de campo (θ = 0^\\° ou 180^\\°), senθ = 0, a força magnética é ZERO e o movimento é MRU!"
+            },
+            {
+              id: "fis-ele-08",
+              nome: "Indução Eletromagnética e Transformadores",
+              detalhes: "Fluxo magnético \\Φ = B \\· A \\· cosθ; Lei de Faraday-Neumann e Lei de Lenz; Transformadores ideais: U₁/U₂ = N₁/N₂ = i₂/i₁.",
+              bizu: "💡 Transformador Só Funciona com Corrente Alternada (CA): O transformador baseia-se na variação contínua do fluxo magnético (Lei de Faraday-Neumann). Se você ligar um transformador a uma bateria de corrente contínua (CC), a tensão induzida na saída é ZERO! Relação do transformador ideal: U₁/U₂ = N₁/N₂ = i₂/i₁ (onde a tensão sobe, a corrente desce proporcionalmente)."
+            }
+          ]
+        },
+        {
+          id: "fis-moderna",
+          titulo: "7. Matéria e Radiação (Física Moderna)",
+          topicos: [
+            {
+              id: "fis-mod-01",
+              nome: "Modelos Atômicos e Espectro Eletromagnético",
+              detalhes: "Evolução: Dalton \\→ Thomson \\→ Rutherford \\→ Bohr (órbitas quantizadas e emissão de fótons E = hf); Espectro da luz.",
+              bizu: "🎯 Os Postulados do Modelo de Bohr: O elétron orbita o núcleo apenas em níveis de energia quantizados e estacionários. Quando o elétron SALTA de uma órbita interna para uma mais externa, ele ABSORVE um fóton de energia. Quando o elétron CAI de uma órbita mais externa para uma interna, ele EMITE um fóton de radiação com energia E = h f."
+            },
+            {
+              id: "fis-mod-02",
+              nome: "Efeito Fotoelétrico e Fótons",
+              detalhes: "Teoria de Einstein dos fótons; Frequência de corte; Equação: Efₒₜₒₙ = W₀ + E꜀ᵢₙ,ₘₐₓ.",
+              bizu: "⚠️ Pegadinha Conceitual de Física Moderna: Aumentar o BRILHO (intensidade luminosa) da luz incidente arranca MAIS elétrons por segundo (maior corrente), mas NÃO AUMENTA a velocidade nem a energia cinética máxima de nenhum deles! A energia cinética máxima dos fotoelétrons arrancados depende EXCLUSIVAMENTE da FREQUÊNCIA da luz incidente (E꜀ᵢₙ,ₘₐₓ = hf - W₀)."
+            },
+            {
+              id: "fis-mod-03",
+              nome: "Radioatividade e Leis das Transformações Nucleares",
+              detalhes: "Radiação alfa (\\α = ⁴₂He), beta (\\β = ⁰₋₁e) e gama (\\γ eletromagnética); Meia-vida: M = M₀/2ˣ.",
+              bizu: "💡 As Duas Ordens que Você Precisa Decorar: 1) PODER DE PENETRAÇÃO: Gama > Beta > Alfa (a emissão Gama atravessa chumbo; a partícula Alfa é barrada por uma folha de papel). 2) PODER DE IONIZAÇÃO: Alfa > Beta > Gama (a partícula Alfa possui maior massa e carga +2, arrancando elétrons com mais violência). Na emissão alfa, a massa atômica diminui em 4 e o número atômico diminui em 2."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  provasOficiais: [
+    { id: "eear-2026-2", nome: "EEAR CFS 2/2026", ano: 2026, semestre: 2 },
+    { id: "eear-2026-1", nome: "EEAR CFS 1/2026", ano: 2026, semestre: 1 },
+    { id: "eear-2025-2", nome: "EEAR CFS 2/2025", ano: 2025, semestre: 2 },
+    { id: "eear-2025-1", nome: "EEAR CFS 1/2025", ano: 2025, semestre: 1 },
+    { id: "eear-2024-2", nome: "EEAR CFS 2/2024", ano: 2024, semestre: 2 },
+    { id: "eear-2024-1", nome: "EEAR CFS 1/2024", ano: 2024, semestre: 1 },
+    { id: "eear-2023-2", nome: "EEAR CFS 2/2023", ano: 2023, semestre: 2 },
+    { id: "eear-2023-1", nome: "EEAR CFS 1/2023", ano: 2023, semestre: 1 },
+    { id: "eear-2022-2", nome: "EEAR CFS 2/2022", ano: 2022, semestre: 2 },
+    { id: "eear-2022-1", nome: "EEAR CFS 1/2022", ano: 2022, semestre: 1 },
+    { id: "eear-2021-2", nome: "EEAR CFS 2/2021", ano: 2021, semestre: 2 },
+    { id: "eear-2021-1", nome: "EEAR CFS 1/2021", ano: 2021, semestre: 1 },
+    { id: "eear-2020-2", nome: "EEAR CFS 2/2020", ano: 2020, semestre: 2 },
+    { id: "eear-2020-1", nome: "EEAR CFS 1/2020", ano: 2020, semestre: 1 },
+    { id: "eear-2019-2", nome: "EEAR CFS 2/2019", ano: 2019, semestre: 2 },
+    { id: "eear-2019-1", nome: "EEAR CFS 1/2019", ano: 2019, semestre: 1 },
+    { id: "eear-2018-2", nome: "EEAR CFS 2/2018", ano: 2018, semestre: 2 },
+    { id: "eear-2018-1", nome: "EEAR CFS 1/2018", ano: 2018, semestre: 1 },
+    { id: "eear-2017-2", nome: "EEAR CFS 2/2017", ano: 2017, semestre: 2 },
+    { id: "eear-2017-1", nome: "EEAR CFS 1/2017", ano: 2017, semestre: 1 }
+  ]
+};
+
+  </script>
+  <script>
+// ==========================================================================
+// EEAR CHECKLIST — Core Application Logic & State Engine
+// ==========================================================================
+
+const STORAGE_KEY = 'eear_checklist_app_state_v1';
+
+// Initial state template
+const defaultState = {
+  checks: {}, // [topicId]: { T: false, R: false, FX: false, EE: false, R1: false, R2: false, R3: false, score: '', notes: '' }
+  examScores: {}, // [examId]: { pt: '', ing: '', mat: '', fis: '', data: '', tempo: '' }
+  cadernoErros: [], // Array of error entries: { id, data, materia, prova, tipo, enunciado, bizu, resolvido }
+  currentTab: 'dashboard',
+  englishFilter: 'todos', // 'todos', 'basico', 'bct'
+  searchQuery: '',
+  errorSubjectFilter: 'todas', // 'todas', 'Português', 'Inglês', 'Matemática', 'Física'
+  errorStatusFilter: 'todos', // 'todos', 'pendente', 'resolvido'
+  errorSearchQuery: '',
+  completedSessionsToday: 0,
+  lastSessionDate: new Date().toISOString().slice(0, 10)
+};
+
+let appState = loadState();
+
+// Check if new day to reset daily completed sessions
+const todayStr = new Date().toISOString().slice(0, 10);
+if (appState.lastSessionDate !== todayStr) {
+  appState.completedSessionsToday = 0;
+  appState.lastSessionDate = todayStr;
+  saveState();
+}
+
+// Tactical Timer / Study Cockpit State
+const TIMER_PRESETS = {
+  pomodoro: { name: 'Pomodoro Clássico', icon: '🍅', seconds: 25 * 60, isCountDown: true, desc: 'Teoria, resumos e videoaulas' },
+  sprint: { name: 'Sprint Questão EEAR', icon: '⚡', seconds: 160, isCountDown: true, desc: '1 questão em 2m40s (ritmo real da prova)' },
+  bloco50: { name: 'Bloco de Treino', icon: '🎯', seconds: 50 * 60, isCountDown: true, desc: 'Bateria de 15 a 25 exercícios de fixação' },
+  simulado: { name: 'Simulado Prova Real', icon: '✈️', seconds: 260 * 60, isCountDown: true, desc: '4h20min oficiais de prova (96 questões)' },
+  pausa5: { name: 'Pausa Tática', icon: '☕', seconds: 5 * 60, isCountDown: true, desc: 'Descanso rápido e hidratação' },
+  stopwatch: { name: 'Cronômetro Aberto', icon: '⏱️', seconds: 0, isCountDown: false, desc: 'Tempo líquido progressivo' }
+};
+
+let timerInterval = null;
+let currentPresetKey = 'pomodoro';
+let timerTotalSeconds = TIMER_PRESETS.pomodoro.seconds;
+let timerSeconds = TIMER_PRESETS.pomodoro.seconds;
+let isTimerRunning = false;
+let timerSoundEnabled = true;
+let isCockpitExpanded = false;
+
+// ==========================================================================
+// State Storage & Auto-save (localStorage)
+// ==========================================================================
+
+function loadState() {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (raw) {
+      const parsed = JSON.parse(raw);
+      return { ...defaultState, ...parsed };
+    }
+  } catch (e) {
+    console.error('Falha ao carregar estado do localStorage:', e);
+  }
+  return { ...defaultState };
+}
+
+function saveState(showNotification = false) {
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(appState));
+    updateGlobalMetrics();
+    if (showNotification) {
+      showToast('✓ Salvo com sucesso no seu navegador!');
+    }
+  } catch (e) {
+    console.error('Erro ao salvar no localStorage:', e);
+    showToast('⚠️ Erro ao salvar dados no navegador.');
+  }
+}
+
+function showToast(message) {
+  const toast = document.getElementById('toastMsg');
+  if (!toast) return;
+  toast.innerText = message;
+  toast.classList.add('show');
+  setTimeout(() => {
+    toast.classList.remove('show');
+  }, 2400);
+}
+
+// ==========================================================================
+// Backup System: Export, Import JSON & Reset
+// ==========================================================================
+
+function escapeHtml(str) {
+  if (str === null || str === undefined) return '';
+  return String(str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
+function exportBackup() {
+  const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(appState, null, 2));
+  const downloadAnchor = document.createElement('a');
+  const date = new Date().toISOString().slice(0, 10);
+  downloadAnchor.setAttribute("href", dataStr);
+  downloadAnchor.setAttribute("download", `eear_checklist_backup_${date}.json`);
+  document.body.appendChild(downloadAnchor);
+  downloadAnchor.click();
+  downloadAnchor.remove();
+  showToast('✓ Backup exportado com sucesso! Guarde este arquivo em segurança.');
+}
+
+function importBackup(event) {
+  const file = event.target.files[0];
+  if (!file) return;
+
+  const reader = new FileReader();
+  reader.onload = function(e) {
+    try {
+      const imported = JSON.parse(e.target.result);
+      if (imported && typeof imported === 'object') {
+        appState = { ...defaultState, ...imported };
+        saveState();
+        renderActiveView();
+        showToast('✓ Backup importado com sucesso! Todos os dados foram restaurados.');
+      } else {
+        alert('Arquivo de backup inválido.');
+      }
+    } catch (err) {
+      alert('Erro ao processar o arquivo de backup: ' + err.message);
+    }
+    event.target.value = '';
+  };
+  reader.readAsText(file);
+}
+
+function resetAllData() {
+  const confirmed = confirm('⚠️ ATENÇÃO: Deseja realmente zerar todo o seu checklist?\n\nIsso apagará todas as marcações de teoria, questões, notas e simulados salvos neste navegador.\n\nDica: Se quiser guardar seu progresso atual, use o botão "Exportar Backup (.JSON)" antes de resetar.');
+  if (confirmed) {
+    localStorage.removeItem(STORAGE_KEY);
+    appState = { ...defaultState };
+    saveState();
+    renderActiveView();
+    showToast('✓ Checklist reiniciado do zero com sucesso!');
+  }
+}
+
+// ==========================================================================
+// Metrics Calculation
+// ==========================================================================
+
+function calculateProgress() {
+  let totalTopics = 0;
+  let completedTopics = 0;
+  let totalChecks = 0;
+  let doneChecks = 0;
+
+  const disciplineStats = {};
+
+  EEAR_DATA.disciplinas.forEach(disc => {
+    let discTotal = 0;
+    let discDone = 0;
+
+    disc.modulos.forEach(mod => {
+      mod.topicos.forEach(topico => {
+        totalTopics++;
+        discTotal++;
+
+        const topicState = appState.checks[topico.id] || {};
+        
+        ['T', 'R', 'FX', 'EE'].forEach(key => {
+          totalChecks++;
+          if (topicState[key]) {
+            doneChecks++;
+          }
+        });
+
+        // Considered completed if at least T is done and FX or EE is done
+        if (topicState.T && (topicState.FX || topicState.EE)) {
+          completedTopics++;
+          discDone++;
+        }
+      });
+    });
+
+    disciplineStats[disc.id] = {
+      total: discTotal,
+      done: discDone,
+      percent: discTotal > 0 ? Math.round((discDone / discTotal) * 100) : 0
+    };
+  });
+
+  const overallPercent = totalTopics > 0 ? Math.round((completedTopics / totalTopics) * 100) : 0;
+  const checksPercent = totalChecks > 0 ? Math.round((doneChecks / totalChecks) * 100) : 0;
+
+  return {
+    totalTopics,
+    completedTopics,
+    overallPercent,
+    checksPercent,
+    disciplineStats
+  };
+}
+
+function updateGlobalMetrics() {
+  const metrics = calculateProgress();
+  
+  const heroProgress = document.getElementById('heroOverallProgress');
+  const heroProgressBar = document.getElementById('heroProgressBar');
+  const heroCompletedCount = document.getElementById('heroCompletedCount');
+  const heroErrorsCount = document.getElementById('heroErrorsCount');
+  const heroExamsDone = document.getElementById('heroExamsDone');
+
+  if (heroProgress) heroProgress.innerText = `${metrics.overallPercent}%`;
+  if (heroProgressBar) heroProgressBar.style.width = `${metrics.overallPercent}%`;
+  if (heroCompletedCount) heroCompletedCount.innerText = `${metrics.completedTopics} / ${metrics.totalTopics}`;
+  
+  if (heroErrorsCount) {
+    heroErrorsCount.innerText = appState.cadernoErros.length;
+  }
+
+  if (heroExamsDone) {
+    const examsCount = Object.keys(appState.examScores).filter(k => {
+      const s = appState.examScores[k];
+      return s && (s.pt || s.mat || s.fis || s.ing);
+    }).length;
+    heroExamsDone.innerText = examsCount;
+  }
+
+  // Update tabs badges
+  EEAR_DATA.disciplinas.forEach(disc => {
+    const badge = document.getElementById(`badge-${disc.id}`);
+    if (badge && metrics.disciplineStats[disc.id]) {
+      badge.innerText = `${metrics.disciplineStats[disc.id].percent}%`;
+    }
+  });
+}
+
+// ==========================================================================
+// Rendering Engine
+// ==========================================================================
+
+function switchTab(tabId) {
+  appState.currentTab = tabId;
+  
+  document.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.tab === tabId);
+  });
+
+  renderActiveView();
+}
+
+function renderActiveView() {
+  const container = document.getElementById('mainContentArea');
+  if (!container) return;
+
+  const tab = appState.currentTab;
+
+  if (tab === 'dashboard') {
+    renderDashboard(container);
+  } else if (tab === 'simulados') {
+    renderSimuladosView(container);
+  } else if (tab === 'erros') {
+    renderCadernoErrosView(container);
+  } else if (tab === 'guia') {
+    renderGuiaView(container);
+  } else {
+    const disc = EEAR_DATA.disciplinas.find(d => d.id === tab);
+    if (disc) {
+      renderSubjectView(container, disc);
+    }
+  }
+
+  updateGlobalMetrics();
+}
+
+// ==========================================================================
+// View: Dashboard
+// ==========================================================================
+
+function renderDashboard(container) {
+  const metrics = calculateProgress();
+
+  let html = `
+    <div class="module-container">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin-bottom: 24px;">
+  `;
+
+  EEAR_DATA.disciplinas.forEach(disc => {
+    const stat = metrics.disciplineStats[disc.id] || { total: 0, done: 0, percent: 0 };
+    html += `
+      <div class="metric-card" style="cursor: pointer;" onclick="switchTab('${disc.id}')">
+        <div class="metric-header">
+          <span class="metric-title" style="color: ${disc.cor}; font-weight: 700;">${disc.nome}</span>
+          <span class="metric-icon">✈️</span>
+        </div>
+        <div class="metric-value-group">
+          <span class="metric-value" style="color: ${disc.cor};">${stat.percent}%</span>
+          <span class="metric-subtext">concluído (${stat.done}/${stat.total} tópicos)</span>
+        </div>
+        <div class="progress-track">
+          <div class="progress-fill" style="width: ${stat.percent}%; background: ${disc.cor};"></div>
+        </div>
+      </div>
+    `;
+  });
+
+  html += `
+      </div>
+
+      <!-- Tactical Study Advice & Rules -->
+      <div class="metric-card" style="margin-bottom: 24px; border-left: 4px solid var(--accent-cyan);">
+        <h3 style="font-size: 1.15rem; font-weight: 800; color: #fff; margin-bottom: 8px;">
+          🎯 Plano de Combate — 260 Minutos da EEAR
+        </h3>
+        <p style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.6; margin-bottom: 14px;">
+          A prova da EEAR possui <strong>96 questões</strong> (24 de cada disciplina) para serem resolvidas em <strong>4h20min</strong>. 
+          Isso dá uma média estrita de <strong>~2,7 minutos por questão</strong>! Fique atento às três passadas:
+        </p>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px;">
+          <div style="background: rgba(16, 185, 129, 0.08); border: 1px solid rgba(16, 185, 129, 0.2); padding: 12px 14px; border-radius: var(--radius-sm);">
+            <strong style="color: #34d399;">1ª Passada (Fáceis):</strong>
+            <p style="font-size: 0.82rem; color: var(--text-secondary); margin-top: 4px;">Bateu o olho e sabe a fórmula ou regra? Resolva na hora e marque ponto!</p>
+          </div>
+          <div style="background: rgba(251, 191, 36, 0.08); border: 1px solid rgba(251, 191, 36, 0.2); padding: 12px 14px; border-radius: var(--radius-sm);">
+            <strong style="color: #fbbf24;">2ª Passada (Médias):</strong>
+            <p style="font-size: 0.82rem; color: var(--text-secondary); margin-top: 4px;">Sabe o assunto mas o cálculo é demorado? Circule a questão e volte depois.</p>
+          </div>
+          <div style="background: rgba(244, 63, 94, 0.08); border: 1px solid rgba(244, 63, 94, 0.2); padding: 12px 14px; border-radius: var(--radius-sm);">
+            <strong style="color: #fb7185;">3ª Passada (Difíceis):</strong>
+            <p style="font-size: 0.82rem; color: var(--text-secondary); margin-top: 4px;">Não trave! Deixe para o final, elimine as absurdas e faça um chute consciente.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  `;
+
+  container.innerHTML = html;
+}
+
+// ==========================================================================
+// View: Disciplinas (Português, Inglês, Matemática, Física)
+// ==========================================================================
+
+function renderSubjectView(container, disc) {
+  let html = `
+    <div class="subject-header" style="margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;">
+      <div>
+        <h2 style="font-size: 1.4rem; font-weight: 800; color: #fff; display: flex; align-items: center; gap: 10px;">
+          <span style="color: ${disc.cor};">${disc.nome}</span>
+          <span style="font-size: 0.8rem; background: rgba(255,255,255,0.06); padding: 3px 10px; border-radius: var(--radius-full); font-family: 'JetBrains Mono'; color: var(--text-secondary);">24 Questões</span>
+        </h2>
+        <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 4px;">${disc.peso}</p>
+      </div>
+
+      ${disc.id === 'ingles' ? `
+        <div style="display: flex; gap: 8px; background: var(--bg-surface); padding: 4px; border-radius: var(--radius-full); border: 1px solid var(--border-color);">
+          <button class="btn-pill ${appState.englishFilter === 'todos' ? 'btn-pill-primary' : ''}" style="padding: 6px 14px;" onclick="setEnglishFilter('todos')">Todos</button>
+          <button class="btn-pill ${appState.englishFilter === 'basico' ? 'btn-pill-primary' : ''}" style="padding: 6px 14px;" onclick="setEnglishFilter('basico')">Básico (Demais)</button>
+          <button class="btn-pill ${appState.englishFilter === 'bct' ? 'btn-pill-primary' : ''}" style="padding: 6px 14px;" onclick="setEnglishFilter('bct')">Intermediário (BCT)</button>
+        </div>
+      ` : ''}
+    </div>
+  `;
+
+  const query = appState.searchQuery.toLowerCase().trim();
+
+  disc.modulos.forEach(modulo => {
+    if (disc.id === 'ingles') {
+      if (appState.englishFilter === 'basico' && modulo.id === 'ing-bct') return;
+      if (appState.englishFilter === 'bct' && modulo.id === 'ing-basico') return;
+    }
+
+    const filteredTopics = modulo.topicos.filter(t => {
+      if (!query) return true;
+      return t.nome.toLowerCase().includes(query) || 
+             t.detalhes.toLowerCase().includes(query) || 
+             t.bizu.toLowerCase().includes(query);
+    });
+
+    if (filteredTopics.length === 0) return;
+
+    // Calculate module-level completion
+    const modCompleted = modulo.topicos.filter(t => {
+      const s = appState.checks[t.id] || {};
+      return s.T && (s.FX || s.EE);
+    }).length;
+    const modPercent = modulo.topicos.length > 0 ? Math.round((modCompleted / modulo.topicos.length) * 100) : 0;
+
+    html += `
+      <div class="module-container">
+        <div class="module-header">
+          <div class="module-title-group">
+            <span style="color: ${disc.cor}; font-size: 1.1rem;">📘</span>
+            <span class="module-title">${modulo.titulo}</span>
+          </div>
+          
+          <div class="module-progress-wrapper">
+            <span style="font-size: 0.75rem; color: var(--text-secondary); font-family: 'JetBrains Mono';">${modCompleted}/${modulo.topicos.length} (${modPercent}%)</span>
+            <div class="module-mini-track">
+              <div class="module-mini-fill" style="width: ${modPercent}%; background: ${disc.cor};"></div>
+            </div>
+            <span class="module-badge">${filteredTopics.length} tópicos</span>
+          </div>
+        </div>
+
+        <div class="topics-wrapper">
+    `;
+
+    filteredTopics.forEach(topic => {
+      const state = appState.checks[topic.id] || {
+        T: false, R: false, FX: false, EE: false,
+        R1: false, R2: false, R3: false,
+        score: '', notes: ''
+      };
+
+      const isAllChecked = state.T && state.R && state.FX && state.EE;
+      const isCompleted = state.T && (state.FX || state.EE);
+      const isStarted = state.T || state.R || state.FX || state.EE;
+
+      let statusBadge = '<span class="topic-status-badge status-pendente">⚪ Pendente</span>';
+      if (isAllChecked) {
+        statusBadge = '<span class="topic-status-badge status-dominado">🌟 Dominado</span>';
+      } else if (isCompleted) {
+        statusBadge = '<span class="topic-status-badge status-dominado">✓ Concluído</span>';
+      } else if (isStarted) {
+        statusBadge = '<span class="topic-status-badge status-andamento">⏳ Em Estudo</span>';
+      }
+
+      html += `
+        <div class="topic-card ${isCompleted ? 'completed' : ''}" id="card-${topic.id}">
+          <div class="topic-main-row">
+            <div class="topic-info">
+              <div class="topic-name">
+                ${topic.nome}
+                ${statusBadge}
+              </div>
+              <div class="topic-description">${topic.detalhes}</div>
+            </div>
+
+            <!-- Checkbox Matrix & 1-Click Quick Complete Action -->
+            <div class="checkbox-matrix">
+              <!-- Quick 1-Click Toggle -->
+              <button class="btn-quick-toggle ${isAllChecked ? 'completed-all' : ''}" 
+                onclick="toggleTopicAll('${topic.id}')" 
+                title="Clique aqui para marcar ou desmarcar todas as etapas com 1 único clique!">
+                ${isAllChecked ? '✓ Tópico Completo' : '⚡ Já Estudei Tudo'}
+              </button>
+
+              <label class="check-item ${state.T ? 'active-check' : ''}" title="Teoria e Videoaulas Estudadas">
+                <input type="checkbox" ${state.T ? 'checked' : ''} onchange="toggleCheck('${topic.id}', 'T', this.checked)">
+                Teoria (T)
+              </label>
+
+              <label class="check-item ${state.R ? 'active-check' : ''}" title="Resumo / Flashcards Feitos">
+                <input type="checkbox" ${state.R ? 'checked' : ''} onchange="toggleCheck('${topic.id}', 'R', this.checked)">
+                Resumo (R)
+              </label>
+
+              <label class="check-item ${state.FX ? 'active-check' : ''}" title="Exercícios de Fixação Resolvidos (20+ questões)">
+                <input type="checkbox" ${state.FX ? 'checked' : ''} onchange="toggleCheck('${topic.id}', 'FX', this.checked)">
+                Fixação (FX)
+              </label>
+
+              <label class="check-item ${state.EE ? 'active-check' : ''}" title="Questões Anteriores da Banca EEAR">
+                <input type="checkbox" ${state.EE ? 'checked' : ''} onchange="toggleCheck('${topic.id}', 'EE', this.checked)">
+                EEAR (EE)
+              </label>
+
+              <!-- Spaced Repetition R1, R2, R3 -->
+              <div class="revision-group" title="Revisões Espaçadas: 24h, 7 dias e 30 dias">
+                <span class="revision-pill ${state.R1 ? 'done' : ''}" onclick="toggleCheck('${topic.id}', 'R1', !${state.R1})">R1 (24h)</span>
+                <span class="revision-pill ${state.R2 ? 'done' : ''}" onclick="toggleCheck('${topic.id}', 'R2', !${state.R2})">R2 (7d)</span>
+                <span class="revision-pill ${state.R3 ? 'done' : ''}" onclick="toggleCheck('${topic.id}', 'R3', !${state.R3})">R3 (30d)</span>
+              </div>
+
+              <!-- Accuracy Score Input -->
+              <div class="score-badge" title="Percentual de Acerto nos Exercícios">
+                <input type="text" class="score-input" placeholder="0" value="${state.score || ''}" 
+                  onchange="updateTopicScore('${topic.id}', this.value)" maxlength="3">%
+              </div>
+            </div>
+          </div>
+
+          <!-- Bottom Bar: Bizu Button & Notes Drawer -->
+          <div class="topic-bottom-bar">
+            <div style="display: flex; gap: 8px;">
+              <button class="bizu-btn" onclick="toggleBizuBox('${topic.id}')">
+                💡 Bizu da Banca & Fórmulas
+              </button>
+              <button class="bizu-btn" style="color: var(--accent-cyan);" onclick="toggleNotesBox('${topic.id}')">
+                📝 Anotações Pessoais ${state.notes ? '•' : ''}
+              </button>
+            </div>
+            <span style="font-size: 0.72rem; color: var(--text-muted); font-family: 'JetBrains Mono';">ID: ${topic.id}</span>
+          </div>
+
+          <!-- Collapsible Bizu Box -->
+          <div class="bizu-box" id="bizu-${topic.id}">
+            <div class="bizu-header-tag">⚡ BIZU TÁTICO DA BANCA EEAR</div>
+            <div class="bizu-content">${topic.bizu}</div>
+          </div>
+
+          <!-- Collapsible Notes Box -->
+          <div class="topic-notes-drawer" id="notes-${topic.id}">
+            <textarea class="notes-textarea" placeholder="Escreva aqui suas observações pessoais, lembretes ou links de resumos sobre este tópico..." 
+              onchange="updateTopicNotes('${topic.id}', this.value)">${state.notes || ''}</textarea>
+          </div>
+        </div>
+      `;
+    });
+
+    html += `
+        </div>
+      </div>
+    `;
+  });
+
+  container.innerHTML = html;
+}
+
+function setEnglishFilter(val) {
+  appState.englishFilter = val;
+  renderActiveView();
+}
+
+function toggleCheck(topicId, key, value) {
+  if (!appState.checks[topicId]) {
+    appState.checks[topicId] = {
+      T: false, R: false, FX: false, EE: false,
+      R1: false, R2: false, R3: false,
+      score: '', notes: ''
+    };
+  }
+  appState.checks[topicId][key] = value;
+  saveState(true);
+  renderActiveView();
+}
+
+// Quick 1-click completion for all 4 core stages
+function toggleTopicAll(topicId) {
+  if (!appState.checks[topicId]) {
+    appState.checks[topicId] = {
+      T: false, R: false, FX: false, EE: false,
+      R1: false, R2: false, R3: false,
+      score: '', notes: ''
+    };
+  }
+  const s = appState.checks[topicId];
+  const allDone = s.T && s.R && s.FX && s.EE;
+  const target = !allDone;
+
+  s.T = target;
+  s.R = target;
+  s.FX = target;
+  s.EE = target;
+
+  saveState(true);
+  renderActiveView();
+}
+
+function updateTopicScore(topicId, val) {
+  if (!appState.checks[topicId]) {
+    appState.checks[topicId] = {};
+  }
+  appState.checks[topicId].score = val.replace('%', '').trim();
+  saveState(true);
+}
+
+function updateTopicNotes(topicId, val) {
+  if (!appState.checks[topicId]) {
+    appState.checks[topicId] = {};
+  }
+  appState.checks[topicId].notes = val.trim();
+  saveState(true);
+}
+
+function toggleBizuBox(topicId) {
+  const box = document.getElementById(`bizu-${topicId}`);
+  if (box) {
+    box.classList.toggle('open');
+  }
+}
+
+function toggleNotesBox(topicId) {
+  const box = document.getElementById(`notes-${topicId}`);
+  if (box) {
+    box.classList.toggle('open');
+  }
+}
+
+// ==========================================================================
+// View: Simulados & Provas Anteriores
+// ==========================================================================
+
+function renderSimuladosView(container) {
+  let html = `
+    <div class="module-container">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 12px;">
+        <div>
+          <h2 style="font-size: 1.4rem; font-weight: 800; color: #fff;">
+            🎯 Simulador de Provas Oficiais EEAR (CFS 1 e CFS 2)
+          </h2>
+          <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 4px;">
+            Digite o número de acertos (de 0 a 24) por matéria. O sistema calcula a média geral e a situação da sua nota de corte automaticamente.
+          </p>
+        </div>
+      </div>
+
+      <div class="table-responsive">
+        <table class="exam-table">
+          <thead>
+            <tr>
+              <th>Prova Oficial</th>
+              <th>Data</th>
+              <th>Tempo Gasto</th>
+              <th style="color: #60a5fa;">Português (/24)</th>
+              <th style="color: #38bdf8;">Inglês (/24)</th>
+              <th style="color: #34d399;">Matemática (/24)</th>
+              <th style="color: #fbbf24;">Física (/24)</th>
+              <th>Total (/96)</th>
+              <th>Média</th>
+              <th>Status Provável</th>
+            </tr>
+          </thead>
+          <tbody>
+  `;
+
+  EEAR_DATA.provasOficiais.forEach(prova => {
+    const score = appState.examScores[prova.id] || { pt: '', ing: '', mat: '', fis: '', data: '', tempo: '' };
+    
+    const pt = parseFloat(score.pt) || 0;
+    const ing = parseFloat(score.ing) || 0;
+    const mat = parseFloat(score.mat) || 0;
+    const fis = parseFloat(score.fis) || 0;
+
+    const hasData = score.pt !== '' || score.ing !== '' || score.mat !== '' || score.fis !== '';
+    const total = pt + ing + mat + fis;
+    const media = hasData ? ((total / 96) * 10).toFixed(2) : '-';
+
+    let statusTag = '<span style="color: var(--text-muted); font-size: 0.8rem;">Pendente</span>';
+    if (hasData) {
+      if (total >= 78) {
+        statusTag = '<span class="status-tag status-approved">Aprovado Direto (Vagas)</span>';
+      } else if (total >= 67) {
+        statusTag = '<span class="status-tag status-warning">Majorado (Lista Espera)</span>';
+      } else {
+        statusTag = '<span class="status-tag status-danger">Fora das Vagas</span>';
+      }
+    }
+
+    html += `
+      <tr>
+        <td><strong>${prova.nome}</strong></td>
+        <td>
+          <input type="text" class="table-input" style="width: 90px;" placeholder="DD/MM/AAAA" value="${score.data || ''}" 
+            onchange="updateExamScore('${prova.id}', 'data', this.value)">
+        </td>
+        <td>
+          <input type="text" class="table-input" style="width: 75px;" placeholder="03h50m" value="${score.tempo || ''}" 
+            onchange="updateExamScore('${prova.id}', 'tempo', this.value)">
+        </td>
+        <td>
+          <input type="number" min="0" max="24" class="table-input" value="${score.pt || ''}" 
+            onchange="updateExamScore('${prova.id}', 'pt', this.value)">
+        </td>
+        <td>
+          <input type="number" min="0" max="24" class="table-input" value="${score.ing || ''}" 
+            onchange="updateExamScore('${prova.id}', 'ing', this.value)">
+        </td>
+        <td>
+          <input type="number" min="0" max="24" class="table-input" value="${score.mat || ''}" 
+            onchange="updateExamScore('${prova.id}', 'mat', this.value)">
+        </td>
+        <td>
+          <input type="number" min="0" max="24" class="table-input" value="${score.fis || ''}" 
+            onchange="updateExamScore('${prova.id}', 'fis', this.value)">
+        </td>
+        <td><strong style="font-family: 'JetBrains Mono'; font-size: 1rem;">${hasData ? total : '-'}</strong></td>
+        <td><strong style="font-family: 'JetBrains Mono'; font-size: 1rem; color: var(--accent-cyan);">${media}</strong></td>
+        <td>${statusTag}</td>
+      </tr>
+    `;
+  });
+
+  html += `
+          </tbody>
+        </table>
+      </div>
+    </div>
+  `;
+
+  container.innerHTML = html;
+}
+
+function updateExamScore(examId, field, value) {
+  if (!appState.examScores[examId]) {
+    appState.examScores[examId] = { pt: '', ing: '', mat: '', fis: '', data: '', tempo: '' };
+  }
+  appState.examScores[examId][field] = value;
+  saveState(true);
+  renderActiveView();
+}
+
+// ==========================================================================
+// View: Caderno de Erros (Supercharged Edition)
+// ==========================================================================
+
+function renderCadernoErrosView(container) {
+  const errors = appState.cadernoErros;
+
+  // Diagnostic metrics
+  const countTeoria = errors.filter(e => e.tipo === 'Falta de Teoria').length;
+  const countAtencao = errors.filter(e => e.tipo === 'Atenção / Pegadinha').length;
+  const countCalculo = errors.filter(e => e.tipo === 'Erro de Cálculo').length;
+  const countTempo = errors.filter(e => e.tipo === 'Falta de Tempo').length;
+  const countResolvidos = errors.filter(e => e.resolvido).length;
+  const countPendentes = errors.length - countResolvidos;
+
+  // Filtering
+  const subjFilter = appState.errorSubjectFilter || 'todas';
+  const statusFilter = appState.errorStatusFilter || 'todos';
+  const searchQ = (appState.errorSearchQuery || '').toLowerCase().trim();
+
+  const filteredErrors = errors.filter(e => {
+    if (subjFilter !== 'todas' && e.materia !== subjFilter) return false;
+    if (statusFilter === 'pendente' && e.resolvido) return false;
+    if (statusFilter === 'resolvido' && !e.resolvido) return false;
+    if (searchQ) {
+      const matchText = (e.prova + ' ' + e.enunciado + ' ' + e.bizu).toLowerCase();
+      if (!matchText.includes(searchQ)) return false;
+    }
+    return true;
+  });
+
+  let html = `
+    <div class="module-container">
+      <div style="margin-bottom: 20px;">
+        <h2 style="font-size: 1.4rem; font-weight: 800; color: #fff;">
+          🧠 Caderno de Erros Inteligente
+        </h2>
+        <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 4px;">
+          Diagnóstico visual em tempo real dos seus pontos fracos. Mapeie o erro, anote o bizu de correção e marque como superado!
+        </p>
+      </div>
+
+      <!-- Diagnostic Stats Bar -->
+      <div class="error-diagnostics-bar">
+        <div class="diag-card" style="border-left: 3px solid var(--accent-rose);">
+          <span class="diag-title">Total de Falhas</span>
+          <span class="diag-count">${errors.length}</span>
+        </div>
+        <div class="diag-card" style="border-left: 3px solid #fbbf24;">
+          <span class="diag-title">Falta de Teoria</span>
+          <span class="diag-count" style="color: #fbbf24;">${countTeoria}</span>
+        </div>
+        <div class="diag-card" style="border-left: 3px solid #f43f5e;">
+          <span class="diag-title">Pegadinhas / Atenção</span>
+          <span class="diag-count" style="color: #fb7185;">${countAtencao}</span>
+        </div>
+        <div class="diag-card" style="border-left: 3px solid #38bdf8;">
+          <span class="diag-title">Cálculo / Aritmética</span>
+          <span class="diag-count" style="color: #38bdf8;">${countCalculo}</span>
+        </div>
+        <div class="diag-card" style="border-left: 3px solid #10b981;">
+          <span class="diag-title">Superados / Revisados</span>
+          <span class="diag-count" style="color: #34d399;">${countResolvidos}</span>
+        </div>
+      </div>
+
+      <div class="error-grid">
+        <!-- New Error Form -->
+        <div class="error-form-card">
+          <h3 style="font-size: 1.05rem; font-weight: 700; color: #fff; margin-bottom: 16px;">
+            ➕ Registrar Nova Questão Errada
+          </h3>
+          <form id="addErrorForm" onsubmit="saveNewError(event)">
+            <div class="form-group">
+              <label class="form-label">Disciplina</label>
+              <select class="form-control" id="errMateria" required>
+                <option value="Português">Língua Portuguesa</option>
+                <option value="Inglês">Língua Inglesa</option>
+                <option value="Matemática">Matemática</option>
+                <option value="Física">Física</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Prova de Origem</label>
+              <input type="text" class="form-control" id="errProva" placeholder="Ex: EEAR CFS 2/2024 - Questão 42" required>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Motivo Principal do Erro</label>
+              <select class="form-control" id="errTipo" required>
+                <option value="Atenção / Pegadinha">⚠️ Falta de Atenção / Pegadinha no Enunciado</option>
+                <option value="Falta de Teoria">📖 Falta de Teoria / Fórmula esquecida</option>
+                <option value="Erro de Cálculo">🔢 Erro de Cálculo / Aritmética básica</option>
+                <option value="Falta de Tempo">⏰ Falta de Tempo / Correria</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">O que pedia a questão?</label>
+              <textarea class="form-control" id="errEnunciado" placeholder="Descreva sucintamente o cerne da questão..." required></textarea>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">💡 Bizu / Regra para NUNCA MAIS errar</label>
+              <textarea class="form-control" id="errBizu" placeholder="Ex: No plano inclinado sem atrito, a aceleração NÃO depende da massa: a = g * sen(θ)!" required style="border-color: rgba(251, 191, 36, 0.4);"></textarea>
+            </div>
+
+            <button type="submit" class="btn-pill btn-pill-primary" style="width: 100%; justify-content: center; padding: 12px;">
+              Salvar no Caderno de Erros
+            </button>
+          </form>
+        </div>
+
+        <!-- Registered Errors List with Filters -->
+        <div class="error-list">
+          <!-- Filters & Search Toolbar -->
+          <div class="error-filter-bar">
+            <button class="error-filter-btn ${subjFilter === 'todas' ? 'active' : ''}" onclick="setErrorSubjectFilter('todas')">Todas as Matérias</button>
+            <button class="error-filter-btn ${subjFilter === 'Português' ? 'active' : ''}" onclick="setErrorSubjectFilter('Português')">Português</button>
+            <button class="error-filter-btn ${subjFilter === 'Inglês' ? 'active' : ''}" onclick="setErrorSubjectFilter('Inglês')">Inglês</button>
+            <button class="error-filter-btn ${subjFilter === 'Matemática' ? 'active' : ''}" onclick="setErrorSubjectFilter('Matemática')">Matemática</button>
+            <button class="error-filter-btn ${subjFilter === 'Física' ? 'active' : ''}" onclick="setErrorSubjectFilter('Física')">Física</button>
+          </div>
+
+          <div style="display: flex; gap: 8px; margin-bottom: 12px; flex-wrap: wrap;">
+            <button class="error-filter-btn ${statusFilter === 'todos' ? 'active' : ''}" onclick="setErrorStatusFilter('todos')">Todos os Status</button>
+            <button class="error-filter-btn ${statusFilter === 'pendente' ? 'active' : ''}" onclick="setErrorStatusFilter('pendente')">⏳ Pendentes (${countPendentes})</button>
+            <button class="error-filter-btn ${statusFilter === 'resolvido' ? 'active' : ''}" onclick="setErrorStatusFilter('resolvido')">✅ Superados (${countResolvidos})</button>
+            
+            <input type="text" class="search-input" style="flex: 1; min-width: 180px; padding: 6px 14px; font-size: 0.8rem;" 
+              placeholder="Buscar nos erros..." value="${appState.errorSearchQuery || ''}" 
+              oninput="setErrorSearchQuery(this.value)">
+          </div>
+
+          ${filteredErrors.length === 0 ? `
+            <div style="text-align: center; padding: 40px 20px; background: var(--bg-card); border-radius: var(--radius-md); border: 1px dashed var(--border-color);">
+              <span style="font-size: 2.5rem; display: block; margin-bottom: 10px;">🎉</span>
+              <h4 style="color: #fff; font-weight: 700;">Nenhuma questão encontrada com estes filtros!</h4>
+              <p style="color: var(--text-secondary); font-size: 0.85rem; margin-top: 4px;">
+                Adicione suas falhas de simulados para dominar suas fraquezas.
+              </p>
+            </div>
+          ` : ''}
+
+          ${filteredErrors.map(err => `
+            <div class="error-entry-card ${err.resolvido ? 'resolved' : ''}">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; flex-wrap: wrap; gap: 8px;">
+                <div style="display: flex; align-items: center; gap: 8px;">
+                  <span class="status-tag status-danger">${err.materia}</span>
+                  <span class="status-tag status-warning" style="font-size: 0.72rem;">${err.tipo}</span>
+                  <span style="font-size: 0.72rem; color: var(--text-muted);">${err.data}</span>
+                </div>
+                
+                <div style="display: flex; align-items: center; gap: 8px;">
+                  <button class="btn-mark-resolved ${err.resolvido ? 'is-resolved' : ''}" 
+                    onclick="toggleResolveError('${err.id}')" title="Marcar se você já compreendeu totalmente o erro e não erra mais">
+                    ${err.resolvido ? '✅ Já Dominei!' : '⏳ Marcar como Superado'}
+                  </button>
+                  <button onclick="deleteError('${err.id}')" style="background: transparent; border: none; color: var(--text-muted); cursor: pointer; font-size: 0.9rem;" title="Excluir questão">🗑️</button>
+                </div>
+              </div>
+
+              <h4 style="color: #fff; font-size: 0.95rem; font-weight: 700; margin-bottom: 6px;">
+                ${escapeHtml(err.prova)}
+              </h4>
+              <p style="color: var(--text-secondary); font-size: 0.85rem; margin-bottom: 10px; line-height: 1.5;">
+                ${escapeHtml(err.enunciado)}
+              </p>
+              <div style="background: rgba(251, 191, 36, 0.08); border-left: 3px solid var(--accent-gold); padding: 8px 12px; border-radius: 0 var(--radius-sm) var(--radius-sm) 0; font-size: 0.82rem; color: #fef08a;">
+                <strong>Bizu de Correção:</strong> ${escapeHtml(err.bizu)}
+              </div>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    </div>
+  `;
+
+  container.innerHTML = html;
+}
+
+function setErrorSubjectFilter(val) {
+  appState.errorSubjectFilter = val;
+  renderActiveView();
+}
+
+function setErrorStatusFilter(val) {
+  appState.errorStatusFilter = val;
+  renderActiveView();
+}
+
+function setErrorSearchQuery(val) {
+  appState.errorSearchQuery = val;
+  renderActiveView();
+}
+
+function toggleResolveError(errorId) {
+  const err = appState.cadernoErros.find(e => e.id === errorId);
+  if (err) {
+    err.resolvido = !err.resolvido;
+    saveState(true);
+    renderActiveView();
+  }
+}
+
+function saveNewError(event) {
+  event.preventDefault();
+  const materia = document.getElementById('errMateria').value;
+  const prova = document.getElementById('errProva').value;
+  const tipo = document.getElementById('errTipo').value;
+  const enunciado = document.getElementById('errEnunciado').value;
+  const bizu = document.getElementById('errBizu').value;
+
+  const newEntry = {
+    id: 'err_' + Date.now(),
+    data: new Date().toLocaleDateString('pt-BR'),
+    materia,
+    prova,
+    tipo,
+    enunciado,
+    bizu,
+    resolvido: false
+  };
+
+  appState.cadernoErros.unshift(newEntry);
+  saveState(true);
+  renderActiveView();
+}
+
+function deleteError(errorId) {
+  if (confirm('Deseja realmente excluir esta questão do caderno de erros?')) {
+    appState.cadernoErros = appState.cadernoErros.filter(e => e.id !== errorId);
+    saveState(true);
+    renderActiveView();
+  }
+}
+
+// ==========================================================================
+// View: Guia & Bibliografia Consolidada
+// ==========================================================================
+
+function renderGuiaView(container) {
+  let html = `
+    <div class="module-container">
+      <div class="metric-card" style="margin-bottom: 24px;">
+        <h2 style="font-size: 1.4rem; font-weight: 800; color: #fff; margin-bottom: 12px;">
+          📚 Bibliografia de Elite Consolidada (Edital + Clássicos da Aprovação)
+        </h2>
+        <p style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.6; margin-bottom: 20px;">
+          Para garantir nota de corte alta na EEAR, os candidatos de topo utilizam tanto as obras recomendadas no Anexo IV quanto as bibliografias consagradas de vestibulares militares:
+        </p>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px;">
+          <div style="background: rgba(14, 23, 42, 0.7); border: 1px solid var(--border-color); padding: 18px; border-radius: var(--radius-md);">
+            <h4 style="color: #60a5fa; font-size: 1rem; font-weight: 700; margin-bottom: 8px;">📖 Língua Portuguesa</h4>
+            <ul style="color: var(--text-secondary); font-size: 0.82rem; line-height: 1.7; padding-left: 18px;">
+              <li><strong>Novíssima Gramática da Língua Portuguesa</strong> — Domingos Paschoal Cegalla (Edital)</li>
+              <li><strong>Nova Gramática do Português Contemporâneo</strong> — Celso Cunha & Lindley Cintra (Edital)</li>
+              <li><strong>A Gramática para Concursos Públicos</strong> — Fernando Pestana (Didática máxima)</li>
+              <li><strong>Dicionários de Regência Verbal e Nominal</strong> — Celso Pedro Luft</li>
+            </ul>
+          </div>
+
+          <div style="background: rgba(14, 23, 42, 0.7); border: 1px solid var(--border-color); padding: 18px; border-radius: var(--radius-md);">
+            <h4 style="color: #38bdf8; font-size: 1rem; font-weight: 700; margin-bottom: 8px;">🇬🇧 Língua Inglesa</h4>
+            <ul style="color: var(--text-secondary); font-size: 0.82rem; line-height: 1.7; padding-left: 18px;">
+              <li><strong>English Grammar in Use (Intermediário)</strong> — Raymond Murphy (Cambridge)</li>
+              <li><strong>Essential Grammar in Use (Básico)</strong> — Raymond Murphy (Cambridge)</li>
+              <li><strong>Grammar Express Intermediate</strong> — Bonner & Fuchs (Longman - Edital)</li>
+              <li><strong>Practical English Usage</strong> — Michael Swan (Oxford)</li>
+            </ul>
+          </div>
+
+          <div style="background: rgba(14, 23, 42, 0.7); border: 1px solid var(--border-color); padding: 18px; border-radius: var(--radius-md);">
+            <h4 style="color: #34d399; font-size: 1rem; font-weight: 700; margin-bottom: 8px;">📐 Matemática</h4>
+            <ul style="color: var(--text-secondary); font-size: 0.82rem; line-height: 1.7; padding-left: 18px;">
+              <li><strong>Fundamentos de Matemática Elementar (FME 9 - Geometria Plana)</strong> — Dolce & Pompeo (Edital)</li>
+              <li><strong>Coleção FME Volumes 1 a 7 e 10</strong> — Gelson Iezzi et al. (O padrão ouro militar)</li>
+              <li><strong>Matemática para a Escola de Hoje</strong> — Walter Facchini (Edital)</li>
+              <li><strong>Matemática: Contexto & Aplicações</strong> — Luiz Roberto Dante</li>
+            </ul>
+          </div>
+
+          <div style="background: rgba(14, 23, 42, 0.7); border: 1px solid var(--border-color); padding: 18px; border-radius: var(--radius-md);">
+            <h4 style="color: #fbbf24; font-size: 1rem; font-weight: 700; margin-bottom: 8px;">⚡ Física</h4>
+            <ul style="color: var(--text-secondary); font-size: 0.82rem; line-height: 1.7; padding-left: 18px;">
+              <li><strong>Tópicos de Física (Vols 1, 2 e 3)</strong> — Helou, Gualter e Newton (A bíblia da EEAR!)</li>
+              <li><strong>Os Fundamentos da Física (Vols 1, 2 e 3)</strong> — Ramalho, Nicolau e Toledo</li>
+              <li><strong>Física: História & Cotidiano</strong> — Bonjorno et al. (Edital)</li>
+              <li><strong>Compreendendo a Física</strong> — Alberto Gaspar (Edital)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  `;
+
+  container.innerHTML = html;
+}
+
+// ==========================================================================
+// Tactical Study Cockpit & Timer Engine (6 Modos, Som de Aviação e Presets)
+// ==========================================================================
+
+// Web Audio API Synthesizer - Aviation Cabin Dual-Tone Chime
+function playTacticalChime() {
+  if (!timerSoundEnabled) return;
+  try {
+    const AudioCtx = window.AudioContext || window.webkitAudioContext;
+    if (!AudioCtx) return;
+    const ctx = new AudioCtx();
+    const now = ctx.currentTime;
+
+    // Tone 1: High crisp chime (880 Hz - A5)
+    const osc1 = ctx.createOscillator();
+    const gain1 = ctx.createGain();
+    osc1.type = 'sine';
+    osc1.frequency.setValueAtTime(880, now);
+    gain1.gain.setValueAtTime(0.18, now);
+    gain1.gain.exponentialRampToValueAtTime(0.001, now + 0.45);
+    osc1.connect(gain1);
+    gain1.connect(ctx.destination);
+    osc1.start(now);
+    osc1.stop(now + 0.45);
+
+    // Tone 2: Mellow chime (587.33 Hz - D5)
+    const osc2 = ctx.createOscillator();
+    const gain2 = ctx.createGain();
+    osc2.type = 'sine';
+    osc2.frequency.setValueAtTime(587.33, now + 0.18);
+    gain2.gain.setValueAtTime(0.2, now + 0.18);
+    gain2.gain.exponentialRampToValueAtTime(0.001, now + 0.7);
+    osc2.connect(gain2);
+    gain2.connect(ctx.destination);
+    osc2.start(now + 0.18);
+    osc2.stop(now + 0.7);
+  } catch (e) {
+    console.log('Web Audio notification:', e);
+  }
+}
+
+function toggleTimer() {
+  const preset = TIMER_PRESETS[currentPresetKey];
+  const bar = document.getElementById('cockpitBar');
+  const pulse = document.getElementById('cockpitLivePulse');
+  const playIcon = document.getElementById('timerPlayIcon');
+
+  if (isTimerRunning) {
+    clearInterval(timerInterval);
+    isTimerRunning = false;
+    if (playIcon) playIcon.innerText = '▶';
+    if (bar) bar.classList.remove('running');
+    if (pulse) pulse.classList.remove('active');
+    updateTimerDisplay();
+  } else {
+    isTimerRunning = true;
+    if (playIcon) playIcon.innerText = '⏸';
+    if (bar) bar.classList.add('running');
+    if (pulse) pulse.classList.add('active');
+
+    timerInterval = setInterval(() => {
+      if (preset.isCountDown) {
+        if (timerSeconds > 0) {
+          timerSeconds--;
+          updateTimerDisplay();
+        } else {
+          // Timer finished!
+          clearInterval(timerInterval);
+          isTimerRunning = false;
+          if (playIcon) playIcon.innerText = '▶';
+          if (bar) bar.classList.remove('running');
+          if (pulse) pulse.classList.remove('active');
+
+          playTacticalChime();
+
+          // Increment daily session counter if focus session
+          if (currentPresetKey !== 'pausa5') {
+            appState.completedSessionsToday = (appState.completedSessionsToday || 0) + 1;
+            saveState();
+            updateStreakUI();
+          }
+
+          showToast(`🔔 ${preset.name} concluído com sucesso! Excelente foco, futuro militar!`);
+          document.title = '🔔 TEMPO ESGOTADO! — EEAR CHECKLIST';
+        }
+      } else {
+        // Stopwatch mode (count-up)
+        timerSeconds++;
+        updateTimerDisplay();
+      }
+    }, 1000);
+  }
+}
+
+function resetTimer() {
+  clearInterval(timerInterval);
+  isTimerRunning = false;
+  const preset = TIMER_PRESETS[currentPresetKey];
+  timerSeconds = preset.seconds;
+  timerTotalSeconds = preset.seconds;
+
+  const bar = document.getElementById('cockpitBar');
+  const pulse = document.getElementById('cockpitLivePulse');
+  const playIcon = document.getElementById('timerPlayIcon');
+
+  if (playIcon) playIcon.innerText = '▶';
+  if (bar) bar.classList.remove('running');
+  if (pulse) pulse.classList.remove('active');
+
+  updateTimerDisplay();
+}
+
+function setTimerPreset(presetKey) {
+  if (!TIMER_PRESETS[presetKey]) return;
+  currentPresetKey = presetKey;
+  const preset = TIMER_PRESETS[presetKey];
+
+  // Update preset cards UI
+  document.querySelectorAll('.preset-card').forEach(card => {
+    card.classList.toggle('active', card.id === `preset-${presetKey}`);
+  });
+
+  // Update capsule UI
+  const modeLabel = document.getElementById('cockpitModeLabel');
+  const modeIcon = document.getElementById('cockpitModeIcon');
+  if (modeLabel) modeLabel.innerText = preset.name;
+  if (modeIcon) modeIcon.innerText = preset.icon;
+
+  resetTimer();
+  showToast(`⚡ Modo de estudo ativado: ${preset.name}`);
+}
+
+function toggleTimerSound() {
+  timerSoundEnabled = !timerSoundEnabled;
+  const btn = document.getElementById('soundToggleBtn');
+  const icon = document.getElementById('soundIcon');
+  const text = document.getElementById('soundText');
+
+  if (btn) btn.classList.toggle('active', timerSoundEnabled);
+  if (icon) icon.innerText = timerSoundEnabled ? '🔊' : '🔇';
+  if (text) text.innerText = timerSoundEnabled ? 'Som: ON' : 'Som: OFF';
+
+  if (timerSoundEnabled) {
+    playTacticalChime();
+    showToast('🔊 Aviso sonoro aeronáutico ativado!');
+  } else {
+    showToast('🔇 Aviso sonoro desativado (modo silencioso).');
+  }
+}
+
+function toggleCockpitExpand(event) {
+  if (event) event.stopPropagation();
+  const drawer = document.getElementById('cockpitDrawer');
+  if (!drawer) return;
+
+  isCockpitExpanded = !isCockpitExpanded;
+  drawer.classList.toggle('open', isCockpitExpanded);
+
+  if (isCockpitExpanded) {
+    updateStreakUI();
+  }
+}
+
+function updateStreakUI() {
+  const display = document.getElementById('todaySessionsDisplay');
+  if (display) {
+    display.innerText = appState.completedSessionsToday || 0;
+  }
+}
+
+function updateTimerDisplay() {
+  const display = document.getElementById('timerDisplay');
+  const ring = document.getElementById('timerRingProgress');
+  const preset = TIMER_PRESETS[currentPresetKey];
+  if (!display) return;
+
+  const hours = Math.floor(timerSeconds / 3600);
+  const mins = Math.floor((timerSeconds % 3600) / 60);
+  const secs = timerSeconds % 60;
+
+  let timeString = '';
+  if (hours > 0) {
+    timeString = `${String(hours).padStart(2, '0')}:${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+  } else {
+    timeString = `${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+  }
+
+  display.innerText = timeString;
+
+  // Update SVG Progress Ring
+  if (ring) {
+    const circumference = 100.53; // 2 * PI * 16
+    if (preset.isCountDown) {
+      const fraction = timerTotalSeconds > 0 ? (timerSeconds / timerTotalSeconds) : 0;
+      const offset = circumference * (1 - fraction);
+      ring.style.strokeDashoffset = offset;
+    } else {
+      // Stopwatch circular pulse every minute
+      const fraction = (timerSeconds % 60) / 60;
+      const offset = circumference * (1 - fraction);
+      ring.style.strokeDashoffset = offset;
+    }
+  }
+
+  // Update browser tab title
+  if (isTimerRunning) {
+    document.title = `▶ (${timeString}) ${preset.icon} EEAR CHECKLIST`;
+  } else {
+    document.title = `EEAR CHECKLIST — Preparatório Oficial & Rastreador de Estudos`;
+  }
+}
+
+// Close drawer when clicking outside
+document.addEventListener('click', (e) => {
+  const cockpit = document.getElementById('studyCockpit');
+  const drawer = document.getElementById('cockpitDrawer');
+  if (isCockpitExpanded && cockpit && !cockpit.contains(e.target)) {
+    isCockpitExpanded = false;
+    if (drawer) drawer.classList.remove('open');
+  }
+});
+
+// ==========================================================================
+// Initialization & Event Listeners
+// ==========================================================================
+
+document.addEventListener('DOMContentLoaded', () => {
+  const searchInput = document.getElementById('globalSearchInput');
+  if (searchInput) {
+    searchInput.addEventListener('input', (e) => {
+      appState.searchQuery = e.target.value;
+      renderActiveView();
+    });
+  }
+
+  renderActiveView();
+  updateTimerDisplay();
+  updateStreakUI();
+});
+
+  </script>
+</body>
+</html>
