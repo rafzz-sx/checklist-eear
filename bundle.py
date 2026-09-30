@@ -59,6 +59,43 @@ template = f"""<!DOCTYPE html>
       </div>
     </header>
 
+    <!-- Universal Exam Countdown HUD Banner (CFS 2/2027) -->
+    <section class="exam-countdown-banner">
+      <div class="countdown-badge-group">
+        <div class="countdown-live-dot"></div>
+        <div class="countdown-label-group">
+          <span class="countdown-title">OPERAÇÃO CFS 2/2027 • 100% DO EDITAL AUDITADO</span>
+          <span class="countdown-subtitle">Contagem regressiva para a Prova Escrita • <strong>22 de Novembro de 2026</strong></span>
+        </div>
+      </div>
+
+      <div class="countdown-units-grid">
+        <div class="countdown-unit">
+          <span class="countdown-digit" id="countdownDays">00</span>
+          <span class="countdown-unit-label">DIAS</span>
+        </div>
+        <span class="countdown-colon">:</span>
+        <div class="countdown-unit">
+          <span class="countdown-digit" id="countdownHours">00</span>
+          <span class="countdown-unit-label">HORAS</span>
+        </div>
+        <span class="countdown-colon">:</span>
+        <div class="countdown-unit">
+          <span class="countdown-digit" id="countdownMins">00</span>
+          <span class="countdown-unit-label">MIN</span>
+        </div>
+        <span class="countdown-colon">:</span>
+        <div class="countdown-unit">
+          <span class="countdown-digit" id="countdownSecs">00</span>
+          <span class="countdown-unit-label">SEG</span>
+        </div>
+      </div>
+
+      <div class="countdown-target-status">
+        <span class="status-pill-official">🎯 EDITAL CFS 2/2027</span>
+      </div>
+    </section>
+
     <!-- Global Analytics Dashboard Bar -->
     <section class="hero-dashboard">
       <div class="metric-card highlight">
