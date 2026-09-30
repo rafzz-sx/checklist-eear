@@ -64,8 +64,8 @@ template = f"""<!DOCTYPE html>
       <div class="countdown-badge-group">
         <div class="countdown-live-dot"></div>
         <div class="countdown-label-group">
-          <span class="countdown-title">OPERAÇÃO CFS 2/2027 • 100% DO EDITAL AUDITADO</span>
-          <span class="countdown-subtitle">Contagem regressiva para a Prova Escrita • <strong>22 de Novembro de 2026</strong></span>
+          <span class="countdown-title">OPERAÇÃO CFS 2/2027 • PROVA OBJETIVA (96 QUESTÕES)</span>
+          <span class="countdown-subtitle">Contagem regressiva para o dia da prova • <strong>22 de Novembro de 2026</strong> (4h20min oficiais)</span>
         </div>
       </div>
 

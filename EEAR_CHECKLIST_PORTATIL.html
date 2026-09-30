@@ -1870,8 +1870,8 @@ textarea.form-control {
       <div class="countdown-badge-group">
         <div class="countdown-live-dot"></div>
         <div class="countdown-label-group">
-          <span class="countdown-title">OPERAÇÃO CFS 2/2027 • 100% DO EDITAL AUDITADO</span>
-          <span class="countdown-subtitle">Contagem regressiva para a Prova Escrita • <strong>22 de Novembro de 2026</strong></span>
+          <span class="countdown-title">OPERAÇÃO CFS 2/2027 • PROVA OBJETIVA (96 QUESTÕES)</span>
+          <span class="countdown-subtitle">Contagem regressiva para o dia da prova • <strong>22 de Novembro de 2026</strong> (4h20min oficiais)</span>
         </div>
       </div>
 
@@ -2124,7 +2124,7 @@ const EEAR_DATA = {
     {
       id: "portugues",
       nome: "Língua Portuguesa",
-      icone: "book-open",
+      icone: "📖",
       cor: "#3b82f6",
       questoesTotal: 24,
       peso: "Eliminatório & Classificatório",
@@ -2398,7 +2398,7 @@ const EEAR_DATA = {
     {
       id: "ingles",
       nome: "Língua Inglesa",
-      icone: "globe",
+      icone: "🇬🇧",
       cor: "#0ea5e9",
       questoesTotal: 24,
       peso: "Nível Básico (Geral) & Intermediário (BCT)",
@@ -2558,7 +2558,7 @@ const EEAR_DATA = {
     {
       id: "matematica",
       nome: "Matemática",
-      icone: "compass",
+      icone: "📐",
       cor: "#10b981",
       questoesTotal: 24,
       peso: "Eliminatório & Classificatório",
@@ -2898,7 +2898,7 @@ const EEAR_DATA = {
     {
       id: "fisica",
       nome: "Física",
-      icone: "zap",
+      icone: "⚡",
       cor: "#f59e0b",
       questoesTotal: 24,
       peso: "Eliminatório & Classificatório",
@@ -3530,21 +3530,21 @@ function renderDashboard(container) {
         </div>
 
         <div class="compliance-stats-grid">
-          <div class="comp-stat-item" style="border-left: 3px solid #60a5fa;">
+          <div class="comp-stat-item" style="border-left: 3px solid #3b82f6;">
             <span class="subj-name">📖 Língua Portuguesa</span>
-            <span class="subj-count">18 Tópicos • 100% Edital</span>
+            <span class="subj-count">${(metrics.disciplineStats['portugues'] || {}).total || 39} Tópicos • 100% Edital</span>
           </div>
-          <div class="comp-stat-item" style="border-left: 3px solid #38bdf8;">
+          <div class="comp-stat-item" style="border-left: 3px solid #0ea5e9;">
             <span class="subj-name">🇬🇧 Língua Inglesa (Básico & BCT)</span>
-            <span class="subj-count">34 Tópicos • 100% Edital</span>
+            <span class="subj-count">${(metrics.disciplineStats['ingles'] || {}).total || 23} Tópicos • 100% Edital</span>
           </div>
-          <div class="comp-stat-item" style="border-left: 3px solid #34d399;">
+          <div class="comp-stat-item" style="border-left: 3px solid #10b981;">
             <span class="subj-name">📐 Matemática</span>
-            <span class="subj-count">47 Tópicos • 100% Edital</span>
+            <span class="subj-count">${(metrics.disciplineStats['matematica'] || {}).total || 47} Tópicos • 100% Edital</span>
           </div>
-          <div class="comp-stat-item" style="border-left: 3px solid #fbbf24;">
+          <div class="comp-stat-item" style="border-left: 3px solid #f59e0b;">
             <span class="subj-name">⚡ Física</span>
-            <span class="subj-count">50 Tópicos • 100% Edital</span>
+            <span class="subj-count">${(metrics.disciplineStats['fisica'] || {}).total || 42} Tópicos • 100% Edital</span>
           </div>
         </div>
       </div>
@@ -3552,13 +3552,23 @@ function renderDashboard(container) {
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin-bottom: 24px;">
   `;
 
+  const fallbackIcons = {
+    portugues: '📖',
+    ingles: '🇬🇧',
+    matematica: '📐',
+    fisica: '⚡'
+  };
+
   EEAR_DATA.disciplinas.forEach(disc => {
     const stat = metrics.disciplineStats[disc.id] || { total: 0, done: 0, percent: 0 };
+    const icon = disc.icone || fallbackIcons[disc.id] || '✈️';
     html += `
       <div class="metric-card" style="cursor: pointer;" onclick="switchTab('${disc.id}')">
         <div class="metric-header">
           <span class="metric-title" style="color: ${disc.cor}; font-weight: 700;">${disc.nome}</span>
-          <span class="metric-icon">✈️</span>
+          <span class="metric-icon" style="font-size: 1.3rem; background: ${disc.cor}18; border: 1px solid ${disc.cor}35; width: 38px; height: 38px; border-radius: var(--radius-sm); display: inline-flex; align-items: center; justify-content: center;">
+            ${icon}
+          </span>
         </div>
         <div class="metric-value-group">
           <span class="metric-value" style="color: ${disc.cor};">${stat.percent}%</span>
@@ -4222,30 +4232,30 @@ function renderGuiaView(container) {
               Certificação de Cobertura — 100% do Edital EEAR CFS 2/2027
             </h2>
             <p style="font-size: 0.85rem; color: var(--accent-cyan); font-weight: 700; margin-top: 2px;">
-              Portaria DIRENS/1DCR Nº 1.068 (Exame de Admissão ao CFS 2/2027) • Prova Escrita em 22/11/2026
+              Portaria DIRENS/1DCR Nº 1.068 (Exame de Admissão ao CFS 2/2027) • Prova Objetiva (96 Questões) em 22/11/2026
             </p>
           </div>
         </div>
 
         <p style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.7; margin-bottom: 16px;">
-          Este checklist cobre <strong>rigorosamente 100% do Anexo IV (Conteúdo Programático)</strong> do edital CFS 2/2027 (o último e mais importante edital lançado pela FAB). Todos os 149 tópicos oficiais das quatro disciplinas estão verticalizados e cadastrados, acompanhados de fórmulas em notação limpa (sem tags cruas), bizus práticos da banca e rastreamento de revisões espaçadas (T, R, FX, EE, R1, R2, R3).
+          Este checklist cobre <strong>rigorosamente 100% do Anexo IV (Conteúdo Programático)</strong> do edital CFS 2/2027 (o último e mais importante edital lançado pela FAB). Todos os 151 tópicos oficiais das quatro disciplinas estão verticalizados e cadastrados, acompanhados de fórmulas em notação limpa (sem tags cruas), bizus práticos da banca e rastreamento de revisões espaçadas (T, R, FX, EE, R1, R2, R3).
         </p>
 
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px; margin-bottom: 16px;">
-          <div style="background: rgba(14, 23, 42, 0.7); border: 1px solid rgba(96, 165, 250, 0.3); padding: 12px 14px; border-radius: var(--radius-sm);">
-            <strong style="color: #60a5fa;">📖 Língua Portuguesa (18 Tópicos • 100%)</strong>
+          <div style="background: rgba(14, 23, 42, 0.7); border: 1px solid rgba(59, 130, 246, 0.3); padding: 12px 14px; border-radius: var(--radius-sm);">
+            <strong style="color: #60a5fa;">📖 Língua Portuguesa (39 Tópicos • 100%)</strong>
             <p style="font-size: 0.8rem; color: var(--text-secondary); margin-top: 4px;">Interpretação textual, ortografia oficial, acentuação, 10 classes morfológicas, regência, concordância, crase e pontuação integral.</p>
           </div>
-          <div style="background: rgba(14, 23, 42, 0.7); border: 1px solid rgba(56, 189, 248, 0.3); padding: 12px 14px; border-radius: var(--radius-sm);">
-            <strong style="color: #38bdf8;">🇬🇧 Língua Inglesa (34 Tópicos • 100%)</strong>
+          <div style="background: rgba(14, 23, 42, 0.7); border: 1px solid rgba(14, 165, 233, 0.3); padding: 12px 14px; border-radius: var(--radius-sm);">
+            <strong style="color: #38bdf8;">🇬🇧 Língua Inglesa (23 Tópicos • 100%)</strong>
             <p style="font-size: 0.8rem; color: var(--text-secondary); margin-top: 4px;">Compreensão de textos, gramática completa de tempos verbais, modais, passiva, condicionais e termos técnicos (Nível Básico e Intermediário BCT).</p>
           </div>
-          <div style="background: rgba(14, 23, 42, 0.7); border: 1px solid rgba(52, 211, 153, 0.3); padding: 12px 14px; border-radius: var(--radius-sm);">
+          <div style="background: rgba(14, 23, 42, 0.7); border: 1px solid rgba(16, 185, 129, 0.3); padding: 12px 14px; border-radius: var(--radius-sm);">
             <strong style="color: #34d399;">📐 Matemática (47 Tópicos • 100%)</strong>
             <p style="font-size: 0.8rem; color: var(--text-secondary); margin-top: 4px;">Conjuntos, funções, trigonometria, matrizes, combinatória, probabilidade, geometria plana e espacial completas, analítica, complexos e estatística.</p>
           </div>
-          <div style="background: rgba(14, 23, 42, 0.7); border: 1px solid rgba(251, 191, 36, 0.3); padding: 12px 14px; border-radius: var(--radius-sm);">
-            <strong style="color: #fbbf24;">⚡ Física (50 Tópicos • 100%)</strong>
+          <div style="background: rgba(14, 23, 42, 0.7); border: 1px solid rgba(245, 158, 11, 0.3); padding: 12px 14px; border-radius: var(--radius-sm);">
+            <strong style="color: #fbbf24;">⚡ Física (42 Tópicos • 100%)</strong>
             <p style="font-size: 0.8rem; color: var(--text-secondary); margin-top: 4px;">Mecânica clássica completa (cinemática, dinâmica, energia, colisões, hidrostática), termologia, termodinâmica, ondulatória, óptica, eletrostática, eletrodinâmica e magnetismo.</p>
           </div>
         </div>
@@ -4534,39 +4544,41 @@ document.addEventListener('click', (e) => {
 });
 
 // ==========================================================================
-// Universal Exam Countdown Timer (EEAR CFS 2/2027 — 22/11/2026 09:00:00)
+// Universal Exam Countdown Timer (EEAR CFS 2/2027 — Prova Objetiva 22/11/2026)
 // ==========================================================================
 
-const EXAM_DATE_TARGET = new Date('2026-11-22T09:00:00-03:00').getTime();
-
 function updateExamCountdown() {
-  const now = new Date().getTime();
-  const distance = EXAM_DATE_TARGET - now;
+  const now = new Date();
+  
+  // Data da Prova Objetiva: 22 de Novembro de 2026
+  const examYear = 2026;
+  const examMonth = 10; // Novembro (0-indexed: 10 = Novembro)
+  const examDay = 22;
+  
+  // Início do dia da prova (meia-noite de 22/11/2026)
+  const examDate = new Date(examYear, examMonth, examDay, 0, 0, 0);
+  
+  // Meia-noite do dia atual para contagem exata de dias de calendário até o dia da prova
+  const todayZero = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 0, 0, 0);
+  
+  // Dias corridos restantes considerando apenas o dia da prova
+  const diffTime = examDate.getTime() - todayZero.getTime();
+  const days = Math.max(0, Math.round(diffTime / (1000 * 60 * 60 * 24)));
+  
+  // Horas, minutos e segundos restantes do dia corrente até a virada
+  const hours = Math.max(0, 23 - now.getHours());
+  const minutes = Math.max(0, 59 - now.getMinutes());
+  const seconds = Math.max(0, 59 - now.getSeconds());
 
   const daysEl = document.getElementById('countdownDays');
   const hoursEl = document.getElementById('countdownHours');
   const minsEl = document.getElementById('countdownMins');
   const secsEl = document.getElementById('countdownSecs');
 
-  if (!daysEl || !hoursEl || !minsEl || !secsEl) return;
-
-  if (distance < 0) {
-    daysEl.innerText = '00';
-    hoursEl.innerText = '00';
-    minsEl.innerText = '00';
-    secsEl.innerText = '00';
-    return;
-  }
-
-  const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-  const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-  const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-  const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-  daysEl.innerText = String(days).padStart(2, '0');
-  hoursEl.innerText = String(hours).padStart(2, '0');
-  minsEl.innerText = String(minutes).padStart(2, '0');
-  secsEl.innerText = String(seconds).padStart(2, '0');
+  if (daysEl) daysEl.innerText = String(days).padStart(2, '0');
+  if (hoursEl) hoursEl.innerText = String(hours).padStart(2, '0');
+  if (minsEl) minsEl.innerText = String(minutes).padStart(2, '0');
+  if (secsEl) secsEl.innerText = String(seconds).padStart(2, '0');
 }
 
 // ==========================================================================

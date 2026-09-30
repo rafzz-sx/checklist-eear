@@ -6,7 +6,7 @@ const EEAR_DATA = {
     {
       id: "portugues",
       nome: "Língua Portuguesa",
-      icone: "book-open",
+      icone: "📖",
       cor: "#3b82f6",
       questoesTotal: 24,
       peso: "Eliminatório & Classificatório",
@@ -280,7 +280,7 @@ const EEAR_DATA = {
     {
       id: "ingles",
       nome: "Língua Inglesa",
-      icone: "globe",
+      icone: "🇬🇧",
       cor: "#0ea5e9",
       questoesTotal: 24,
       peso: "Nível Básico (Geral) & Intermediário (BCT)",
@@ -440,7 +440,7 @@ const EEAR_DATA = {
     {
       id: "matematica",
       nome: "Matemática",
-      icone: "compass",
+      icone: "📐",
       cor: "#10b981",
       questoesTotal: 24,
       peso: "Eliminatório & Classificatório",
@@ -780,7 +780,7 @@ const EEAR_DATA = {
     {
       id: "fisica",
       nome: "Física",
-      icone: "zap",
+      icone: "⚡",
       cor: "#f59e0b",
       questoesTotal: 24,
       peso: "Eliminatório & Classificatório",
